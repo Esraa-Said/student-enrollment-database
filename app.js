@@ -3,7 +3,10 @@
 import express from "express"
 import {connectDB} from "./db/connect.js"
 import {router} from './routes/appRoutes.js'
+import env from "dotenv"
+env.config()
 const app = express()
+const Port = process.env.PORT || 5000
 
 app.get("/", (req, res) => {
 	res.send(`
@@ -11,7 +14,14 @@ app.get("/", (req, res) => {
     `)
 })
 
+app.use("/api", router)
+const start = async () => {
+	try {
+		await connectDB()
+		app.listen(Port, console.log(`server listening on port ${Port}.........`))
+	} catch (err) {
+		console.log(`can't connect to database`)
+	}
+}
 
-app.use("/api",router)
-
-app.listen(3000, console.log(`server listening on port 3000.........`))
+start()

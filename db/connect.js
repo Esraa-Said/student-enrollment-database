@@ -8,5 +8,5 @@ import env from "dotenv"
 env.config()
 
 export const connectDB = async () => {
-	return await mysql.createConnection(process.env.DATABASE_URL)
+	return mysql.createConnection(process.env.DATABASE_URL)
 }
