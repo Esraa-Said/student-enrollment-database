@@ -19,6 +19,19 @@ app.get("/teacher", async (req, res) => {
     res.send()
 })
 
+app.get("/groups", async (req, res) => {
+
+    await connect.query(`
+    
+    CREATE TABLE Groups_ (
+        group_id int, 
+        group_name varchar(100) not null,
+        constraint groups_pk primary key(group_id)
+    )
+    `)
+    res.send()
+})
+
 app.get("/students", async (req, res) => {
 	await connect.query(`
     CREATE TABLE students (
@@ -32,6 +45,22 @@ app.get("/students", async (req, res) => {
         CONSTRAINT students_fk FOREIGN KEY(group_id) REFERENCES Groups_(group_id)
     )`)
 	res.send()
+})
+app.get("/subjects",async(req,res) =>{
+
+    await connect.query(`
+    create table subjects(
+        subject_id int not null,
+        group_id int not null,
+        subject_name varchar(100) not null,
+        teacher_id int not null,
+        constraint subject_pk primary key(subject_id , group_id),
+        constraint teacher_fk foreign key (teacher_id) references teacher(teacher_id),
+        constraint grouos_fk foreign key (group_id) references Groups_(group_id)
+
+    )`)
+    res.send()
+
 })
 
 app.get("/grades", async (req, res) => {
@@ -47,9 +76,6 @@ app.get("/grades", async (req, res) => {
 	res.send()
 })
 
-app.get('/groups', async (req, res) => {
-    res.send()
-})
 
 
 
