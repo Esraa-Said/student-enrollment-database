@@ -1,12 +1,30 @@
 -- wirte ddl for creating schema
 
-create table students (
-	student_id int,
-    first_name varchar(100) not null,
-    last_name varchar(100) not null,
-    group_id int not null,
-    email varchar(100) ,
-    phone_number varchar(100),
-    constraint students_pk primary key(student_id),
-    constraint students_fk foreign key (group_id) references Groups_(group_id)
+CREATE TABLE students (
+	student_id INT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    group_id INT NOT NULL,
+    email VARCHAR(100) ,
+    phone_number VARCHAR(100),
+    CONSTRAINT students_pk PRIMARY KEY(student_id),
+    CONSTRAINT students_fk FOREIGN KEY(group_id) REFERENCES Groups_(group_id)
 );
+
+CREATE TABLE teacher (
+    teacher_id INT,
+    fist_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100),
+    CONSTRAINT teacher_pk PRIMARY KEY(teacher_id)
+);
+
+CREATE TABLE grades (
+    student_id INT NOT NULL,
+    group_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    grade INT NOT NULL,
+    status VARCHAR(20) CHECK(status IN ('succedded','faild')),
+    CONSTRAINT grades_pk PRIMARY KEY(student_id, group_id, subject_id)
+);
+ 
