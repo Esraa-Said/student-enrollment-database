@@ -23,9 +23,9 @@ for (let i = 0; i < 10; i++) {
 		let student = {}
 		student.student_id = student_id
 		student.first_name = first_name[i]
-		student.last_name = last_name[i]
+		student.last_name = last_name[j]
 		student.group_id = (Math.floor(Math.random() * 10) % 4) + 1
-		student.email = first_name[i] + last_name[i] + String(student_id) + "@gmail.com"
+		student.email = first_name[i] + last_name[j] + String(student_id) + "@gmail.com"
 		student.phone_number = String(phone_number[Math.floor(Math.random() * 10) % 4]) + String(Math.floor(Math.random() * 1e8))
 		res.push(student)
 		student_id++
