@@ -5,6 +5,7 @@ like function to add , create ,delete , ... student
 
 import { db } from "../db/connect.js"
 import { StatusCodes } from "http-status-codes"
+
 export const getAllStudents = async (req, res) => {
 	const [data] = await db.query(`select * from students`)
 	res.status(200).json({ data, length: data.length })
@@ -20,6 +21,7 @@ export const createStudent = async (req, res) => {
 	}
 	res.status(StatusCodes.CREATED).json(req.body)
 }
+
 export const updateStudent = async (req, res, next) => {
 	// in front we must handle not to update id
 	// there is a feild for each data => if filled and validatied then apply
@@ -41,6 +43,7 @@ export const updateStudent = async (req, res, next) => {
 	}
 	res.status(StatusCodes.OK).send(result)
 }
+
 export const deleteStudent = async (req, res) => {
 	const student_id = req.params.id
 	const [result] = await db.query(`SELECT * FROM students WHERE student_id = ?`, student_id)
