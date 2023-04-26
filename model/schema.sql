@@ -1,5 +1,5 @@
 -- wirte ddl for creating schema
-create table teacher (
+create table teachers (
     teacher_id int,
     fist_name varchar(50) not null,
     last_name varchar(50) not null,
@@ -36,6 +36,7 @@ create table grades (
     group_id int not null references groups(group_id),
     subject_id int not null references subjects(subject_id),
     grade int not null,
-    status varchar(20) check (status in ('succeeded', 'failed')),
-    constraint grades_pk primary key(student_id, group_id, subject_id)
+    status varchar(20) not null,
+    constraint grades_pk primary key(student_id, group_id, subject_id),
+    constraint grades_check_status check (status = 'succeeded' or status = 'failed')
 );
