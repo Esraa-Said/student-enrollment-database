@@ -1,0 +1,272 @@
+[
+    {
+        "subject_id": 1,
+        "subject_name": "Engineering fundamentals",
+        "group_id": 1,
+        "teacher_id": 8
+    },
+    {
+        "subject_id": 2,
+        "subject_name": "Electronic curcits 1",
+        "group_id": 1,
+        "teacher_id": 10
+    },
+    {
+        "subject_id": 3,
+        "subject_name": "cevil enginerring",
+        "group_id": 1,
+        "teacher_id": 7
+    },
+    {
+        "subject_id": 4,
+        "subject_name": "Math 1",
+        "group_id": 1,
+        "teacher_id": 4
+    },
+    {
+        "subject_id": 5,
+        "subject_name": "programming 1",
+        "group_id": 1,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 6,
+        "subject_name": "Electronic curcits 2",
+        "group_id": 1,
+        "teacher_id": 10
+    },
+    {
+        "subject_id": 7,
+        "subject_name": "Electronics 1",
+        "group_id": 1,
+        "teacher_id": 7
+    },
+    {
+        "subject_id": 8,
+        "subject_name": "Math 2",
+        "group_id": 1,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 9,
+        "subject_name": "Lab 1",
+        "group_id": 1,
+        "teacher_id": 10
+    },
+    {
+        "subject_id": 10,
+        "subject_name": "Technical language",
+        "group_id": 1,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 11,
+        "subject_name": "commputer applications",
+        "group_id": 1,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 12,
+        "subject_name": "commputer organizations",
+        "group_id": 1,
+        "teacher_id": 8
+    },
+    {
+        "subject_id": 13,
+        "subject_name": "Math 3",
+        "group_id": 2,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 14,
+        "subject_name": "measurements",
+        "group_id": 2,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 15,
+        "subject_name": "project Managments",
+        "group_id": 2,
+        "teacher_id": 6
+    },
+    {
+        "subject_id": 16,
+        "subject_name": "OOP",
+        "group_id": 2,
+        "teacher_id": 6
+    },
+    {
+        "subject_id": 17,
+        "subject_name": "Electronic fundamentals",
+        "group_id": 2,
+        "teacher_id": 9
+    },
+    {
+        "subject_id": 18,
+        "subject_name": "Electronics 2",
+        "group_id": 2,
+        "teacher_id": 10
+    },
+    {
+        "subject_id": 19,
+        "subject_name": "logic circuits",
+        "group_id": 2,
+        "teacher_id": 7
+    },
+    {
+        "subject_id": 20,
+        "subject_name": "sginal anlaysis",
+        "group_id": 2,
+        "teacher_id": 10
+    },
+    {
+        "subject_id": 21,
+        "subject_name": "technical reports",
+        "group_id": 2,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 22,
+        "subject_name": "Tests",
+        "group_id": 2,
+        "teacher_id": 2
+    },
+    {
+        "subject_id": 23,
+        "subject_name": "Math 4",
+        "group_id": 2,
+        "teacher_id": 4
+    },
+    {
+        "subject_id": 24,
+        "subject_name": "control",
+        "group_id": 2,
+        "teacher_id": 10
+    },
+    {
+        "subject_id": 25,
+        "subject_name": "Ethics ",
+        "group_id": 3,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 26,
+        "subject_name": "OPerating systems",
+        "group_id": 3,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 27,
+        "subject_name": "system analysis",
+        "group_id": 3,
+        "teacher_id": 4
+    },
+    {
+        "subject_id": 28,
+        "subject_name": "microprocessors",
+        "group_id": 3,
+        "teacher_id": 9
+    },
+    {
+        "subject_id": 29,
+        "subject_name": "data structures",
+        "group_id": 3,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 30,
+        "subject_name": "control",
+        "group_id": 3,
+        "teacher_id": 9
+    },
+    {
+        "subject_id": 31,
+        "subject_name": "algorithms",
+        "group_id": 3,
+        "teacher_id": 1
+    },
+    {
+        "subject_id": 32,
+        "subject_name": "database",
+        "group_id": 3,
+        "teacher_id": 7
+    },
+    {
+        "subject_id": 33,
+        "subject_name": "machine",
+        "group_id": 3,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 34,
+        "subject_name": "architecture",
+        "group_id": 3,
+        "teacher_id": 9
+    },
+    {
+        "subject_id": 35,
+        "subject_name": "electronics 3",
+        "group_id": 3,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 36,
+        "subject_name": "tests 2",
+        "group_id": 3,
+        "teacher_id": 9
+    },
+    {
+        "subject_id": 37,
+        "subject_name": "Ai",
+        "group_id": 4,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 38,
+        "subject_name": "graphics",
+        "group_id": 4,
+        "teacher_id": 8
+    },
+    {
+        "subject_id": 39,
+        "subject_name": "image processing",
+        "group_id": 4,
+        "teacher_id": 3
+    },
+    {
+        "subject_id": 40,
+        "subject_name": "network",
+        "group_id": 4,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 41,
+        "subject_name": "NN",
+        "group_id": 4,
+        "teacher_id": 5
+    },
+    {
+        "subject_id": 42,
+        "subject_name": "compiler",
+        "group_id": 4,
+        "teacher_id": 6
+    },
+    {
+        "subject_id": 43,
+        "subject_name": "Robotics",
+        "group_id": 4,
+        "teacher_id": 9
+    },
+    {
+        "subject_id": 44,
+        "subject_name": "security",
+        "group_id": 4,
+        "teacher_id": 1
+    },
+    {
+        "subject_id": 45,
+        "subject_name": "Tests 3",
+        "group_id": 4,
+        "teacher_id": 10
+    }
+]
