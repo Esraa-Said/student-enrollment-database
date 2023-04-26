@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Main.css';
 import login from "../images/login.png";
 
+
 export default function main() {
 
     const getpass = (event) => {
@@ -19,16 +20,42 @@ export default function main() {
         welcome.style.display = "block";
     }
     
-    window.onclick = event => {
-        let close_best1 = document.getElementById("passid");
+    // window.onclick = event => {
+    //     let close_best1 = document.getElementById("passid");
 
-        if (event.currentTarget == close_best1) {
-            console.log("dd");
-           // close_best1.style.display = "none";
+    //     if (event.currentTarget == close_best1) {
+    //         console.log("dd");
+    //        // close_best1.style.display = "none";
 
+
+    //     }
+    // }
+
+    const enter = () =>
+    {
+        let input = document.getElementById("pwd");
+        let label = document.getElementById("label");
+        let btnhref = document.getElementById("enterbtn");
+        
+        if(input.value.toLowerCase() == "feng" )
+        {
+            console.log(btnhref.href)
+            
+            btnhref.setAttribute("href","select") ;
+            
+            label.style.display = "none";
+           // setTimeout(funenter, 2000);
+          
 
         }
+        else {
+            label.style.display = "block";
+        }
+
+
     }
+
+
     return (
 
         <div className="back  bg-dark" style={{height: "100vh",
@@ -97,14 +124,15 @@ export default function main() {
                         <h2 style={{marginTop:"20px",fontFamily:"cursive",color:"#000000"}}>
                             Enter Password</h2>
                        
-                       
-                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" style={{marginTop:"40px"}}></input>
-                        <div className="btn btn-lg btn-secondary" style={{marginBottom:"40px",marginTop:"80px",marginRight:"30px"}}  onClick={close} >
+                            <label style={{marginTop:"30px",fontSize:"1.2vw",color:"#ff0000",display:"none"}} id="label">wrong password</label>
+                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" style={{marginTop:"10px"}} ></input>
+                        
+                        <a className="btn btn-lg btn-secondary" style={{marginBottom:"40px",marginTop:"80px",marginRight:"30px"}}  role="button" onClick={close} >
                             close
-                        </div>
-                        <div className="btn btn-lg btn-dark" style={{marginBottom:"40px",marginTop:"80px"}}  onClick={close} >
+                        </a>
+                        <a className="btn btn-lg btn-dark" href="#" id="enterbtn" style={{marginBottom:"40px",marginTop:"80px"}} role="button" onClick={enter} >
                             enter
-                        </div>
+                        </a>
                     </div>
 
                 </div>
