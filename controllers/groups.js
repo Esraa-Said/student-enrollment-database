@@ -58,7 +58,6 @@ const studentAllData = async (req, res) => {
 
     let student_data = data;
     student_data.grades = studentGrades;
-
     res.status(200).json({ student_data, group_id, group_name });
 };
 

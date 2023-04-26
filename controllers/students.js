@@ -55,5 +55,19 @@ export const deleteStudent = async (req, res) => {
 }
 
 export const updateGrade = async (req, res) => {
-	res.send()
+	const { gid: group_id, sid: student_id, bid: subject_id } = req.params
+	const { grade } = req.body
+	let status = grade >= 50 ? "succeeded" : "failed"
+	try {
+	} catch (err) {
+		let result = await db.query(`UPDATE grades SET grade = (?) , status = (?)  WHERE student_id = ? AND group_id = ? AND subject_id = ?`, [
+			grade,
+			status,
+			Number(student_id),
+			Number(group_id),
+			Number(subject_id),
+		])
+		return res.status(StatusCodes.BAD_REQUEST).json({ msg: `grade updatation failed` })
+	}
+	res.json({ msg: `updatation is successfully done` })
 }
