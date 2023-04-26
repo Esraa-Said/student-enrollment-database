@@ -35,7 +35,6 @@ app.get('/seedStudents', async (req, res) => {
 });
 
 app.get("/seedGrades", (req, res) => {
-	console.log(dataGrades.length);
 	dataGrades.forEach(record => {
 		connect.query(`INSERT INTO grades VALUES (?, ?, ?, ?, ?)`, [record.student_id, record.group_id, record.subject_id, record.grade, record.status]);
 	});
