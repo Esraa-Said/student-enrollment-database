@@ -3,14 +3,14 @@ import { db } from '../db/connect.js';
 const groupSubjects = async (req, res) => {
     let group_id = req.params.id;
     const [data] = await db.query(`select * from subjects where group_id = ${group_id}`);
-    const [[{ group_name }]] = await db.query(`select first_name from students where group_id = ${group_id}`);
+    const [[{ group_name }]] = await db.query(`select group_name from groups where group_id = ${group_id}`);
     res.status(200).json({ data, group_id, group_name });
 };
 
 const groupStudentsPersonalInfo = async (req, res) => {
     let group_id = req.params.id;
     const [students_data] = await db.query(`select * from students where group_id = ${group_id}`);
-    const [[{ group_name }]] = await db.query(`select first_name from students where group_id = ${group_id}`);
+    const [[{ group_name }]] = await db.query(`select group_name from groups where group_id = ${group_id}`);
     res.status(200).json({ students_data, group_id, group_name });
 };
 
@@ -20,14 +20,14 @@ const groupStudentsGrades = async (req, res) => {
 
     const [data] = await db.query(`select student_id, first_name, last_name from students where group_id = ${group_id}`);
     const [[{ group_name }]] = await db.query(`select group_name from groups where group_id = ${group_id}`);
-    const [subjects] = await db.query(`select * from subjects where group_id = ${group_id}`);
 
     for (let i = 0; i < data.length; ++i) {
-        const [grades] = await db.query(`select subject_id, grade, status from grades where (student_id = ${data[i].student_id} and group_id = ${group_id})`);
-        students_data.push([data[i], grades]);
+        const [studentGrades] = await db.query(`select subjects.subject_name, grades.grade, grades.status from grades, subjects where grades.student_id = ${data[i].student_id} and grades.group_id = ${group_id} and subjects.subject_id = grades.subject_id`);
+        let student = data[i];
+        student.grades = studentGrades;
+        students_data.push(student);
     }
-
-    res.status(200).json({ students_data, subjects, group_id, group_name });
+    res.status(200).json({ students_data, group_id, group_name });
 };
 
 // all info + grades
@@ -37,14 +37,15 @@ const groupStudentsAllData = async (req, res) => {
 
     const [data] = await db.query(`select * from students where group_id = ${group_id}`);
     const [[{ group_name }]] = await db.query(`select group_name from groups where group_id = ${group_id}`);
-    const [subjects] = await db.query(`select * from subjects where group_id = ${group_id}`);
 
     for (let i = 0; i < data.length; ++i) {
-        const [grades] = await db.query(`select subject_id, grade, status from grades where (student_id = ${data[i].student_id} and group_id = ${group_id})`);
-        students_data.push([data[i], grades]);
+        const [studentGrades] = await db.query(`select subjects.subject_name, grades.grade, grades.status from grades, subjects where grades.student_id = ${data[i].student_id} and grades.group_id = ${group_id} and subjects.subject_id = grades.subject_id`);
+        let student = data[i];
+        student.grades = studentGrades;
+        students_data.push(student);
     }
 
-    res.status(200).json({ students_data, subjects, group_id, group_name });
+    res.status(200).json({ students_data, group_id, group_name });
 };
 
 const studentAllData = async (req, res) => {
@@ -53,12 +54,12 @@ const studentAllData = async (req, res) => {
 
     const [[data]] = await db.query(`select * from students where (group_id = ${group_id} and student_id = ${student_id})`);
     const [[{ group_name }]] = await db.query(`select group_name from groups where group_id = ${group_id}`);
-    const [subjects] = await db.query(`select * from subjects where group_id = ${group_id}`);
-    const [grades] = await db.query(`select subject_id, grade, status from grades where (student_id = ${student_id} and group_id = ${group_id})`);
+    const [studentGrades] = await db.query(`select subjects.subject_name, grades.grade, grades.status from grades, subjects where grades.student_id = ${student_id} and grades.group_id = ${group_id} and subjects.subject_id = grades.subject_id and subjects.group_id = grades.group_id`);
 
-    let student_data = [data, grades];
+    let student_data = data;
+    student_data.grades = studentGrades;
 
-    res.status(200).json({ student_data, subjects, group_id, group_name });
+    res.status(200).json({ student_data, group_id, group_name });
 };
 
 export {

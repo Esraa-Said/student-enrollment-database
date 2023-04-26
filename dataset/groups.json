@@ -1,18 +1,18 @@
 [
     {
         "group_id": 1,
-        "group_name": "1st communication"
+        "group_name": "1st Communication"
     },
     {
         "group_id": 2,
-        "group_name": "2nd communication"
+        "group_name": "2nd Communication"
     },
     {
         "group_id": 3,
-        "group_name": "3rd computer sience"
+        "group_name": "3rd Computer Sience"
     },
     {
         "group_id": 4,
-        "group_name": "4th computer sience"
+        "group_name": "4th Computer Sience"
     }
 ]
