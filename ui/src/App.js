@@ -8,20 +8,21 @@ import Group1 from "./components/Group1"
 import Group2 from "./components/Group2"
 import Main from "./components/Main"
 import axios from "axios"
-
+// import { useHistory } from "react-router-dom"
 function App() {
-	// console.log(process.env, process.env.REACT_APP_BASR_URL)
-	// const [backendData, setBackendData] = useState([{}])
-	// useEffect(() => {
-	// 	axios.get(`${process.env.REACT_APP_BASR_URL}/students`).then((data) => {
-	// 		console.log(data.data)
-	// 		setBackendData(data.data)
-	// 		// debugger
-	// 	})
-	// }, [])
-
+	console.log(process.env, process.env.REACT_APP_BASE_URL)
+	const [backendData, setBackendData] = useState([{}])
+	useEffect(() => {
+		axios.get(`${process.env.REACT_APP_BASE_URL}/students`).then((data) => {
+			// console.log(data.data)
+			setBackendData(data.data)
+			// debugger
+		})
+	}, [])
+	// let history = useHistory()
+	// console.log(history)
 	return (
-		// <div>{JSON.stringify(backendData)}</div>
+	// 	<div>{JSON.stringify(backendData)}</div>
 		<BrowserRouter>
 			<div>
 				<main>
