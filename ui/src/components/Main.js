@@ -7,7 +7,7 @@ import Selection from "./Selection";
 
 
 
-function Main() {
+function Main() { 
 
     const getpass = (event) => {
         let passid = document.getElementById("passid");
