@@ -25,4 +25,4 @@ app.use(express.json());
 app.use("/api", router);
 app.use(notFound);
 
-app.listen(Port, console.log(`server listening on port ${Port}.........`));
+app.listen(3000, console.log(`server listening on port ${Port}.........`));

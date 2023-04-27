@@ -2,9 +2,12 @@ import "../bootstrap/css/bootstrap.css";
 import React, { useState } from 'react';
 import './Main.css';
 import login from "../images/login.png";
+import Selection from "./Selection";
 
 
-export default function main() {
+
+
+function Main() { 
 
     const getpass = (event) => {
         let passid = document.getElementById("passid");
@@ -19,7 +22,7 @@ export default function main() {
         let welcome = document.getElementById("welcome");
         welcome.style.display = "block";
     }
-    
+
     // window.onclick = event => {
     //     let close_best1 = document.getElementById("passid");
 
@@ -31,21 +34,18 @@ export default function main() {
     //     }
     // }
 
-    const enter = () =>
-    {
+    const enter = () => {
         let input = document.getElementById("pwd");
         let label = document.getElementById("label");
         let btnhref = document.getElementById("enterbtn");
-        
-        if(input.value.toLowerCase() == "feng" )
-        {
-            console.log(btnhref.href)
-            
-            btnhref.setAttribute("href","select") ;
-            
+
+        if (input.value.toLowerCase() == "feng") {
             label.style.display = "none";
-           // setTimeout(funenter, 2000);
-          
+         
+            btnhref.setAttribute("href", "select");
+
+            // setTimeout(funenter, 2000);
+
 
         }
         else {
@@ -55,18 +55,26 @@ export default function main() {
 
     }
 
+    const user = () =>
+    {
+        
+      
+
+    }
 
     return (
 
-        <div className="back  bg-dark" style={{height: "100vh",
-            width: "100vw"}} >
+        <div className="back  bg-dark" style={{
+            height: "100vh",
+            width: "100vw"
+        }} >
 
             <div >
                 <div className="container bg-secondary " id="welcome" style={{
                     border: "1px solid ",
                     borderRadius: "10px",
                     padding: "10vw",
-                    
+
                 }} data-aos="zoom-in">
 
                     <div className="row justify-content-center">
@@ -89,7 +97,9 @@ export default function main() {
                                 {
                                     marginBottom: "35px", fontFamily: "cursive", marginTop: "5vw", fontSize: "2vw", marginLeft: "5vw"
                                 }
-                            }>
+                            }
+                            onClick={user}
+                        >
                             User
                         </a>
                     </div>
@@ -101,7 +111,7 @@ export default function main() {
 
 
             {/* pass page */}
-            <div id="passid"  style={{
+            <div id="passid" style={{
                 display: "none",
                 border: "1px solid rgb(5, 5, 5)",
                 width: "100%",
@@ -112,25 +122,25 @@ export default function main() {
                 left: "0",
                 overflow: "auto",
                 paddingTop: "60px",
-                
+
 
             }}>
                 <div className="form container d-flex flex-wrap 
                 justify-content-around  align-content-around " >
                     <div className="align-self-center" >
-                        <img src={login} style={{width:"20vw"}} />
+                        <img src={login} style={{ width: "20vw" }} />
                     </div>
                     <div className="text ">
-                        <h2 style={{marginTop:"20px",fontFamily:"cursive",color:"#000000"}}>
+                        <h2 style={{ marginTop: "20px", fontFamily: "cursive", color: "#000000" }}>
                             Enter Password</h2>
-                       
-                            <label style={{marginTop:"30px",fontSize:"1.2vw",color:"#ff0000",display:"none"}} id="label">wrong password</label>
-                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" style={{marginTop:"10px"}} ></input>
-                        
-                        <a className="btn btn-lg btn-secondary" style={{marginBottom:"40px",marginTop:"80px",marginRight:"30px"}}  role="button" onClick={close} >
+
+                        <label style={{ marginTop: "30px", fontSize: "1.2vw", color: "#ff0000", display: "none" }} id="label">wrong password</label>
+                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" style={{ marginTop: "10px" }} ></input>
+
+                        <a className="btn btn-lg btn-secondary" style={{ marginBottom: "40px", marginTop: "80px", marginRight: "30px" }} role="button" onClick={close} >
                             close
                         </a>
-                        <a className="btn btn-lg btn-dark" href="#" id="enterbtn" style={{marginBottom:"40px",marginTop:"80px"}} role="button" onClick={enter} >
+                        <a className="btn btn-lg btn-dark" href="#" id="enterbtn" style={{ marginBottom: "40px", marginTop: "80px" }} role="button" onClick={enter} >
                             enter
                         </a>
                     </div>
@@ -141,3 +151,6 @@ export default function main() {
 
     )
 }
+
+export default Main;
+
