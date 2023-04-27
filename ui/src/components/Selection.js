@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import "../bootstrap/css/bootstrap.css";
-import "./Group1";
-import "./Group2";
-//import {where} from "./Main";
+import Header from './Header';
 
 
-export let listbtns = [0, 0, 0, 0];
 
+let id = '0';
+let listbtns = [0, 0, 0, 0];
+let groupId = '0';
 export default function Selection() {
 
-    
+    let lo = window.location.href;
+    lo.split('/');
+    id = lo[lo.length - 1];
 
     const clickHandler1 = event => {
         if (listbtns[0] == 0) {
@@ -22,6 +24,7 @@ export default function Selection() {
             event.currentTarget.className = "btn btn-primary btn-lg";
             listbtns[0] = 0;
         }
+        groupId = '1';
     };
     const clickHandler2 = event => {
 
@@ -33,6 +36,7 @@ export default function Selection() {
             event.currentTarget.className = "btn btn-danger  btn-lg";
             listbtns[1] = 0;
         }
+        groupId = '2';
 
     };
     const clickHandler3 = event => {
@@ -45,6 +49,7 @@ export default function Selection() {
             event.currentTarget.className = "btn btn-warning btn-lg";
             listbtns[2] = 0;
         }
+        groupId = '3';
 
     };
     const clickHandler4 = event => {
@@ -57,41 +62,41 @@ export default function Selection() {
             event.currentTarget.className = "btn btn-success btn-lg";
             listbtns[3] = 0;
         }
-
+        groupId = '4';
     };
 
 
     const go = () => {
-       
+
         let btngo = document.getElementById("btngo");
-        btngo.setAttribute("href", "select");
+
         let count = 0;
-     
+
         for (var i = 0; i < listbtns.length; ++i) {
             if (listbtns[i] == 1)
                 count++;
         }
         if (count == 0) {
             alert("you should choose at least one group")
-            btngo.setAttribute("href", "select");
         }
         else {
-            // console.log(val);
-            // if (val == 0) {
-            //     btngo.setAttribute("href", "groups");
-            // }
-            // else {
-            //     if (count > 1) {
-            //         alert("you should choose at most one group")
-            //         btngo.setAttribute("href", "select");
-            //     }
-            //     else
-            //     {
-            //         btngo.setAttribute("href", "groups");
-            //     }
-            // }
-          
-            
+
+            if (id == '1') {
+
+                btngo.setAttribute("href", "/select/" + id + "/groups/" + groupId);
+
+            }
+            else {
+                if (count > 1) {
+                    alert("you should choose at most one group")
+
+                }
+                else {
+                    btngo.setAttribute("href", "/select/" + id + "/groups/" + groupId);
+                }
+            }
+
+
         }
 
 
@@ -99,13 +104,7 @@ export default function Selection() {
     return (
 
         <div>
-            <div className="container-sm m-3 p-3 bg-secondary"
-                style={
-                    { borderRadius: "10px", fontFamily: "cursive", fontSize: "2vw", color: "#ffffff" }
-                }
-            >
-                <span>ESK for Student Enrollment</span>
-            </div>
+           <Header/>
             <div className='container mt-5'>
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around ">
                     <div className="align-self-center  " data-aos="fade-down-right">
@@ -179,7 +178,8 @@ export default function Selection() {
                 </div>
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around">
                     <div className='align-self-center ' >
-                        <a href='select' role='button' className='btn btn-secondary btn-lg' style={{ padding: "1vw", fontSize: "2vw" }} id="btngo" onClick={go}>GO</a>
+                        <a href='' role='button' className='btn btn-secondary btn-lg' style={{ padding: "1vw", fontSize: "2vw" }}
+                            id="btngo" onClick={go}>GO</a>
                     </div>
                 </div>
             </div>

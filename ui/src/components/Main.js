@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import './Main.css';
 import login from "../images/login.png";
 import Selection from "./Selection";
+import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
+
+
+let where = 5;
 
 
 
-
-function Main() { 
+function Main() {
 
     const getpass = (event) => {
         let passid = document.getElementById("passid");
@@ -41,8 +44,8 @@ function Main() {
 
         if (input.value.toLowerCase() == "feng") {
             label.style.display = "none";
-         
-            btnhref.setAttribute("href", "select");
+
+            btnhref.setAttribute("href", "select/2");
 
             // setTimeout(funenter, 2000);
 
@@ -55,19 +58,26 @@ function Main() {
 
     }
 
-    const user = () =>
-    {
-        
-      
+    const user = () => {
+        var use = document.getElementById("user");
+        where = 1;
+       use.setAttribute("href", "select/1");
 
+      //console.log(where)
     }
-
+    console.log(where)
+   
     return (
+
+
+
 
         <div className="back  bg-dark" style={{
             height: "100vh",
             width: "100vw"
         }} >
+
+
 
             <div >
                 <div className="container bg-secondary " id="welcome" style={{
@@ -92,7 +102,7 @@ function Main() {
                             Admin
                         </a>
 
-                        <a href="select" className="btn btn-warning btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="show"
+                        <a  className="btn btn-warning btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="show" id="user"
                             style={
                                 {
                                     marginBottom: "35px", fontFamily: "cursive", marginTop: "5vw", fontSize: "2vw", marginLeft: "5vw"
@@ -154,3 +164,4 @@ function Main() {
 
 export default Main;
 
+export {where} ;
