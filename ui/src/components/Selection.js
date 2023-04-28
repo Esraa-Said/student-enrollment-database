@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-
+import axios from 'axios';
 
 
 let id = '0';
@@ -13,6 +13,16 @@ export default function Selection() {
     let lo = window.location.href;
     lo.split('/');
     id = lo[lo.length - 1];
+
+    // // console.log(process.env, process.env.REACT_APP_BASE_URL)
+	// const [backendData, setBackendData] = useState([{}])
+	// useEffect(() => {
+	// 	axios.get(`${process.env.REACT_APP_BASE_URL}/students`).then((data) => {
+	// 		console.log(data.data)
+	// 		setBackendData(data.data)
+	// 		// debugger
+	// 	})
+	// }, [])
 
     const clickHandler1 = event => {
         if (listbtns[0] == 0) {

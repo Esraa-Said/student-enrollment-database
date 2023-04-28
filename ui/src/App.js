@@ -9,8 +9,20 @@ import Groups from './components/Groups';
 
 function App() {
 
-  return (
+  // console.log(process.env, process.env.REACT_APP_BASE_URL)
+	// const [backendData, setBackendData] = useState([{}])
+	// useEffect(() => {
+	// 	axios.get(`${process.env.REACT_APP_BASE_URL}/students`).then((data) => {
+	// 		// console.log(data.data)
+	// 		setBackendData(data.data)
+	// 		// debugger
+	// 	})
+	// }, [])
+	// // let history = useHistory()
+	// // console.log(history)
 
+  return (
+// 	<div>{JSON.stringify(backendData)}</div>
     <BrowserRouter>
       <div>
         <main>
