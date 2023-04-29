@@ -11,6 +11,12 @@ export const getAllStudents = async (req, res) => {
 	res.status(200).json({ data, length: data.length })
 }
 
+export const getStudentById = async (req, res) => {
+	const id = req.params.id
+	const [data] = await db.query(`select * from students where student_id = ?`,id)
+	res.status(200).json(data)
+}
+
 export const createStudent = async (req, res) => {
 	const { student_id, first_name, last_name, group_id, email, phone_number } = req.body
 	let val

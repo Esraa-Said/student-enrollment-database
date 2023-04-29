@@ -82,7 +82,7 @@ export function gitAllBtn() {
 // delete student 
 
 async function deletestudent(x) {
-   const data = await axios.delete(`http://localhost:5000/api/student/${x}`);
+   const data = await axios.delete(`${process.env.REACT_APP_BASE_URL}/student/${x}`)
    console.log(data);
 }
 
@@ -126,164 +126,83 @@ export default function Groups() {
    //
 
    let get = 5
-   //console.log(process.env, process.env.REACT_APP_BASE_URL)
-   const [data, setData] = useState([])
-   useEffect(() => {
-      axios.get(`${process.env.REACT_APP_BASE_URL}/students`).then((res) => {
-         //  console.log(data.data)
-         setData(res.data)
-         // debugger
-         // console.log(res.data)
+		const [data, setData] = useState([])
+		useEffect(() => {
+			axios
+				.get(`${process.env.REACT_APP_BASE_URL}/students`)
+				.then((res) => {
+					setData(res.data)
+				})
+				.catch((err) => console.log(err))
+		}, [])
 
-      }).catch(err => console.log(err))
-   }, [])
-   //const students = JSON.stringify(backendData);
-   //console.log( backendData.data[0].student_id)
+		const [onegroupstudents, setonegroupstudents] = useState([])
+		const [suject, setSubject] = useState([])
+		useEffect(() => {
+			axios
+				.get(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students`)
 
-   const [onegroupstudents, setonegroupstudents] = useState([])
-   useEffect(() => {
-      axios.get(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students`)
+				.then((res) => {
+					setonegroupstudents(res.data)
+					setSubject(res.data["students_data"][0]["grades"])
+				})
+				.catch((err) => console.log(err))
+		}, [])
 
-         .then((res) => {
-            //  console.log(data.data)
-            setonegroupstudents(res.data)
-            // debugger
-            // que             console.log(onegroupstudents["students_data"][0].grades)
+		const show = data.data?.map((student, index) => {
+			return (
+				<tr key={index}>
+					<td>{student.student_id}</td>
+					<td>{student.first_name}</td>
+					<td>{student.last_name}</td>
+					<td>{student.group_id}</td>
+					<td>{student.email}</td>
+					<td>{student.phone_number}</td>
+				</tr>
+			)
+		})
 
-            // console.log(onegroupstudents["students_data"][0].grades)
+		const showgroupstudents = onegroupstudents["students_data"]?.map((student, index) => {
+			return (
+				<tr key={index}>
+					<td>{student.student_id}</td>
+					<td>{student.first_name}</td>
+					<td>{student.last_name}</td>
+					<td>{student.group_id}</td>
+					<td>{student.email}</td>
+					<td>{student.phone_number}</td>
+					{student.grades.map((grade, index) => {
+						return (
+							<td>
+								{grade.grade}
+								<br></br>
+								{grade.status}
+							</td>
+						)
+					})}
+				</tr>
+			)
+		})
 
-            // console.log(onegroupstudents["students_data"])
+		const displayOptions = () => {
+			let op = document.getElementById("op")
+			if (op.style.display == "block") {
+				op.style.display = "none"
+				document.getElementsByClassName("icon")[0].style.display = "block"
+				document.getElementsByClassName("icon")[1].style.display = "none"
+			} else {
+				op.style.display = "block"
+				document.getElementsByClassName("icon")[0].style.display = "none"
+				document.getElementsByClassName("icon")[1].style.display = "block"
+			}
+		}
 
-         }).catch(err => console.log(err))
-   }, [])
-
-
-
-
-   const show = data.data?.map((student, index) => {
-      return <tr key={index}>
-         <td>{student.student_id}</td>
-         <td>{student.first_name}</td>
-         <td>{student.last_name}</td>
-         <td>{student.group_id}</td>
-         <td>{student.email}</td>
-         <td>{student.phone_number}</td>
-
-
-
-      </tr>
-   })
-
-   //  <td>{student.grades[0]["grade"]}</td>
-   ///<td>{student.grades[0]["status"]}</td> 
-   let y = [];
-
-   function addSubs(index, x) {
-      if (index == 0) {
-         for (let i = 0; i < x.length; i++)
-            y.push(x);
-      }
-   }
-   const sub = (i) => {
-      (onegroupstudents["students_data"][i].grades).map((grades) => {
-         return <td>{grades.grade}<br></br>{grades.status}</td>
-
-
-      })
-   }
-
-   async function e() {
-      //console.log(onegroupstudents["students_data"][0]["grades"][1].subject_name,"mmm")
-      return onegroupstudents["students_data"][0]["grades"][1].subject_name
-
-   }
-   e()
-   const showgroupstudents = onegroupstudents["students_data"]?.map((student, index) => {
-      return <tr key={index}>
-         <td>{student.student_id}</td>
-         <td>{student.first_name}</td>
-         <td>{student.last_name}</td>
-         <td>{student.group_id}</td>
-         <td>{student.email}</td>
-         <td>{student.phone_number}</td>
-         {
-            student.grades.map((grade, index) => {
-               return <td>{grade.grade}<br></br>{grade.status}</td>
-
-            })
-         }
-         {/* <td>{student.grades[0].grade}<br></br>{student.grades[0].status}</td>
-         <td>{student.grades[1].grade}<br></br>{student.grades[1].status}</td>
-         <td>{student.grades[2].grade}<br></br>{student.grades[2].status}</td>
-         <td>{student.grades[3].grade}<br></br>{student.grades[3].status}</td>
-         <td>{student.grades[4].grade}<br></br>{student.grades[4].status}</td>
-         <td>{student.grades[5].grade}<br></br>{student.grades[5].status}</td>
-         <td>{student.grades[6].grade}<br></br>{student.grades[6].status}</td>
-         <td>{student.grades[7].grade}<br></br>{student.grades[7].status}</td>
-         <td>{student.grades[8].grade}<br></br>{student.grades[8].status}</td>
-         <td>{student.grades[9].grade}<br></br>{student.grades[9].status}</td>
-         <td>{student.grades[10].grade}<br></br>{student.grades[10].status}</td>
-         <td>{student.grades[11].grade}<br></br>{student.grades[11].status}</td>
- */}
-
-         {
-            console.log(index)
-
-         }
-
-         {
-            addSubs(index, [
-               student.grades[0].subject_name
-               , student.grades[1].subject_name,
-               student.grades[2].subject_name,
-               student.grades[3].subject_name,
-               student.grades[4].subject_name
-               , student.grades[5].subject_name,
-               student.grades[6].subject_name,
-               student.grades[7].subject_name,
-               student.grades[8].subject_name,
-               student.grades[9].subject_name,
-               student.grades[10].subject_name,
-               student.grades[11].subject_name]
-            )
-
-         }
-
-
-
-
-      </tr>
-
-
-   })
-
-   console.log(y)
-
-   const displayOptions = () => {
-      let op = document.getElementById("op");
-      if (op.style.display == "block") {
-         op.style.display = "none";
-         document.getElementsByClassName("icon")[0].style.display = "block";
-         document.getElementsByClassName("icon")[1].style.display = "none";
-
-
-      }
-      else {
-         op.style.display = "block";
-         document.getElementsByClassName("icon")[0].style.display = "none";
-         document.getElementsByClassName("icon")[1].style.display = "block";
-
-      }
-   }
-
-   return (
-
-      <div>
-         <Header />
-         <div className='d-flex  justify-content-center  align-content-around  ' >
-            .
-
-            {/* <div className='d-flex flex-wrap   align-content-around optionres align-self-start ' >
+		return (
+			<div>
+				<Header />
+				<div className="d-flex  justify-content-center  align-content-around  ">
+					.
+					{/* <div className='d-flex flex-wrap   align-content-around optionres align-self-start ' >
                <div className='icon align-self-center ml-5 ' style={{ width: "2vw", textAlign: "center", position: "fixed" }} >
                   <i class="fa-solid fa-arrows-turn-right " style={{ cursor: "pointer", fontSize: "2vw" }} onClick={displayOptions}></i>
                </div>
@@ -295,189 +214,194 @@ export default function Groups() {
                   <i class="fa-solid fa-xmark " style={{ cursor: "pointer", fontSize: "2vw", marginLeft: "200px" }} onClick={displayOptions}></i>
                </div>
             </div> */}
+					<div className="bg-dark ml-5 mr-5 mt-3 options m-5  " style={{ width: "25vw", height: "75vh", borderRadius: "10px", overflowY: "auto" }}>
+						<Options />
+					</div>
+					<div className=" ml-3 mt-5 mr-3 optionArea " style={{ width: "76vw", height: "75vh" }}>
+						{/* start get All students */}
 
+						<div
+							className="get "
+							id="getAll"
+							style={{
+								display: "none",
+								overflowY: "auto",
+								height: "75vh",
+								fontFamily: "Arial",
+								fontSize: "1vw",
+								textAlign: "center",
+							}}>
+							<div className="table-responsive">
+								<table class="table">
+									<thead>
+										<tr className="table-success">
+											<th>student_id</th>
+											<th>first_name</th>
+											<th>last_name</th>
+											<th>group_id</th>
+											<th>email</th>
+											<th>phone_number</th>
+										</tr>
+									</thead>
+									<tbody>
+										{show}
+										{/* {JSON.stringify(data.data)}
+										 */}
+									</tbody>
+								</table>
+							</div>
+						</div>
 
-            <div className='bg-dark ml-5 mr-5 mt-3 options m-5  ' style={
+						{/* end get All students */}
 
-               { width: "25vw", height: "75vh", borderRadius: "10px", overflowY: "auto" }
+						{/* start add student */}
+						<div className="bg-light p-5" id="addSt" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none" }}>
+							<h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
+							<form onSubmit={submit}>
+								<div className="form-group row mb-5">
+									<label for="id" className="col-sm-3 col-form-label mr-2">
+										Student Id
+									</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" placeholder="student's id" id="id" style={{ fontSize: "1.2vw" }} required></input>
+									</div>
+								</div>
 
-            }>
-               <Options />
+								<div className="form-group row  mb-5">
+									<label for="firstN" className="col-sm-3 col-form-label mr-2">
+										Fisrt Name
+									</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" id="fn" placeholder="student's first name" style={{ fontSize: "1.2vw" }} required></input>
+									</div>
+								</div>
 
-            </div>
-            <div className=' ml-3 mt-5 mr-3 optionArea '
-               style={
-                  { width: "76vw", height: "75vh" }}
-            >
-               {/* start get All students */}
+								<div className="form-group row  mb-5">
+									<label for="lastN" className="col-sm-3 col-form-label mr-2">
+										Last Name
+									</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" id="ln" style={{ fontSize: "1.2vw" }} placeholder="student's last name" required></input>
+									</div>
+								</div>
 
-               <div className='get ' id="getAll" style={{
-                  display: "none", overflowY: "auto", height: "75vh",
-                  fontFamily: "Arial", fontSize: "1vw", textAlign: "center"
-               }}>
-                  <div className='table-responsive' >
-                     <table class="table">
-                        <thead>
-                           <tr className='table-success'>
-                              <th>student_id</th>
-                              <th>first_name</th>
-                              <th>last_name</th>
-                              <th>group_id</th>
-                              <th>email</th>
-                              <th>phone_number</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           {show}
-                           {/* {JSON.stringify(data.data)}
-                           */}
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
+								<div className="form-group row  mb-5">
+									<label for="email" className="col-sm-3 col-form-label mr-2">
+										Email
+									</label>
+									<div class="col-sm-7">
+										<input type="email" class="form-control" id="em" style={{ fontSize: "1.2vw" }} placeholder="student's email" required></input>
+									</div>
+								</div>
 
-               {/* end get All students */}
+								<div className="form-group row  mb-5">
+									<label for="phoneN" className="col-sm-3 col-form-label mr-2">
+										Phone Number
+									</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" id="pn" style={{ fontSize: "1.2vw" }} placeholder="student's phone number" required></input>
+									</div>
+								</div>
 
-               {/* start add student */}
-               <div className='bg-light p-5' id='addSt' style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none" }}>
-                  <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
-                  <form onSubmit={submit}>
+								<div className="form-group row  mb-5">
+									<label for="GroupN" className="col-sm-3 col-form-label mr-2">
+										Group Number
+									</label>
+									<div className="col-sm-7">
+										<input className="ml-2 groupcheck" type="radio" id="g1" style={{ fontSize: "1.2vw" }} name="group" required></input>
+										<label class="mr-2 ml-2" for="g1">
+											1
+										</label>
 
-                     <div className='form-group row mb-5'>
-                        <label for="id" className='col-sm-3 col-form-label mr-2'>Student Id</label>
-                        <div class="col-sm-7">
-                           <input type="text" class="form-control" placeholder="student's id" id="id" style={{ fontSize: "1.2vw" }} required></input>
-                        </div>
-                     </div>
+										<input type="radio" className="ml-2 groupcheck" id="g2" style={{ fontSize: "1.2vw" }} name="group"></input>
 
-                     <div className='form-group row  mb-5'>
-                        <label for="firstN" className='col-sm-3 col-form-label mr-2'>Fisrt Name</label>
-                        <div class="col-sm-7">
-                           <input type="text" class="form-control" id="fn" placeholder="student's first name" style={{ fontSize: "1.2vw" }} required></input>
-                        </div>
-                     </div>
+										<label class=" ml-2 mr-2" for="g2">
+											2
+										</label>
 
-                     <div className='form-group row  mb-5'>
-                        <label for="lastN" className='col-sm-3 col-form-label mr-2'>Last Name</label>
-                        <div class="col-sm-7">
-                           <input type="text" class="form-control" id="ln" style={{ fontSize: "1.2vw" }} placeholder="student's last name" required></input>
-                        </div>
-                     </div>
+										<input type="radio" className="ml-2 groupcheck" id="g3" style={{ fontSize: "1.2vw" }} name="group"></input>
+										<label class="ml-2 mr-2" for="g3">
+											3
+										</label>
 
-                     <div className='form-group row  mb-5'>
-                        <label for="email" className='col-sm-3 col-form-label mr-2'>Email</label>
-                        <div class="col-sm-7">
-                           <input type="email" class="form-control" id="em" style={{ fontSize: "1.2vw" }} placeholder="student's email" required></input>
-                        </div>
-                     </div>
+										<input type="radio" id="g4" className="ml-2 groupcheck" style={{ fontSize: "1.2vw" }} name="group"></input>
 
-                     <div className='form-group row  mb-5'>
-                        <label for="phoneN" className='col-sm-3 col-form-label mr-2'>Phone Number</label>
-                        <div class="col-sm-7">
-                           <input type="text" class="form-control" id="pn" style={{ fontSize: "1.2vw" }} placeholder="student's phone number" required></input>
-                        </div>
-                     </div>
+										<label class="mr-2 ml-2" for="g4">
+											4
+										</label>
+									</div>
+								</div>
 
+								<button type="submit" class="btn btn-primary">
+									Add
+								</button>
+							</form>
+						</div>
+						{/* end add student */}
 
-                     <div className='form-group row  mb-5'>
-                        <label for="GroupN" className='col-sm-3 col-form-label mr-2'>Group Number</label>
-                        <div className='col-sm-7'>
+						{/* start delete student */}
 
-                           <input className="ml-2 groupcheck" type="radio" id="g1" style={{ fontSize: "1.2vw" }} name='group' required></input>
-                           <label class="mr-2 ml-2" for="g1" >
-                              1</label>
+						<div className="bg-light p-5" id="del_div" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none" }}>
+							<h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
+							<form>
+								<div className="form-group row mb-5">
+									<label for="id" className="col-sm-3 col-form-label mr-2">
+										Student Id
+									</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" placeholder="student's id" id="del_id" style={{ fontSize: "1.2vw" }} required></input>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-danger" onClick={deletest}>
+									Delete
+								</button>
+							</form>
+						</div>
 
-                           <input type="radio" className="ml-2 groupcheck" id="g2" style={{ fontSize: "1.2vw" }} name='group'></input>
+						{/* end delete student */}
 
-                           <label class=" ml-2 mr-2" for="g2" >
-                              2</label>
+						{/* start update student */}
 
+						{/* end update student */}
 
-                           <input type="radio" className="ml-2 groupcheck" id="g3" style={{ fontSize: "1.2vw" }} name='group'></input>
-                           <label class="ml-2 mr-2" for="g3" >
-                              3</label>
+						{/* start show group students */}
 
-
-                           <input type="radio" id="g4" className="ml-2 groupcheck" style={{ fontSize: "1.2vw" }} name='group' ></input>
-
-                           <label class="mr-2 ml-2" for="g4" >
-                              4</label>
-
-                        </div>
-                     </div>
-
-
-                     <button type="submit" class="btn btn-primary" >Add</button>
-
-
-                  </form>
-               </div>
-               {/* end add student */}
-
-               {/* start delete student */}
-
-               <div className='bg-light p-5' id="del_div" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none" }}>
-
-                  <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
-                  <form >
-
-                     <div className='form-group row mb-5'>
-                        <label for="id" className='col-sm-3 col-form-label mr-2'>Student Id</label>
-                        <div class="col-sm-7">
-                           <input type="text" class="form-control" placeholder="student's id" id="del_id" style={{ fontSize: "1.2vw" }} required></input>
-                        </div>
-                     </div>
-                     <button type="submit" class="btn btn-danger" onClick={deletest}>Delete</button>
-
-                  </form>
-               </div>
-
-               {/* end delete student */}
-
-
-               {/* start update student */}
-
-               {/* end update student */}
-
-
-               {/* start show group students */}
-
-               <div className='get ' id="getAllgroupstudent-div" style={{
-                  overflow: "auto", height: "75vh",
-                  fontFamily: "Arial", fontSize: "1vw", textAlign: "center"
-               }}>
-                  <div className='table-responsive' >
-                     <table class="table">
-                        <thead>
-                           <tr className='table-success'>
-                              <th>student_id</th>
-                              <th>first_name</th>
-                              <th>last_name</th>
-                              <th>group_id</th>
-                              <th>email</th>
-                              <th>phone_number</th>
-                            <th>{
-                                 e
-                              }</th>  
-
-                           </tr>
-                        </thead>
-                        <tbody>
-                           {showgroupstudents}
-                           {/* {JSON.stringify(data.data)}
-                           */}
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-            </div>
-            {/* end show group students */}
-
-
-         </div>
-
-      </div>
-
-
-   );
+						<div
+							className="get "
+							id="getAllgroupstudent-div"
+							style={{
+								overflow: "auto",
+								height: "75vh",
+								fontFamily: "Arial",
+								fontSize: "1vw",
+								textAlign: "center",
+							}}>
+							<div className="table-responsive">
+								<table class="table">
+									<thead>
+										<tr className="table-success">
+											<th>student_id</th>
+											<th>first_name</th>
+											<th>last_name</th>
+											<th>group_id</th>
+											<th>email</th>
+											<th>phone_number</th>
+											{suject.map((v, i) => {
+												return <th>{v.subject_name}</th>
+											})}
+										</tr>
+									</thead>
+									<tbody>
+										{showgroupstudents}
+										{/* {JSON.stringify(data.data)}
+										 */}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					{/* end show group students */}
+				</div>
+			</div>
+		)
 }

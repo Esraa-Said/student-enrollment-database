@@ -1,13 +1,13 @@
 // handling used routes
 
 import express from "express";
-import { getAllStudents, createStudent, updateStudent, deleteStudent, updateGrade } from "../controllers/students.js";
+import { getAllStudents, createStudent, updateStudent, deleteStudent, updateGrade, getStudentById } from "../controllers/students.js"
 import * as group from '../controllers/groups.js';
 
 export const router = express.Router();
 
 router.route("/students").get(getAllStudents).post(createStudent);
-router.route("/student/:id").delete(deleteStudent).patch(updateStudent);
+router.route("/student/:id").delete(deleteStudent).patch(updateStudent).get(getStudentById)
 router.route("/group/:gid/students/:sid/subjects/:bid").patch(updateGrade)
 
 
