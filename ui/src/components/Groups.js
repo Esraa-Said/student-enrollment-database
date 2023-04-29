@@ -6,7 +6,7 @@ import Options from './Options';
 import './Groups.css';
 import { getAllStudents, } from './Options';
 import FunctionsOp from './FunctionsOp';
-import { json } from 'react-router-dom';
+import { Await, json } from 'react-router-dom';
 
 // determine the group 
 const group = window.location.href;
@@ -148,11 +148,116 @@ export default function Groups() {
             //  console.log(data.data)
             setonegroupstudents(res.data)
             // debugger
-            console.log(onegroupstudents["students_data"])
+            // que             console.log(onegroupstudents["students_data"][0].grades)
+
+            // console.log(onegroupstudents["students_data"][0].grades)
+
+            // console.log(onegroupstudents["students_data"])
 
          }).catch(err => console.log(err))
    }, [])
 
+
+
+
+   const show = data.data?.map((student, index) => {
+      return <tr key={index}>
+         <td>{student.student_id}</td>
+         <td>{student.first_name}</td>
+         <td>{student.last_name}</td>
+         <td>{student.group_id}</td>
+         <td>{student.email}</td>
+         <td>{student.phone_number}</td>
+
+
+
+      </tr>
+   })
+
+   //  <td>{student.grades[0]["grade"]}</td>
+   ///<td>{student.grades[0]["status"]}</td> 
+   let y = [];
+
+   function addSubs(index, x) {
+      if (index == 0) {
+         for (let i = 0; i < x.length; i++)
+            y.push(x);
+      }
+   }
+   const sub = (i) => {
+      (onegroupstudents["students_data"][i].grades).map((grades) => {
+         return <td>{grades.grade}<br></br>{grades.status}</td>
+
+
+      })
+   }
+
+   async function e() {
+      //console.log(onegroupstudents["students_data"][0]["grades"][1].subject_name,"mmm")
+      return onegroupstudents["students_data"][0]["grades"][1].subject_name
+
+   }
+   e()
+   const showgroupstudents = onegroupstudents["students_data"]?.map((student, index) => {
+      return <tr key={index}>
+         <td>{student.student_id}</td>
+         <td>{student.first_name}</td>
+         <td>{student.last_name}</td>
+         <td>{student.group_id}</td>
+         <td>{student.email}</td>
+         <td>{student.phone_number}</td>
+         {
+            student.grades.map((grade, index) => {
+               return <td>{grade.grade}<br></br>{grade.status}</td>
+
+            })
+         }
+         {/* <td>{student.grades[0].grade}<br></br>{student.grades[0].status}</td>
+         <td>{student.grades[1].grade}<br></br>{student.grades[1].status}</td>
+         <td>{student.grades[2].grade}<br></br>{student.grades[2].status}</td>
+         <td>{student.grades[3].grade}<br></br>{student.grades[3].status}</td>
+         <td>{student.grades[4].grade}<br></br>{student.grades[4].status}</td>
+         <td>{student.grades[5].grade}<br></br>{student.grades[5].status}</td>
+         <td>{student.grades[6].grade}<br></br>{student.grades[6].status}</td>
+         <td>{student.grades[7].grade}<br></br>{student.grades[7].status}</td>
+         <td>{student.grades[8].grade}<br></br>{student.grades[8].status}</td>
+         <td>{student.grades[9].grade}<br></br>{student.grades[9].status}</td>
+         <td>{student.grades[10].grade}<br></br>{student.grades[10].status}</td>
+         <td>{student.grades[11].grade}<br></br>{student.grades[11].status}</td>
+ */}
+
+         {
+            console.log(index)
+
+         }
+
+         {
+            addSubs(index, [
+               student.grades[0].subject_name
+               , student.grades[1].subject_name,
+               student.grades[2].subject_name,
+               student.grades[3].subject_name,
+               student.grades[4].subject_name
+               , student.grades[5].subject_name,
+               student.grades[6].subject_name,
+               student.grades[7].subject_name,
+               student.grades[8].subject_name,
+               student.grades[9].subject_name,
+               student.grades[10].subject_name,
+               student.grades[11].subject_name]
+            )
+
+         }
+
+
+
+
+      </tr>
+
+
+   })
+
+   console.log(y)
 
    const displayOptions = () => {
       let op = document.getElementById("op");
@@ -170,44 +275,6 @@ export default function Groups() {
 
       }
    }
-
-
-   const show = data.data?.map((student, index) => {
-      return <tr key={index}>
-         <td>{student.student_id}</td>
-         <td>{student.first_name}</td>
-         <td>{student.last_name}</td>
-         <td>{student.group_id}</td>
-         <td>{student.email}</td>
-         <td>{student.phone_number}</td>
-
-
-
-      </tr>
-   })
-
-  
- 
- 
-   const showgroupstudents = onegroupstudents["students_data"]?.map((student, index) => {
-      return <tr key={index}>
-         <td>{student.student_id}</td>
-         <td>{student.first_name}</td>
-         <td>{student.last_name}</td>
-         <td>{student.group_id}</td>
-         <td>{student.email}</td>
-         <td>{student.phone_number}</td>
-         <td>{student.grades[0]["grade"]}</td>
-         <td>{student.grades[0]["status"]}</td>
-
-      
-         
-
-
-      </tr>
-
-
-   })
 
    return (
 
@@ -376,7 +443,7 @@ export default function Groups() {
                {/* start show group students */}
 
                <div className='get ' id="getAllgroupstudent-div" style={{
-                   overflow: "auto", height: "75vh",
+                  overflow: "auto", height: "75vh",
                   fontFamily: "Arial", fontSize: "1vw", textAlign: "center"
                }}>
                   <div className='table-responsive' >
@@ -389,31 +456,9 @@ export default function Groups() {
                               <th>group_id</th>
                               <th>email</th>
                               <th>phone_number</th>
-
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
-                              <th>sub</th>
+                            <th>{
+                                 e
+                              }</th>  
 
                            </tr>
                         </thead>
