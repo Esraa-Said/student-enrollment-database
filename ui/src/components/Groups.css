@@ -1,0 +1,37 @@
+
+
+.optionres,.icon{
+    display: none;
+}
+#op{
+    z-index: 2;
+    position: fixed; 
+ 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+}
+
+
+@media only screen and (max-width: 1150px)
+{
+    .options{
+        display: none;
+    }
+    .optionres,.icon{
+        display: block;
+    }
+   
+}
+
+@media only screen and (min-width: 1150px)
+{
+    .options{
+        display: block;
+    }
+    .optionres{
+        display: none;
+    }
+}
+
+

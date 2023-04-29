@@ -10,7 +10,7 @@ env.config();
 const app = express();
 const Port = process.env.PORT || 5000;
 
-app.use(cors({ origin: "http://127.0.0.1:5500" }))
+app.use(cors({ origin: process.env.ORIGIN_URL}))
 
 app.get('/', (req, res) => {
 	res.send(`<h1>student enrollment </h1>`);
@@ -25,4 +25,4 @@ app.use(express.json());
 app.use("/api", router);
 app.use(notFound);
 
-app.listen(3000, console.log(`server listening on port ${Port}.........`));
+app.listen(Port, console.log(`server listening on port ${Port}.........`));

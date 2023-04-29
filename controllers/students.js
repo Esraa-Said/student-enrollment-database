@@ -59,7 +59,6 @@ export const updateGrade = async (req, res) => {
 	const { grade } = req.body
 	let status = grade >= 50 ? "succeeded" : "failed"
 	try {
-	} catch (err) {
 		let result = await db.query(`UPDATE grades SET grade = (?) , status = (?)  WHERE student_id = ? AND group_id = ? AND subject_id = ?`, [
 			grade,
 			status,
@@ -67,6 +66,8 @@ export const updateGrade = async (req, res) => {
 			Number(group_id),
 			Number(subject_id),
 		])
+	} catch (err) {
+		
 		return res.status(StatusCodes.BAD_REQUEST).json({ msg: `grade updatation failed` })
 	}
 	res.json({ msg: `updatation is successfully done` })
