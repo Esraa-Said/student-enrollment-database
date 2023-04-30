@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import "../bootstrap/css/bootstrap.css";
 import axios from 'axios';
 import FunctionsOP, {getAllStudents} from './FunctionsOp';
-import {gitAllBtn,createSt,delbtn,onegroupstudentsbtn,groupSubjects,getinfo} from './Groups'
+import {gitAllBtn,createSt,delbtn,onegroupstudentsbtn,groupSubjects,getinfo,searchfunctiondiv} from './Groups'
 
 export default function Options() {
 
@@ -35,7 +35,7 @@ export default function Options() {
             <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={groupSubjects}>Show group Subjects</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button'>Show student</button>
+            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={searchfunctiondiv}>Show student</button>
         </div>
 
         <div >

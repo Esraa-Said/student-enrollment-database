@@ -20,7 +20,10 @@ async function createst(x) {
    console.log(data)
 
 }
-const submit = () => {
+
+
+const submit = (event) => {
+   event.preventDefault();
 
    let id = document.getElementById("id");
    let fn = document.getElementById("fn");
@@ -28,7 +31,7 @@ const submit = () => {
    let gn = document.getElementsByClassName("groupcheck");
    let em = document.getElementById("em");
    let pn = document.getElementById("pn");
-
+   // validation insert 
    let x = 0;
    for (let i = 0; i < 4; i++) {
       if (gn[i].checked == true) {
@@ -63,6 +66,10 @@ export function createSt() {
    getbtn.style.display = "none";
    del.style.display = "none";
    cr.style.display = "block";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
 }
 
 ////
@@ -83,6 +90,10 @@ export function gitAllBtn() {
    cr.style.display = "none";
    del.style.display = "none";
    getbtn.style.display = "block";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
 }
 
 
@@ -113,6 +124,10 @@ export function delbtn() {
    getbtn.style.display = "none";
    cr.style.display = "none";
    del.style.display = "block";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
 
 }
 
@@ -132,10 +147,14 @@ export function onegroupstudentsbtn() {
    getbtn.style.display = "none";
    cr.style.display = "none";
    gst.style.display = "block";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
 
 }
 
-// get group students
+// get group subjects
 export function groupSubjects() {
    let cr = document.getElementById("addSt");
    let getbtn = document.getElementById("getAll");
@@ -149,12 +168,15 @@ export function groupSubjects() {
    del.style.display = "none";
    getbtn.style.display = "none";
    cr.style.display = "none";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
 
 }
 
 ///  get students group info 
-export function getinfo()
-{
+export function getinfo() {
    let info = document.getElementById("getinfo")
    let cr = document.getElementById("addSt");
    let getbtn = document.getElementById("getAll");
@@ -168,6 +190,30 @@ export function getinfo()
    cr.style.display = "none";
    del.style.display = "none";
    info.style.display = "block";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
+}
+
+export function searchfunctiondiv(event) {
+   event.preventDefault();
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "block";
+   let cr = document.getElementById("addSt");
+   let getbtn = document.getElementById("getAll");
+   let del = document.getElementById("del_div");
+   let gst = document.getElementById("getAllgroupstudent-div");
+   let sub = document.getElementById("getsubjects");
+   let info = document.getElementById("getinfo")
+   info.style.display = "none";
+   sub.style.display = "none";
+   gst.style.display = "none";
+   getbtn.style.display = "none";
+   del.style.display = "none";
+   cr.style.display = "none";
 }
 
 
@@ -200,7 +246,7 @@ export default function Groups() {
 
    ////////////////// one group students
    const [onegroupstudents, setonegroupstudents] = useState([])
-   const [suject, setSubject] = useState([])
+   const [subject, setSubject] = useState([])
    useEffect(() => {
       axios
          .get(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students`)
@@ -296,6 +342,27 @@ export default function Groups() {
    /////////////////////////////////////////////
 
 
+   //////////// show one student
+   const [groupstudent, setonegroupstudent] = useState([])
+   const studentid = document.getElementById("search_id");
+   useEffect(() => {
+      axios
+         .get(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${1}`)
+
+         .then((res) => {
+            setonegroupstudent(res.data)
+
+         })
+         .catch((err) => console.log(err))
+   }, [])
+
+   console.log(groupstudent["student_data"]["student_id"]);
+
+
+
+
+   //////////////////////////////
+
    const displayOptions = () => {
       let op = document.getElementById("op")
       if (op.style.display == "block") {
@@ -370,7 +437,7 @@ export default function Groups() {
                {/* end get All students */}
 
                {/* start add student */}
-               <div className="bg-light p-5" id="addSt" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none", position: "relative" }}>
+               <div className="bg-light w-100 p-5" id="addSt" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none", position: "absolute" }}>
                   <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
                   <form onSubmit={submit}>
                      <div className="form-group row mb-5">
@@ -456,7 +523,7 @@ export default function Groups() {
 
                {/* start delete student */}
 
-               <div className="bg-light p-5" id="del_div" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none", position: "relative" }}>
+               <div className="bg-light w-100 p-5" id="del_div" style={{ fontFamily: "cursive", fontSize: "1.2vw", display: "none", position: "absolute" }}>
                   <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
                   <form>
                      <div className="form-group row mb-5">
@@ -503,7 +570,7 @@ export default function Groups() {
                               <th>group_id</th>
                               <th>email</th>
                               <th>phone_number</th>
-                              {suject.map((v, i) => {
+                              {subject.map((v, i) => {
                                  return <th>{v.subject_name}</th>
                               })}
                            </tr>
@@ -516,8 +583,9 @@ export default function Groups() {
                      </table>
                   </div>
                </div>
+               {/* end show group students */}
 
-               {/* show subjects */}
+               {/* start show subjects */}
                <div
                   className="get  w-25 bg-light"
                   id="getsubjects"
@@ -529,7 +597,7 @@ export default function Groups() {
                      textAlign: "center",
                      position: "absolute",
                      display: "none",
-                     left :"30%"
+                     left: "30%"
                   }}>
                   <div className="table-responsive">
                      <table class="table">
@@ -561,7 +629,7 @@ export default function Groups() {
                      fontSize: "1vw",
                      textAlign: "center",
                      position: "absolute",
-                     display:"none"
+                     display: "none"
                   }}>
                   <div className="table-responsive">
                      <table class="table">
@@ -586,12 +654,88 @@ export default function Groups() {
 
                {/* end one group students info */}
 
+
+               {/* start show one student in specific group */}
+
+               <div className="bg-light p-5" id="search_div"
+                  style={{ fontFamily: "cursive", fontSize: "1.2vw", position: "absolute" }}>
+                  <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
+                  <form>
+                     <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                           Student Id
+                        </label>
+                        <div class="col-sm-7">
+                           <input type="text" class="form-control" placeholder="student's id" id="search_id" style={{ fontSize: "1.2vw" }} required></input>
+                        </div>
+                     </div>
+                     <button type="submit" class="btn btn-danger" onClick={searchfunctiondiv} >
+                        Search
+                     </button>
+                  </form>
+               </div>
+
+               <div
+                  className="get w-100 bg-light"
+                  id="getstudent"
+                  style={{
+                     overflow: "auto",
+                     height: "78vh",
+                     fontFamily: "Arial",
+                     fontSize: "1vw",
+                     textAlign: "center",
+                     position: "absolute"
+
+                  }}>
+                  <div className="table-responsive">
+                     <table class="table">
+                        <thead >
+                           <tr className="table-success">
+                              <th>student_id</th>
+                              <th>first_name</th>
+                              <th>last_name</th>
+                              <th>group_id</th>
+                              <th>email</th>
+                              <th>phone_number</th>
+                              {subject.map((v, i) => {
+                                 return <th>{v.subject_name}</th>
+                              })}
+                           </tr>
+                           {/* <tr>
+                              <td>{groupstudent["student_data"]["student_id"]}</td>
+                              <td>{groupstudent["student_data"]["first_name"]}</td>
+                              <td>{groupstudent["student_data"]["last_name"]}</td>
+                              <td>{groupstudent["student_data"]["group_id"]}</td>
+                              <td>{groupstudent["student_data"]["email"]}</td>
+                              <td>{groupstudent["student_data"]["phone_number"]}</td>
+                              {groupstudent["student_data"]["grades"].map((grade) => {
+                                 return (
+                                    <td>
+                                       {grade.grade}
+                                       <br></br>
+                                       {grade.status}
+                                    </td>
+                                 )
+                              })}
+                           </tr> */}
+                        </thead>
+                        <tbody>
+
+                           {/* {JSON.stringify(data.data)}
+										 */}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+
+               {/* end show one student in specific group */}
+
+
             </div>
-            {/* end show group students */}
 
 
 
          </div>
-      </div>
+      </div >
    )
 }
