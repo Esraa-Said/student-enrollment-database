@@ -6,6 +6,7 @@ import Selection from "./components/Selection";
 import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
 import Main from "./components/Main";
 import Groups from './components/Groups';
+import AddStudent from './components/AddStudent';
 
 function App() {
 
