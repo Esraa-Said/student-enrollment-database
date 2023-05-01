@@ -1,7 +1,7 @@
 // handling used routes
 
 import express from "express";
-import { getAllStudents, createStudent, updateStudent, deleteStudent, updateGrade, getStudentById } from "../controllers/students.js"
+import { getAllStudents, createStudent, updateStudent, deleteStudent, updateGrade, getStudentById, setGrades } from "../controllers/students.js"
 import * as group from '../controllers/groups.js';
 
 export const router = express.Router();
@@ -16,4 +16,4 @@ router.get('/group/:id/students', group.groupStudentsAllData);
 router.get('/group/:id/subjects', group.groupSubjects);
 router.get('/group/:id/students/info', group.groupStudentsPersonalInfo);
 router.get('/group/:id/students/grades', group.groupStudentsGrades);
-router.get('/group/:gid/students/:sid', group.studentAllData);
+router.route('/group/:gid/students/:sid').get(group.studentAllData).patch(setGrades);

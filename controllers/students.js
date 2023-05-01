@@ -78,3 +78,27 @@ export const updateGrade = async (req, res) => {
 	}
 	res.json({ msg: `updatation is successfully done` })
 }
+export const setGrades = async (req, res) => {
+	const { gid: group_id, sid: student_id } = req.params
+	const [subject] = await db.query(`select subject_id ,subject_name from subjects where group_id = ?`, Number(group_id))
+	let subjectNameToId = new Map()
+	for (let i = 0; i < subject.length; i++) subjectNameToId.set(subject[i].subject_name, subject[i].subject_id)
+
+	try{
+	for(let [subject_name,new_grade] of Object.entries(req.body)){
+		const subject_id = subjectNameToId.get(subject_name)
+		const new_status = new_grade >= 50 ? "succeeded" : "failed"
+		await db.query(`UPDATE grades SET grade = (?) , status = (?)  WHERE student_id = ? AND group_id = ? AND subject_id = ?`, [
+			new_grade,
+			new_status,
+			Number(student_id),
+			Number(group_id),
+			Number(subject_id)
+		])
+	}}
+	catch(err){
+		console.log(err)
+		return res.status(StatusCodes.BAD_REQUEST).json({ msg: `grade updatation failed` })
+	}
+	res.status(StatusCodes.OK).json({ msg: `updatation is successfully done` })
+}
