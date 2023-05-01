@@ -13,8 +13,12 @@ export const getAllStudents = async (req, res) => {
 
 export const getStudentById = async (req, res) => {
 	const id = req.params.id
-	const [data] = await db.query(`select * from students where student_id = ?`,id)
-	res.status(200).json(data)
+	try {
+		const [data] = await db.query(`select * from students where student_id = ?`, id)
+		res.status(200).json(data)
+	} catch (err) {
+		res.status(StatusCodes.BAD_REQUEST).json({msg:`no student found with id = ${id}`})
+	}
 }
 
 export const createStudent = async (req, res) => {
@@ -57,6 +61,8 @@ export const deleteStudent = async (req, res) => {
 		return res.status(StatusCodes.BAD_REQUEST).json({ msg: `no found student with id ${student_id}` })
 	}
 	await db.query(`DELETE FROM students WHERE student_id = ?`, student_id)
+	const group_id = result.group_id
+	await db.query(`DELETE FROM grades WHERE group_id = ?  AND student_id = ?`, group_id,student_id)
 	res.status(StatusCodes.OK).json(result)
 }
 
