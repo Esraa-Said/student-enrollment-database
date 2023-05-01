@@ -12,7 +12,7 @@ import GetInfoGroupStudents from './GetInfoGroupStudents';
 import GetOneGroupStudents from './GetOneGroupStudents';
 import ShowGroupSubjects from './ShowGroupSubjects';
 import { groupid } from './Groups';
-
+import { group } from './Groups';
 
 
 export default function AddStudent()
@@ -21,7 +21,6 @@ export default function AddStudent()
 async function createst(x) {
    const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/students`, x)
    console.log(data)
-   alert("added")
 
 }
 
@@ -52,7 +51,8 @@ const submit = (event) => {
    dast["phone_number"] = pn.value;
 
    createst(dast);
-   
+   alert("added")
+
 
 }
 
@@ -136,9 +136,9 @@ return(
                         </div>
                      </div>
 
-                     <button type="submit" class="btn btn-primary">
+                     <a href={group} type="submit" class="btn btn-primary" onClick={submit}>
                         Add
-                     </button>
+                     </a>
                   </form>
                </div>
     </div>

@@ -12,13 +12,13 @@ import GetAllStudents from './GetAllStudents';
 import GetInfoGroupStudents from './GetInfoGroupStudents';
 import GetOneGroupStudents from './GetOneGroupStudents';
 import ShowGroupSubjects from './ShowGroupSubjects';
-
+import { group } from './Groups';
 export default function DeleteStudent() {
 
     async function deletestudent(x, event) {
         const data = await axios.delete(`${process.env.REACT_APP_BASE_URL}/student/${x}`)
         console.log(data);
-        alert("h")
+        let btn = document.getElementById("btn");
     }
 
 
@@ -28,6 +28,7 @@ export default function DeleteStudent() {
         deletestudent(id.value)
         
         alert("deleted")
+
     }
 
     return (
@@ -42,9 +43,9 @@ export default function DeleteStudent() {
                         <input type="text" class="form-control" placeholder="student's id" id="del_id" style={{ fontSize: "1.2vw" }} required></input>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-danger" onClick={deletest}>
+                <a href={group} type="submit" class="btn btn-danger" id="btn" onClick={deletest}>
                     Delete
-                </button>
+                </a>
             </form>
         </div>
     )

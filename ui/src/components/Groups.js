@@ -16,7 +16,7 @@ import DeleteStudent from './DeleteStudent';
 import GetStudent from './GetStudent';
 
 // determine the group 
-const group = window.location.href;
+export const group = window.location.href;
 
 group.split('/');
 export const groupid = group[group.length - 1];
