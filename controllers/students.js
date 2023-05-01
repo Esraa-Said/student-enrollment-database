@@ -26,6 +26,11 @@ export const createStudent = async (req, res) => {
 	let val
 	try {
 		val = await db.query(`INSERT INTO students VALUES (?,?,?,?,?,?)`, [student_id, first_name, last_name, group_id, email, phone_number])
+		const [subject] = await db.query(`select subject_id ,subject_name from subjects where group_id = ?`, Number(group_id))
+		for (let i = 0; i < subject.length; i++) {
+			let subject_id = subject[i].subject_id
+			await db.query(`INSERT INTO grades VALUES (?, ?, ?, ?, ?)`, [Number(student_id), Number(group_id), Number(subject_id), Number(0), "failed"])
+		}
 	} catch (err) {
 		return res.json({ msg: "error in creating student.please, check data validation and try again" })
 	}
@@ -62,7 +67,11 @@ export const deleteStudent = async (req, res) => {
 	}
 	await db.query(`DELETE FROM students WHERE student_id = ?`, student_id)
 	const group_id = result.group_id
-	await db.query(`DELETE FROM grades WHERE group_id = ?  AND student_id = ?`, group_id,student_id)
+	try {
+		await db.query(`DELETE FROM grades WHERE group_id = ?  AND student_id = ?`, [group_id, student_id])
+	} catch (err) {
+		console.log(err)
+	}
 	res.status(StatusCodes.OK).json(result)
 }
 
