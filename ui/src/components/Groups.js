@@ -14,6 +14,7 @@ import ShowGroupSubjects from './ShowGroupSubjects';
 import AddStudent from './AddStudent';
 import DeleteStudent from './DeleteStudent';
 import GetStudent from './GetStudent';
+import GroupStudentsGrades from './GroupStudentsGrades';
 
 // determine the group 
 export const group = window.location.href;
@@ -41,6 +42,8 @@ export function createSt() {
    x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
 }
 
 ////
@@ -65,6 +68,8 @@ export function gitAllBtn() {
    x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
 }
 
 
@@ -89,6 +94,8 @@ export function delbtn() {
    x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
 
 }
 
@@ -112,6 +119,8 @@ export function onegroupstudentsbtn() {
    x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
 
 }
 
@@ -129,6 +138,8 @@ export function groupSubjects() {
    del.style.display = "none";
    getbtn.style.display = "none";
    cr.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
    let x = document.getElementById("search_div");
    x.style.display = "none";
    let y = document.getElementById("getstudent");
@@ -155,10 +166,11 @@ export function getinfo() {
    x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
 }
 
-export function searchfunctiondiv(event) {
-   event.preventDefault();
+export function searchfunctiondiv() {
    let x = document.getElementById("search_div");
    x.style.display = "none";
    let y = document.getElementById("getstudent");
@@ -175,8 +187,32 @@ export function searchfunctiondiv(event) {
    getbtn.style.display = "none";
    del.style.display = "none";
    cr.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "none";
 }
 
+
+export function stdGrades() {
+   let info = document.getElementById("getinfo")
+   let cr = document.getElementById("addSt");
+   let getbtn = document.getElementById("getAll");
+   let del = document.getElementById("del_div");
+   let gst = document.getElementById("getAllgroupstudent-div");
+   let sub = document.getElementById("getsubjects");
+   info.style.display = "none";
+   sub.style.display = "none";
+   gst.style.display = "none";
+   getbtn.style.display = "none";
+   cr.style.display = "none";
+   del.style.display = "none";
+   info.style.display = "none";
+   let x = document.getElementById("search_div");
+   x.style.display = "none";
+   let y = document.getElementById("getstudent");
+   y.style.display = "none";
+   let grades = document.getElementById("stdgrades");
+   grades.style.display = "block";
+}
 
 export default function Groups() {
 
@@ -340,6 +376,29 @@ export default function Groups() {
                   <GetStudent />
                </div>
                {/* end show one student in specific group */}
+
+
+
+{/* start students grades */}
+
+<div id="stdgrades" 
+   className="get w-100"
+
+   style={{
+      overflow: "auto",
+      height: "78vh",
+      fontFamily: "Arial",
+      fontSize: "1vw",
+      textAlign: "center",
+      display: "none",
+      position: "absolute"
+   }}
+>
+   <GroupStudentsGrades/>
+</div>
+
+{/* end students grades */}
+
 
 
             </div>

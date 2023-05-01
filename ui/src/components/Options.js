@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import "../bootstrap/css/bootstrap.css";
 import axios from 'axios';
 import FunctionsOP, {getAllStudents} from './FunctionsOp';
-import {gitAllBtn,createSt,delbtn,onegroupstudentsbtn,groupSubjects,getinfo,searchfunctiondiv} from './Groups'
+import {gitAllBtn,createSt,delbtn,onegroupstudentsbtn,groupSubjects,getinfo,searchfunctiondiv,stdGrades} from './Groups'
+
 
 export default function Options() {
 
@@ -17,29 +18,33 @@ export default function Options() {
             <button  className='btn btn-lg btn-secondary mb-5 ' role='button' onClick={gitAllBtn}  >Show all Students</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={createSt}>Add Student</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button' onClick={createSt}>Add Student</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={delbtn}>Delete Student</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button' onClick={delbtn}>Delete Student</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button'>Update Student</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button'>Update Student</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button'>Update Grade</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button'>Update Grade</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' onClick={onegroupstudentsbtn} role='button'>Show group Students + </button>
+            <button  className='btn btn-lg btn-secondary mb-5' onClick={onegroupstudentsbtn} role='button'>Show group Students + </button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={groupSubjects}>Show group Subjects</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button' onClick={groupSubjects}>Show group Subjects</button>
         </div>
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={searchfunctiondiv}>Show student</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button' onClick={searchfunctiondiv}>Show student</button>
         </div>
 
         <div >
-            <button href='#' className='btn btn-lg btn-secondary mb-5' role='button' onClick={getinfo}>Show group students <br></br> info</button>
+            <button  className='btn btn-lg btn-secondary mb-5' role='button' onClick={getinfo}>Show group students <br></br> info</button>
+        </div>
+
+        <div >
+            <button  className='btn btn-lg btn-secondary mb-5' role='button' onClick={stdGrades}>Show group students<br></br> grades </button>
         </div>
 
         </div>

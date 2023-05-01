@@ -14,7 +14,6 @@ export default function FunctionsOP(props) {
 
     return (
         <div className='get'>
-            <div>kjk</div>
             <table>
                 <thead>
                     <tr>
