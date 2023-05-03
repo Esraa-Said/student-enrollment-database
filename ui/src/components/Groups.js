@@ -13,8 +13,9 @@ import GetOneGroupStudents from './GetOneGroupStudents';
 import ShowGroupSubjects from './ShowGroupSubjects';
 import AddStudent from './AddStudent';
 import DeleteStudent from './DeleteStudent';
-import GetStudent from './GetStudent';
+// import GetStudent from './GetStudent';
 import GroupStudentsGrades from './GroupStudentsGrades';
+import UpdateStudent from './UpdateStudentInfo';
 
 // determine the group 
 export const group = window.location.href;
@@ -38,8 +39,8 @@ export function createSt() {
    getbtn.style.display = "none";
    del.style.display = "none";
    cr.style.display = "block";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
    let grades = document.getElementById("stdgrades");
@@ -64,8 +65,8 @@ export function gitAllBtn() {
    cr.style.display = "none";
    del.style.display = "none";
    getbtn.style.display = "block";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
    let grades = document.getElementById("stdgrades");
@@ -90,8 +91,8 @@ export function delbtn() {
    getbtn.style.display = "none";
    cr.style.display = "none";
    del.style.display = "block";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
    let grades = document.getElementById("stdgrades");
@@ -115,8 +116,8 @@ export function onegroupstudentsbtn() {
    getbtn.style.display = "none";
    cr.style.display = "none";
    gst.style.display = "block";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
    let grades = document.getElementById("stdgrades");
@@ -140,8 +141,8 @@ export function groupSubjects() {
    cr.style.display = "none";
    let grades = document.getElementById("stdgrades");
    grades.style.display = "none";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
 
@@ -162,8 +163,8 @@ export function getinfo() {
    cr.style.display = "none";
    del.style.display = "none";
    info.style.display = "block";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
    let grades = document.getElementById("stdgrades");
@@ -171,8 +172,8 @@ export function getinfo() {
 }
 
 export function searchfunctiondiv() {
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "block";
    let cr = document.getElementById("addSt");
@@ -206,8 +207,8 @@ export function stdGrades() {
    cr.style.display = "none";
    del.style.display = "none";
    info.style.display = "none";
-   let x = document.getElementById("search_div");
-   x.style.display = "none";
+   // let x = document.getElementById("search_div");
+   // x.style.display = "none";
    let y = document.getElementById("getstudent");
    y.style.display = "none";
    let grades = document.getElementById("stdgrades");
@@ -226,18 +227,18 @@ export default function Groups() {
 
 
 
-   const displayOptions = () => {
-      let op = document.getElementById("op")
-      if (op.style.display == "block") {
-         op.style.display = "none"
-         document.getElementsByClassName("icon")[0].style.display = "block"
-         document.getElementsByClassName("icon")[1].style.display = "none"
-      } else {
-         op.style.display = "block"
-         document.getElementsByClassName("icon")[0].style.display = "none"
-         document.getElementsByClassName("icon")[1].style.display = "block"
-      }
-   }
+   // const displayOptions = () => {
+   //    let op = document.getElementById("op")
+   //    if (op.style.display == "block") {
+   //       op.style.display = "none"
+   //       document.getElementsByClassName("icon")[0].style.display = "block"
+   //       document.getElementsByClassName("icon")[1].style.display = "none"
+   //    } else {
+   //       op.style.display = "block"
+   //       document.getElementsByClassName("icon")[0].style.display = "none"
+   //       document.getElementsByClassName("icon")[1].style.display = "block"
+   //    }
+   // }
 
    return (
       <div>
@@ -371,9 +372,9 @@ export default function Groups() {
                {/* start show one student in specific group */}
 
                <div
-                  className="get w-100 bg-light"
+                  className="get w-100 bg-light" style={{display:"none"}}
                   id="getstudent">
-                  <GetStudent />
+                  {/* <GetStudent /> */}
                </div>
                {/* end show one student in specific group */}
 
@@ -400,6 +401,9 @@ export default function Groups() {
 {/* end students grades */}
 
 
+<div id="updatestudent">
+<UpdateStudent/>
+</div>
 
             </div>
 
