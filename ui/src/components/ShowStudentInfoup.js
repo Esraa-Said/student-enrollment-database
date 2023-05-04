@@ -7,7 +7,7 @@ export default function ShowStudentInfoup() {
     let id = window.location.pathname.split("/").slice(-1)[0];
     const [groupstudent, setonegroupstudent] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    
+    const [checkId, setCheckId] = useState(false);
 
 
   

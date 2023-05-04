@@ -50,10 +50,10 @@ export default function GroupStudentsGrades() {
                 fontFamily: "Arial",
                 fontSize: "1vw",
                 textAlign: "center",
-
+                overflow:"auto"
             }}>
                 <div className="table-responsive table-hover table-bordered" >
-                    <table class="table" style={{overflow:"auto"}}>
+                    <table class="table" >
                         <thead >
                             <tr className="table-success">
                                 <th>Student ID </th>

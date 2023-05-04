@@ -1,6 +1,6 @@
 import React from 'react';
 import "../bootstrap/css/bootstrap.css";
-import { group } from './Groups';
+import { groupid,id } from './Groups';
 import Header from './Header';
 
 
@@ -12,7 +12,7 @@ export default function UpdateStudentInfo() {
         console.log(d.value);
 
         let link = document.getElementById("search_link");
-        link.setAttribute("href","/updateStudentInfo/" + parseInt(d.value));
+        link.setAttribute("href",`/select/${id}/groups/${groupid}/updateStudentInfo/` + parseInt(d.value));
     }
     
 

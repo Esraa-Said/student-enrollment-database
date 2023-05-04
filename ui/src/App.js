@@ -32,11 +32,11 @@ function App() {
                             <Route path="/select/:id" element={<Selection />} />
                             <Route path="/select/:id/groups/:id" element={<Groups />} />
                             <Route path="/select/:id/groups/:id/showStudent/:id" element={<ShowStudent />} />
-                            <Route path="/select/:id/groups/:id/updateStudentInfo/:id" element={<ShowStudentInfoup />} />
                             <Route path='/select/:id/groups/:id/showAllStudents' element={<GetAllStudents/>} />
                             <Route path='/select/:id/groups/:id/addstudent' element = {<AddStudent/>}/>
                             <Route path='/select/:id/groups/:id/deletestudent' element = {<DeleteStudent/>}/>
                             <Route path='/select/:id/groups/:id/updateStudentInfo' element = {<UpdateStudentInfo/>}/>
+                            <Route path="/select/:id/groups/:id/updateStudentInfo/:id" element={<ShowStudentInfoup />} />
                             <Route path='/select/:id/groups/:id/oneGroupStudents' element = {<GetOneGroupStudents/>}/>
                             <Route path='/select/:id/groups/:id/showGroupSubjects' element = {<ShowGroupSubjects/>}/>
                             <Route path='/select/:id/groups/:id/showStudent' element = {<GetStudent/>}/>
