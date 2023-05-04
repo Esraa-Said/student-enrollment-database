@@ -1,8 +1,16 @@
 
 import React from 'react';
 import "../bootstrap/css/bootstrap.css";
-import './Groups.css';
-import { group } from './Groups';
+import Header from './Header';
+import Options from './Options';
+import { getAllStudents, } from './Options';
+import FunctionsOp from './FunctionsOp';
+import { Await, json } from 'react-router-dom';
+import GetAllStudents from './GetAllStudents';
+import GetInfoGroupStudents from './GetInfoGroupStudents';
+import GetOneGroupStudents from './GetOneGroupStudents';
+import { group, groupid } from './Groups';
+import { Link } from 'react-router-dom';
 
 
 export default function GetStudent() {

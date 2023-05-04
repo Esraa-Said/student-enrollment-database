@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import './Groups.css';
-import { groupid } from './Groups';
+import Header from './Header';
+import Options from './Options';
+import { getAllStudents, } from './Options';
+import FunctionsOp from './FunctionsOp';
+import { Await, json } from 'react-router-dom';
+import { groupid } from './Groups'
 
 
 export default function GetInfoGroupStudents() {

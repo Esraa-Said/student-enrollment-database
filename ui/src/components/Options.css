@@ -1,0 +1,23 @@
+.sidebar {
+
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -400px;
+        width: 400px;
+        background-color: #eee;
+        transition: all 0.3s ease-in-out;
+        overflow-y: auto;
+        z-index: 2;
+}
+
+.sidebar.active {
+        left: 0;
+}
+
+.toggle-sidebar {
+
+        cursor: pointer;
+        float: right;
+        font-size: 1vw;
+}
