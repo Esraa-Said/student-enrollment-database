@@ -13,8 +13,12 @@ export const getStudentById = async (req, res) => {
     try {
         const [data] = await db.query(
             `select * from students where student_id = ?`,
-            id
+            Number(id)
         );
+        if (data.length == 0)
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                msg: `Student with ID = ${id} is not found`,
+            });
         res.status(200).json(data);
     } catch (err) {
         res.status(StatusCodes.BAD_REQUEST).json({

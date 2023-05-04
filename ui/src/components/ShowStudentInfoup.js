@@ -15,27 +15,29 @@ export default function ShowStudentInfoup() {
         let groups = document.getElementsByClassName("groupcheck");
         groups[g - 1].defaultChecked = "true";
     }
-
+    const [checkId, setCheckId] = useState(false);
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${id}`);
+                const res = await axios.get(
+                    `${process.env.REACT_APP_BASE_URL}/student/${id}`
+                );
                 setonegroupstudent(res.data);
                 setIsLoading(false);
             } catch (err) {
-                console.log(err.response);
+                setCheckId(true);
                 setIsLoading(false);
             }
         }
         fetchData();
-        console.log(groupstudent);
-
-
     }, [id, g]);
 
     if (isLoading) {
         return <div>Loading...</div>;
+    }
 
+    if (checkId) {
+        return <div>no id = {id}</div>;
     }
 
     async function updateest(x) {
@@ -43,6 +45,7 @@ export default function ShowStudentInfoup() {
         console.log(data);
     }
 
+    let validation = true
     function submit() {
         var dast = {};
         let d = document.getElementById("id0");
@@ -68,7 +71,12 @@ export default function ShowStudentInfoup() {
         dast["email"] = em.value;
         dast["phone_number"] = pn.value;
 
-        updateest(dast);
+        //validation update
+        
+
+        // end validation
+
+        //updateest(dast);
         alert("updated");
         let ret = document.getElementById("submitForm");
         ret.setAttribute("href", `/select/1/groups/${g}`);
@@ -88,6 +96,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent[0].student_id}></input>
                         </div>
                     </div>
+
 
                     <div className="form-group row  mb-5">
                         <label for="firstN" className="col-sm-3 col-form-label mr-2">
