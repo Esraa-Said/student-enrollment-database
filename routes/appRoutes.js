@@ -10,8 +10,6 @@ router.route("/students").get(getAllStudents).post(createStudent);
 router.route("/student/:id").delete(deleteStudent).patch(updateStudent).get(getStudentById)
 router.route("/group/:gid/students/:sid/subjects/:bid").patch(updateGrade)
 
-
-
 router.get('/group/:id/students', group.groupStudentsAllData);
 router.get('/group/:id/subjects', group.groupSubjects);
 router.get('/group/:id/students/info', group.groupStudentsPersonalInfo);
