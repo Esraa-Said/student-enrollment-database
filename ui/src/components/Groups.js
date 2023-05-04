@@ -3,7 +3,7 @@ import axios from "axios"
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
 import Options from './Options';
-import './Groups.css';
+import './Options.css';
 import { getAllStudents, } from './Options';
 import FunctionsOp from './FunctionsOp';
 import { Await, json } from 'react-router-dom';
@@ -51,8 +51,7 @@ export function createSt() {
 
 ////
 
-export function updatestfun()
-{
+export function updatestfun() {
    let up = document.getElementById("updatestudent");
    up.style.display = "block";
    let cr = document.getElementById("addSt");
@@ -281,6 +280,7 @@ export default function Groups() {
    return (
       <div>
          <Header />
+
          <div className="d-flex  justify-content-center  align-content-around  ">
             .
             {/* <div className='d-flex flex-wrap   align-content-around optionres align-self-start ' >
@@ -295,11 +295,9 @@ export default function Groups() {
                   <i class="fa-solid fa-xmark " style={{ cursor: "pointer", fontSize: "2vw", marginLeft: "200px" }} onClick={displayOptions}></i>
                </div>
             </div> */}
-            <div className="bg-dark ml-5 mr-5 mt-3 options m-5  " style={{ width: "25vw", height: "75vh", borderRadius: "10px", overflowY: "auto" }}>
-               <Options />
-            </div>
 
-            <div className=" ml-3 mt-5 mr-3 optionArea " style={{ width: "76vw", height: "75vh", position: "relative" }}>
+
+            <div className=" ml-3 mt-5 mr-3  " style={{ width: "76vw", height: "75vh", position: "relative" }}>
 
                {/* start get All students */}
 
@@ -410,38 +408,38 @@ export default function Groups() {
                {/* start show one student in specific group */}
 
                <div
-                  className="get w-100 bg-light" 
-                  id="getstudent" 
-                  style={{display:"none"}}> 
+                  className="get w-100 bg-light"
+                  id="getstudent"
+                  style={{ display: "none" }}>
                   <GetStudent />
                </div>
                {/* end show one student in specific group */}
 
 
 
-{/* start students grades */}
+               {/* start students grades */}
 
-<div id="stdgrades" 
-   className="get w-100"
+               <div id="stdgrades"
+                  className="get w-100"
 
-   style={{
-      overflow: "auto",
-      height: "78vh",
-      fontFamily: "Arial",
-      fontSize: "1vw",
-      textAlign: "center",
-      display: "none",
-      position: "absolute"
-   }}
->
-   <GroupStudentsGrades/>
-</div>
+                  style={{
+                     overflow: "auto",
+                     height: "78vh",
+                     fontFamily: "Arial",
+                     fontSize: "1vw",
+                     textAlign: "center",
+                     display: "none",
+                     position: "absolute"
+                  }}
+               >
+                  <GroupStudentsGrades />
+               </div>
 
-{/* end students grades */}
+               {/* end students grades */}
 
-<div id="updatestudent" style={{display:"none"}}>
-<UpdateStudent/>
-</div> 
+               <div id="updatestudent" style={{ display: "none" }}>
+                  <UpdateStudent />
+               </div>
 
             </div>
 

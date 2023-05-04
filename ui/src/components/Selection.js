@@ -14,103 +14,37 @@ export default function Selection() {
     lo.split('/');
     id = lo[lo.length - 1];
 
-    // // console.log(process.env, process.env.REACT_APP_BASE_URL)
-	// const [backendData, setBackendData] = useState([{}])
-	// useEffect(() => {
-	// 	axios.get(`${process.env.REACT_APP_BASE_URL}/students`).then((data) => {
-	// 		console.log(data.data)
-	// 		setBackendData(data.data)
-	// 		// debugger
-	// 	})
-	// }, [])
-
     const clickHandler1 = event => {
-        if (listbtns[0] == 0) {
-            event.currentTarget.className = "btn btn-info btn-lg"
-            listbtns[0] = 1;
-
-        }
-        else {
-            event.currentTarget.className = "btn btn-primary btn-lg";
-            listbtns[0] = 0;
-        }
+        
         groupId = '1';
+        let g = document.getElementById("group1")
+        g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
     };
     const clickHandler2 = event => {
 
-        if (listbtns[1] == 0) {
-            event.currentTarget.className = "btn btn-info btn-lg"
-            listbtns[1] = 1;
-        }
-        else {
-            event.currentTarget.className = "btn btn-danger  btn-lg";
-            listbtns[1] = 0;
-        }
+      
         groupId = '2';
+        let g = document.getElementById("group2")
+        g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
 
     };
     const clickHandler3 = event => {
 
-        if (listbtns[2] == 0) {
-            event.currentTarget.className = "btn btn-info btn-lg"
-            listbtns[2] = 1;
-        }
-        else {
-            event.currentTarget.className = "btn btn-warning btn-lg";
-            listbtns[2] = 0;
-        }
+       
         groupId = '3';
+        let g = document.getElementById("group3")
+        g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
 
     };
     const clickHandler4 = event => {
 
-        if (listbtns[3] == 0) {
-            event.currentTarget.className = "btn btn-info btn-lg"
-            listbtns[3] = 1;
-        }
-        else {
-            event.currentTarget.className = "btn btn-success btn-lg";
-            listbtns[3] = 0;
-        }
+       
         groupId = '4';
+        let g = document.getElementById("group4")
+        g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
     };
 
 
-    const go = () => {
-
-        let btngo = document.getElementById("btngo");
-
-        let count = 0;
-
-        for (var i = 0; i < listbtns.length; ++i) {
-            if (listbtns[i] == 1)
-                count++;
-        }
-        if (count == 0) {
-            alert("you should choose at least one group")
-        }
-        else {
-
-            if (id == '1') {
-
-                btngo.setAttribute("href", "/select/" + id + "/groups/" + groupId);
-
-            }
-            else {
-                if (count > 1) {
-                    alert("you should choose at most one group")
-
-                }
-                else {
-                    btngo.setAttribute("href", "/select/" + id + "/groups/" + groupId);
-                }
-            }
-
-
-        }
-
-
-    }
     return (
 
         <div>
@@ -119,13 +53,13 @@ export default function Selection() {
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around ">
                     <div className="align-self-center  " data-aos="fade-down-right">
                         {/*  group1  */}
-                        <a className="btn btn-primary  btn-lg" role="button" onClick={
+                        <a className="btn btn-primary  btn-lg"  role="button" href='#' id="group1" onClick={
                             clickHandler1
 
                         }
                             style={
                                 {
-                                    height: "15vw", width: "250px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
                                 }
                             }>
 
@@ -137,13 +71,13 @@ export default function Selection() {
                     {/* group 2 */}
                     <div className="  align-self-center" data-aos="fade-down-left">
                         {/*  group1  */}
-                        <a className="btn btn-danger btn-lg" role="button" onClick={
+                        <a className="btn btn-danger btn-lg" role="button" href='#' id="group2" onClick={
                             clickHandler2
 
                         }
                             style={
                                 {
-                                    height: "15vw", width: "250px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
                                 }
                             }>
                             Group2
@@ -156,13 +90,13 @@ export default function Selection() {
                     {/* group 3 */}
                     <div className="  align-self-center " data-aos="fade-up-right" >
                         {/*  group1  */}
-                        <a className="btn btn-warning btn-lg" role="button" onClick={
+                        <a className="btn btn-warning btn-lg" role="button" href='#' id="group3" onClick={
                             clickHandler3
 
                         }
                             style={
                                 {
-                                    height: "15vw", width: "250px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
                                 }
                             }>
                             Group3
@@ -173,25 +107,20 @@ export default function Selection() {
                     {/* group4 */}
                     <div className="  align-self-center " data-aos="fade-up-left">
 
-                        <a className="btn btn-success btn-lg " role="button" onClick={
+                        <a className="btn btn-success btn-lg " role="button" href='#' id="group4" onClick={
                             clickHandler4
 
                         }
                             style={
                                 {
-                                    height: "15vw", width: "250px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
                                 }
                             }>
                             Group4
                         </a>
                     </div>
                 </div>
-                <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around">
-                    <div className='align-self-center ' >
-                        <a href='' role='button' className='btn btn-secondary btn-lg' style={{ padding: "1vw", fontSize: "2vw" }}
-                            id="btngo" onClick={go}>GO</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
     );
