@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
 import Options from './Options';
@@ -13,70 +12,59 @@ import GetOneGroupStudents from './GetOneGroupStudents';
 import { groupid } from './Groups';
 import { group } from './Groups';
 
-
-
-
-
-
-
-
 export default function ShowStudentInfoup() {
 
-    let id = window.location.pathname.split("/").slice(-1)[0]
+    let id = window.location.pathname.split("/").slice(-1)[0];
     const [groupstudent, setonegroupstudent] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let g = window.location.pathname.split("/").slice(-3)[0]
+    let g = window.location.pathname.split("/").slice(-3)[0];
 
 
     function acadmeic() {
         let groups = document.getElementsByClassName("groupcheck");
-
-        groups[g - 1].defaultChecked = "true"
-
+        groups[g - 1].defaultChecked = "true";
     }
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${id}`)
-                setonegroupstudent(res.data)
-                setIsLoading(false)
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${id}`);
+                setonegroupstudent(res.data);
+                setIsLoading(false);
             } catch (err) {
-                console.log(err.response)
-                setIsLoading(false)
+                console.log(err.response);
+                setIsLoading(false);
             }
         }
-        fetchData()
-        console.log(groupstudent)
+        fetchData();
+        console.log(groupstudent);
 
 
-    }, [id, g])
+    }, [id, g]);
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div>Loading...</div>;
 
     }
 
     async function updateest(x) {
-        const { data } = await axios.patch(`${process.env.REACT_APP_BASE_URL}/student/${id}`, x)
-        console.log(data)
-
-
-
+        const { data } = await axios.patch(`${process.env.REACT_APP_BASE_URL}/student/${id}`, x);
+        console.log(data);
     }
 
     function submit() {
-        var dast = {}
+        var dast = {};
         let d = document.getElementById("id0");
         let fn = document.getElementById("fn");
         let ln = document.getElementById("ln");
         let gn = document.getElementsByClassName("groupcheck");
         let em = document.getElementById("em");
         let pn = document.getElementById("pn");
+        
         // validation insert 
         let x = 0;
         for (let i = 0; i < 4; i++) {
-            if (gn[i].checked == true) {
+            if (gn[i].checked === true) {
                 x = i + 1;
                 break;
             }
@@ -89,17 +77,11 @@ export default function ShowStudentInfoup() {
         dast["email"] = em.value;
         dast["phone_number"] = pn.value;
 
-
-
         updateest(dast);
-        alert("updated")
+        alert("updated");
         let ret = document.getElementById("submitForm");
-        ret.setAttribute("href", `/select/1/groups/${g}`)
-
+        ret.setAttribute("href", `/select/1/groups/${g}`);
     }
-
-
-
 
     return (
         <div>
@@ -154,7 +136,7 @@ export default function ShowStudentInfoup() {
 
                     <div className="form-group row  mb-5">
                         <label for="GroupN" className="col-sm-3 col-form-label mr-2">
-                            Academic year
+                            Academic Year
                         </label>
                         <div className="col-sm-7">
                             <input className="ml-2 groupcheck" type="radio" id="g1" style={{ fontSize: "1.2vw" }} name="group" ></input>
@@ -188,5 +170,5 @@ export default function ShowStudentInfoup() {
             </div>
 
         </div>
-    )
+    );
 }

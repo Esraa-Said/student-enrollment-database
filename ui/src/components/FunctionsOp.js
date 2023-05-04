@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "../bootstrap/css/bootstrap.css";
-import axios from 'axios';
+
 export const getAllStudents = function () {
     console.log("hh")
     return (
@@ -35,8 +35,7 @@ export default function FunctionsOP(props) {
                         <td>{props.phone_number}</td>
 
                     </tr>
-                    {/* {JSON.stringify(data.data)}
-              */}
+                    {/* {JSON.stringify(data.data)} */}
                 </tbody>
             </table>
         </div>

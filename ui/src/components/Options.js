@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "../bootstrap/css/bootstrap.css";
 import axios from 'axios';
 import FunctionsOP, { getAllStudents } from './FunctionsOp';
@@ -60,14 +59,3 @@ export default function Options() {
 
     )
 }
-
-
-// export function getAllStudents()
-// {
-//     console.log("hh")
-//     return (
-//         <div>
-//             sssmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-//         </div>
-//     )
-// }

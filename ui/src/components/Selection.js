@@ -1,15 +1,12 @@
-import React, { useState,useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react';
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import axios from 'axios';
-
 
 let id = '0';
 let listbtns = [0, 0, 0, 0];
 let groupId = '0';
-export default function Selection() {
 
+export default function Selection() {
     let lo = window.location.href;
     lo.split('/');
     id = lo[lo.length - 1];
@@ -20,6 +17,7 @@ export default function Selection() {
         let g = document.getElementById("group1")
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
     };
+
     const clickHandler2 = event => {
 
       
@@ -28,6 +26,7 @@ export default function Selection() {
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
 
     };
+
     const clickHandler3 = event => {
 
        
@@ -36,6 +35,7 @@ export default function Selection() {
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
 
     };
+
     const clickHandler4 = event => {
 
        
@@ -48,7 +48,7 @@ export default function Selection() {
     return (
 
         <div>
-           <Header/>
+            <Header />
             <div className='container mt-5'>
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around ">
                     <div className="align-self-center  " data-aos="fade-down-right">
@@ -62,13 +62,10 @@ export default function Selection() {
                                     height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
                                 }
                             }>
-
                             Group1
                         </a>
-
-
                     </div>
-                    {/* group 2 */}
+
                     <div className="  align-self-center" data-aos="fade-down-left">
                         {/*  group1  */}
                         <a className="btn btn-danger btn-lg" role="button" href='#' id="group2" onClick={
@@ -82,12 +79,10 @@ export default function Selection() {
                             }>
                             Group2
                         </a>
-
                     </div>
                 </div>
 
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around">
-                    {/* group 3 */}
                     <div className="  align-self-center " data-aos="fade-up-right" >
                         {/*  group1  */}
                         <a className="btn btn-warning btn-lg" role="button" href='#' id="group3" onClick={
@@ -101,10 +96,8 @@ export default function Selection() {
                             }>
                             Group3
                         </a>
-
-
                     </div>
-                    {/* group4 */}
+
                     <div className="  align-self-center " data-aos="fade-up-left">
 
                         <a className="btn btn-success btn-lg " role="button" href='#' id="group4" onClick={

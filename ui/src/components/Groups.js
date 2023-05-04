@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import React from 'react';
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
 import Options from './Options';
@@ -22,9 +21,6 @@ export const group = window.location.href;
 
 group.split('/');
 export const groupid = group[group.length - 1];
-console.log(groupid)
-
-
 
 export function createSt() {
    let cr = document.getElementById("addSt");
@@ -32,7 +28,7 @@ export function createSt() {
    let del = document.getElementById("del_div");
    let gst = document.getElementById("getAllgroupstudent-div");
    let sub = document.getElementById("getsubjects");
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    info.style.display = "none";
    sub.style.display = "none";
    gst.style.display = "none";
@@ -75,15 +71,13 @@ export function updatestfun() {
 }
 
 // show all
-
-
 export function getAllBtn() {
    let getbtn = document.getElementById("getAll");
    let cr = document.getElementById("addSt");
    let del = document.getElementById("del_div");
    let gst = document.getElementById("getAllgroupstudent-div");
    let sub = document.getElementById("getsubjects");
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    info.style.display = "none";
    sub.style.display = "none";
    gst.style.display = "none";
@@ -100,11 +94,7 @@ export function getAllBtn() {
    up.style.display = "none";
 }
 
-
-
 // delete student 
-
-
 export function delbtn() {
    let up = document.getElementById("updatestudent");
    up.style.display = "none";
@@ -113,7 +103,7 @@ export function delbtn() {
    let del = document.getElementById("del_div");
    let gst = document.getElementById("getAllgroupstudent-div");
    let sub = document.getElementById("getsubjects");
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    info.style.display = "none";
    sub.style.display = "none";
    gst.style.display = "none";
@@ -129,8 +119,6 @@ export function delbtn() {
 
 }
 
-////
-
 // get group students
 export function onegroupstudentsbtn() {
    let cr = document.getElementById("addSt");
@@ -138,7 +126,7 @@ export function onegroupstudentsbtn() {
    let del = document.getElementById("del_div");
    let gst = document.getElementById("getAllgroupstudent-div");
    let sub = document.getElementById("getsubjects");
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    info.style.display = "none";
    sub.style.display = "none";
    del.style.display = "none";
@@ -162,7 +150,7 @@ export function groupSubjects() {
    let del = document.getElementById("del_div");
    let gst = document.getElementById("getAllgroupstudent-div");
    let sub = document.getElementById("getsubjects");
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    info.style.display = "none";
    sub.style.display = "block";
    gst.style.display = "none";
@@ -179,9 +167,9 @@ export function groupSubjects() {
    up.style.display = "none";
 }
 
-///  get students group info 
+// get students group info 
 export function getinfo() {
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    let cr = document.getElementById("addSt");
    let getbtn = document.getElementById("getAll");
    let del = document.getElementById("del_div");
@@ -214,7 +202,7 @@ export function searchfunctiondiv() {
    let del = document.getElementById("del_div");
    let gst = document.getElementById("getAllgroupstudent-div");
    let sub = document.getElementById("getsubjects");
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    info.style.display = "none";
    sub.style.display = "none";
    gst.style.display = "none";
@@ -227,9 +215,8 @@ export function searchfunctiondiv() {
    up.style.display = "none";
 }
 
-
 export function stdGrades() {
-   let info = document.getElementById("getinfo")
+   let info = document.getElementById("getinfo");
    let cr = document.getElementById("addSt");
    let getbtn = document.getElementById("getAll");
    let del = document.getElementById("del_div");
@@ -253,17 +240,6 @@ export function stdGrades() {
 }
 
 export default function Groups() {
-
-
-
-
-
-   /////////////////////////////////////////////
-
-
-
-
-
    // const displayOptions = () => {
    //    let op = document.getElementById("op")
    //    if (op.style.display == "block") {
@@ -314,6 +290,7 @@ export default function Groups() {
                   }}><GetAllStudents /></div>
                {/* end get All students */}
 
+
                {/* start add student */}
                <div id="addSt"
                   className="get w-100"
@@ -331,8 +308,8 @@ export default function Groups() {
                </div>
                {/* end add student */}
 
-               {/* start delete student */}
 
+               {/* start delete student */}
                <div className="bg-light w-100 p-5" id="del_div"
                   style={{
                      fontFamily: "cursive",
@@ -341,19 +318,16 @@ export default function Groups() {
                      position: "absolute"
                   }}>
                   <DeleteStudent />
-
                </div>
-
                {/* end delete student */}
 
-               {/* start update student */}
 
+               {/* start update student */}
                {/* end update student */}
 
+
                {/* start show group students */}
-
                <div id="getAllgroupstudent-div" className="get w-100"
-
                   style={{
                      overflow: "auto",
                      height: "78vh",
@@ -367,10 +341,10 @@ export default function Groups() {
                </div>
                {/* end show group students */}
 
+
                {/* start show subjects */}
                <div id="getsubjects"
                   className="get w-100"
-
                   style={{
                      overflow: "auto",
                      height: "78vh",
@@ -384,12 +358,10 @@ export default function Groups() {
                </div>
                {/* end show subjects */}
 
+
                {/* start one group students info */}
-
-
                <div id="getinfo"
                   className="get w-100"
-
                   style={{
                      overflow: "auto",
                      height: "78vh",
@@ -401,7 +373,6 @@ export default function Groups() {
                   }}>
                   <GetInfoGroupStudents />
                </div>
-
                {/* end one group students info */}
 
 
@@ -442,10 +413,8 @@ export default function Groups() {
                </div>
 
             </div>
-
-
-
          </div>
-      </div >
+      </div>
    )
 }
+
