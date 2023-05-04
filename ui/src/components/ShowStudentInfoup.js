@@ -76,7 +76,7 @@ export default function ShowStudentInfoup() {
 
         // end validation
 
-        //updateest(dast);
+        updateest(dast);
         alert("updated");
         let ret = document.getElementById("submitForm");
         ret.setAttribute("href", `/select/1/groups/${g}`);
