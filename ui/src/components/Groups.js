@@ -13,9 +13,9 @@ import GetOneGroupStudents from './GetOneGroupStudents';
 import ShowGroupSubjects from './ShowGroupSubjects';
 import AddStudent from './AddStudent';
 import DeleteStudent from './DeleteStudent';
-// import GetStudent from './GetStudent';
+import GetStudent from './GetStudent';
 import GroupStudentsGrades from './GroupStudentsGrades';
-import UpdateStudent from './UpdateStudentInfo';
+// import UpdateStudent from './UpdateStudentInfo';
 
 // determine the group 
 export const group = window.location.href;
@@ -372,9 +372,9 @@ export default function Groups() {
                {/* start show one student in specific group */}
 
                <div
-                  className="get w-100 bg-light" style={{display:"none"}}
+                  className="get w-100 bg-light" 
                   id="getstudent">
-                  {/* <GetStudent /> */}
+                  <GetStudent />
                </div>
                {/* end show one student in specific group */}
 
@@ -400,10 +400,10 @@ export default function Groups() {
 
 {/* end students grades */}
 
-
-<div id="updatestudent">
+{/* 
+<div id="updatestudent" style={{display:"none"}}>
 <UpdateStudent/>
-</div>
+</div> */}
 
             </div>
 

@@ -7,6 +7,7 @@ import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
 import Main from "./components/Main";
 import Groups from './components/Groups';
 import AddStudent from './components/AddStudent';
+import ShowStudent from './components/ShowStudent';
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
 
             
               <Route path="/select/:id/groups/:id" element={<Groups />} />
+              <Route path="/select/:id/groups/:id/:id" element={<ShowStudent />} />
+
               {/* <Route path="/loginpass" element={<Loginpass />} /> */}
 
             </Routes>

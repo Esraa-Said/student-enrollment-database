@@ -50,6 +50,8 @@ const submit = (event) => {
    dast["email"] = em.value;
    dast["phone_number"] = pn.value;
 
+   
+
    createst(dast);
    alert("added")
 
@@ -67,7 +69,11 @@ return(
                            Student Id
                         </label>
                         <div class="col-sm-7">
+                       
                            <input type="text" class="form-control" placeholder="student's id" id="id" style={{ fontSize: "1.2vw" }} required></input>
+                         
+                         
+
                         </div>
                      </div>
 
@@ -141,6 +147,7 @@ return(
                      </a>
                   </form>
                </div>
+
     </div>
 )
 
