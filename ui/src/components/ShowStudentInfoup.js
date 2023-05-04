@@ -54,8 +54,8 @@ export default function ShowStudentInfoup() {
         let gn = document.getElementsByClassName("groupcheck");
         let em = document.getElementById("em");
         let pn = document.getElementById("pn");
-        
-        // validation insert 
+
+        // validation insert
         let x = 0;
         for (let i = 0; i < 4; i++) {
             if (gn[i].checked === true) {
@@ -72,8 +72,19 @@ export default function ShowStudentInfoup() {
         dast["phone_number"] = pn.value;
 
         //validation update
-        
+        let pattern = "^[^0-9]*$";
+        if (fn.value.length < 3) console.log("first name is too short");
+        if (ln.value.length < 3) console.log("last name is too short");
+        if (fn.value.length >= 100) console.log("first name is too long");
+        if (ln.value.length >= 100) console.log("last name is too long");
+        if (fn.value.match(pattern) === null)
+            console.log("name should not has numbers");
+        if (ln.value.match(pattern)  === null)
+            console.log("name should not has numbers");
 
+        let phoneRegx = /^(010|012|015|011)\d{8}$/;
+        if (pn.value.match(phoneRegx) === null)
+            console.log("validate phone number");
         // end validation
 
         updateest(dast);
