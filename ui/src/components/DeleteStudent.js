@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import { group } from './Groups';
-
+import Header from './Header';
 export default function DeleteStudent() {
 
     async function deletestudent(x, event) {
@@ -20,20 +20,27 @@ export default function DeleteStudent() {
 
     return (
         <div>
-            <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
-            <form>
-                <div className="form-group row mb-5">
-                    <label for="id" className="col-sm-3 col-form-label mr-2">
-                        Student ID
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" placeholder="student's id" id="del_id" style={{ fontSize: "1.2vw" }} required></input>
+            <Header/>
+            <div className='container-fluid w-75 mt-5 p-5 bg-light' style={{
+                fontFamily: "cursive",
+                fontSize: "1.2vw",
+                
+            }}>
+                <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
+                <form>
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Student ID
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" placeholder="student's id" id="del_id" style={{ fontSize: "1.2vw" }} required></input>
+                        </div>
                     </div>
-                </div>
-                <a href={group} type="submit" class="btn btn-danger" id="btn" onClick={deletest}>
-                    Delete
-                </a>
-            </form>
+                    <a href={group} type="submit" class="btn btn-danger" id="btn" onClick={deletest}>
+                        Delete
+                    </a>
+                </form>
+            </div>
         </div>
     );
 }

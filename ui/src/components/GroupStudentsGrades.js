@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import { groupid } from './Groups';
+import Header from './Header';
 
 export default function GroupStudentsGrades() {
     const [onegroupstudents, setonegroupstudents] = useState([]);
@@ -26,7 +27,7 @@ export default function GroupStudentsGrades() {
                 <td>{student.student_id}</td>
                 <td>{student.first_name}</td>
                 <td>{student.last_name}</td>
-                
+
                 {student.grades.map((grade, index) => {
                     return (
                         <td>
@@ -42,25 +43,34 @@ export default function GroupStudentsGrades() {
 
     return (
         <div>
+            <Header />
 
-            <div className="table-responsive table-hover">
-                <table class="table">
-                    <thead >
-                        <tr className="table-success">
-                            <th>Student ID </th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+            <div className='container-fluid w-75 mt-5' style={{
+                height: "78vh",
+                fontFamily: "Arial",
+                fontSize: "1vw",
+                textAlign: "center",
 
-                            {subject.map((v, i) => {
-                                return <th>{v.subject_name}</th>;
-                            })}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {showgroupstudents}
-                        {/* {JSON.stringify(data.data)}*/}
-                    </tbody>
-                </table>
+            }}>
+                <div className="table-responsive table-hover table-bordered" >
+                    <table class="table" style={{overflow:"auto"}}>
+                        <thead >
+                            <tr className="table-success">
+                                <th>Student ID </th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+
+                                {subject.map((v, i) => {
+                                    return <th>{v.subject_name}</th>;
+                                })}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {showgroupstudents}
+                            {/* {JSON.stringify(data.data)}*/}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

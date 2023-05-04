@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import { group } from './Groups';
-
+import Header from './Header';
 
 export default function AddStudent() {
     var dast = {};
@@ -45,8 +45,17 @@ export default function AddStudent() {
 
     return (
         <div>
-            <div className="bg-light w-100 p-5" id="addSt"
-                style={{ fontFamily: "cursive", fontSize: "1.2vw", position: "absolute" }}>
+            <Header/>
+
+            <div className="bg-light w-75 container-fluid p-5 mt-5" id="addSt"
+                 style={{
+                     overflow: "auto",
+                     height: "78vh",
+                     fontFamily: "Arial",
+                     fontSize: "1vw",
+                     textAlign: "center",
+                    
+                  }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
                 <form onSubmit={submit}>
                     <div className="form-group row mb-5">

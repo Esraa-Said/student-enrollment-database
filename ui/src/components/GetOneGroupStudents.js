@@ -51,6 +51,13 @@ export default function GetOneGroupStudents() {
 
     return (
         <div>
+            <Header/>
+            <div style={{  overflow: "auto",
+                     height: "78vh",
+                     fontFamily: "Arial",
+                     fontSize: "1vw",
+                     textAlign: "center",
+                   }} className='container-fluid w-75 mt-5'>
             <div className="table-responsive table-hover">
                 <table class="table">
                     <thead >
@@ -72,6 +79,6 @@ export default function GetOneGroupStudents() {
                 </table>
             </div>
         </div>
-
+        </div>
     );
 }

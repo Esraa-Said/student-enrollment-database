@@ -1,21 +1,26 @@
 import React from 'react';
 import "../bootstrap/css/bootstrap.css";
 import { group } from './Groups';
+import Header from './Header';
 
-export default function UpdateStudent() {
+
+
+export default function UpdateStudentInfo() {
 
     function getidfunc() {
         let d = document.getElementById("input_id");
         console.log(d.value);
 
         let link = document.getElementById("search_link");
-        link.setAttribute("href", group + '/update/' + parseInt(d.value));
+        link.setAttribute("href","/updateStudentInfo/" + parseInt(d.value));
     }
+    
 
     return (
         <div>
-            <div id="getid" className="bg-light p-5 w-100"
-                style={{ fontFamily: "cursive", fontSize: "1.2vw", position: "absolute" }}>
+            <Header/>
+            <div id="getid" className="bg-light p-5 w-75 container-fluid mt-5"
+                style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
                 <form >
                     <div className="form-group row mb-5">

@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { group } from './Groups';
 
 export default function ShowStudentInfoup() {
 
     let id = window.location.pathname.split("/").slice(-1)[0];
     const [groupstudent, setonegroupstudent] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let g = window.location.pathname.split("/").slice(-3)[0];
+    
 
 
-    function acadmeic() {
-        let groups = document.getElementsByClassName("groupcheck");
-        groups[g - 1].defaultChecked = "true";
-    }
+  
 
     useEffect(() => {
         async function fetchData() {
@@ -31,7 +27,7 @@ export default function ShowStudentInfoup() {
         console.log(groupstudent);
 
 
-    }, [id, g]);
+    }, []);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -70,8 +66,7 @@ export default function ShowStudentInfoup() {
 
         updateest(dast);
         alert("updated");
-        let ret = document.getElementById("submitForm");
-        ret.setAttribute("href", `/select/1/groups/${g}`);
+      
     }
     
     return (
@@ -153,7 +148,7 @@ export default function ShowStudentInfoup() {
                             </label>
                         </div>
                     </div>
-                    <a href={group} type="submit" class="btn btn-primary" id="submitForm" onClick={submit}>
+                    <a href='' type="submit" class="btn btn-primary" id="submitForm" onClick={submit}>
                         Add
                     </a>
                 </form>
