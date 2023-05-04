@@ -11,6 +11,7 @@ import AddStudent from './AddStudent';
 import DeleteStudent from './DeleteStudent';
 import GetStudent from './GetStudent';
 import GroupStudentsGrades from './GroupStudentsGrades';
+import UpdateStudent from './UpdateStudentInfo';
 
 // determine the group 
 export const group = window.location.href;
@@ -37,10 +38,35 @@ export function createSt() {
     y.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "none";
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
+}
+
+export function updatestfun() {
+    let up = document.getElementById("updatestudent");
+    up.style.display = "block";
+    let cr = document.getElementById("addSt");
+    let getbtn = document.getElementById("getAll");
+    let del = document.getElementById("del_div");
+    let gst = document.getElementById("getAllgroupstudent-div");
+    let sub = document.getElementById("getsubjects");
+    let info = document.getElementById("getinfo");
+    info.style.display = "none";
+    sub.style.display = "none";
+    gst.style.display = "none";
+    getbtn.style.display = "none";
+    del.style.display = "none";
+    cr.style.display = "none";
+    // let x = document.getElementById("search_div");
+    // x.style.display = "none";
+    let y = document.getElementById("getstudent");
+    y.style.display = "none";
+    let grades = document.getElementById("stdgrades");
+    grades.style.display = "none";
 }
 
 // show all
-export function gitAllBtn() {
+export function getAllBtn() {
     let getbtn = document.getElementById("getAll");
     let cr = document.getElementById("addSt");
     let del = document.getElementById("del_div");
@@ -59,11 +85,14 @@ export function gitAllBtn() {
     y.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "none";
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
 }
-
 
 // delete student 
 export function delbtn() {
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
     let cr = document.getElementById("addSt");
     let getbtn = document.getElementById("getAll");
     let del = document.getElementById("del_div");
@@ -82,6 +111,7 @@ export function delbtn() {
     y.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "none";
+
 }
 
 // get group students
@@ -104,7 +134,8 @@ export function onegroupstudentsbtn() {
     y.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "none";
-
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
 }
 
 // get group subjects
@@ -127,7 +158,8 @@ export function groupSubjects() {
     // x.style.display = "none";
     let y = document.getElementById("getstudent");
     y.style.display = "none";
-
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
 }
 
 // get students group info 
@@ -151,6 +183,8 @@ export function getinfo() {
     y.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "none";
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
 }
 
 export function searchfunctiondiv() {
@@ -172,6 +206,8 @@ export function searchfunctiondiv() {
     cr.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "none";
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
 }
 
 export function stdGrades() {
@@ -194,6 +230,8 @@ export function stdGrades() {
     y.style.display = "none";
     let grades = document.getElementById("stdgrades");
     grades.style.display = "block";
+    let up = document.getElementById("updatestudent");
+    up.style.display = "none";
 }
 
 export default function Groups() {
@@ -334,7 +372,8 @@ export default function Groups() {
                     {/* start show one student in specific group */}
                     <div
                         className="get w-100 bg-light"
-                        id="getstudent">
+                        id="getstudent"
+                        style={{ display: "none" }}>
                         <GetStudent />
                     </div>
                     {/* end show one student in specific group */}
@@ -357,8 +396,11 @@ export default function Groups() {
                     </div>
                     {/* end students grades */}
 
+                    <div id="updatestudent" style={{ display: "none" }}>
+                        <UpdateStudent />
+                    </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }

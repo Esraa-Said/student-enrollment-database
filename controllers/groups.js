@@ -1,5 +1,5 @@
 import { db } from '../db/connect.js';
-
+import { StatusCodes } from 'http-status-codes';
 const groupSubjects = async (req, res) => {
     let group_id = req.params.id;
     const [data] = await db.query(`select * from subjects where group_id = ${group_id}`);
@@ -59,9 +59,11 @@ const studentAllData = async (req, res) => {
         let student_data = data;
         student_data.grades = studentGrades;
         res.status(200).json({ student_data, group_id, group_name });
+
     }
     catch (err) {
-        res.send(`Student with ID = ${student_id} is not found`);
+        console.log(err);
+        res.status(StatusCodes.BAD_REQUEST).json({ err: `No such student with ID  = ${student_id} in the Academic Year = ${group_id}` });
     }
 };
 

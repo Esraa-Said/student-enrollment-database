@@ -10,8 +10,8 @@ export default function ShowStudent() {
     const [groupstudent, setonegroupstudent] = useState([]);
     const [subject, setSubject] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [RequestError, setRequestError] = useState([]);
     let g = window.location.pathname.split("/").slice(-2)[0];
-
 
     useEffect(() => {
         async function fetchData() {
@@ -20,17 +20,22 @@ export default function ShowStudent() {
                 setonegroupstudent(res.data);
                 setSubject(res.data["student_data"]["grades"]);
                 setIsLoading(false);
-            }
-            catch (err) {
-                console.log(err);
+            } catch (err) {
+                console.log(err.response);
+                setRequestError(err.response);
+                // debugger
                 setIsLoading(false);
             }
         }
         fetchData();
-    });
+    }, [id, g]);
 
     if (isLoading) {
         return <div>Loading...</div>;
+    }
+
+    if (RequestError && RequestError.status === 400) {
+        return <div>{RequestError.data.err}</div>;
     }
 
     return (
