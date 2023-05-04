@@ -9,6 +9,8 @@ export default function ShowStudentInfoup() {
     const [isLoading, setIsLoading] = useState(true);
     const [checkId, setCheckId] = useState(false);
 
+    const [checkId, setCheckId] = useState(false);
+
 
   
 
