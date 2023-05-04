@@ -15,11 +15,13 @@ export default function ShowStudentInfoup() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${id}`);
+                const res = await axios.get(
+                    `${process.env.REACT_APP_BASE_URL}/student/${id}`
+                );
                 setonegroupstudent(res.data);
                 setIsLoading(false);
             } catch (err) {
-                console.log(err.response);
+                setCheckId(true);
                 setIsLoading(false);
             }
         }
@@ -31,7 +33,10 @@ export default function ShowStudentInfoup() {
 
     if (isLoading) {
         return <div>Loading...</div>;
+    }
 
+    if (checkId) {
+        return <div>no id = {id}</div>;
     }
 
     async function updateest(x) {
@@ -39,6 +44,7 @@ export default function ShowStudentInfoup() {
         console.log(data);
     }
 
+    let validation = true
     function submit() {
         var dast = {};
         let d = document.getElementById("id0");
@@ -47,8 +53,8 @@ export default function ShowStudentInfoup() {
         let gn = document.getElementsByClassName("groupcheck");
         let em = document.getElementById("em");
         let pn = document.getElementById("pn");
-        
-        // validation insert 
+
+        // validation insert
         let x = 0;
         for (let i = 0; i < 4; i++) {
             if (gn[i].checked === true) {
@@ -63,6 +69,22 @@ export default function ShowStudentInfoup() {
         dast["group_id"] = x;
         dast["email"] = em.value;
         dast["phone_number"] = pn.value;
+
+        //validation update
+        let pattern = "^[^0-9]*$";
+        if (fn.value.length < 3) console.log("first name is too short");
+        if (ln.value.length < 3) console.log("last name is too short");
+        if (fn.value.length >= 100) console.log("first name is too long");
+        if (ln.value.length >= 100) console.log("last name is too long");
+        if (fn.value.match(pattern) === null)
+            console.log("name should not has numbers");
+        if (ln.value.match(pattern)  === null)
+            console.log("name should not has numbers");
+
+        let phoneRegx = /^(010|012|015|011)\d{8}$/;
+        if (pn.value.match(phoneRegx) === null)
+            console.log("validate phone number");
+        // end validation
 
         updateest(dast);
         alert("updated");
@@ -83,6 +105,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent[0].student_id}></input>
                         </div>
                     </div>
+
 
                     <div className="form-group row  mb-5">
                         <label for="firstN" className="col-sm-3 col-form-label mr-2">
