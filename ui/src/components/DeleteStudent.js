@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import { group } from './Groups';
 import Header from './Header';
 
 export default function DeleteStudent() {
-    // const [state, setState] = useState(true);
     let id = undefined;
-
-    // useEffect(() => {
-    //     const deleteHandler = async () => {
-    //         try {
-    //             console.log(id, "sss");
-    //             await axios.delete(
-    //                 `${process.env.REACT_APP_BASE_URL}/student/${id}`
-    //             );
-    //             setState(true);
-    //             debugger;
-    //         } catch (err) {
-    //             setState(false);
-    //         }
-    //     };
-    //     deleteHandler();
-    // }, [id]);
 
     const deletest = async (event) => {
         event.preventDefault();
@@ -30,7 +13,6 @@ export default function DeleteStudent() {
         let input = document.getElementById("del_id").value;
         let ok = true;
 
-        // validation    1 '1' '1xx' '' '**'
         if (typeof input === "string") {
             if (Number.isNaN(parseInt(input))) ok = false;
             else id = parseInt(input);
