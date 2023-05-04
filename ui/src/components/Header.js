@@ -1,4 +1,4 @@
-import "../bootstrap/css/bootstrap.css"
+import "../bootstrap/css/bootstrap.css";
 
 function Header() {
     return (
@@ -10,7 +10,7 @@ function Header() {
             >
                 <span>ESK for Student Enrollment</span>
             </div>
-            </div>
+        </div>
     );
 
 }

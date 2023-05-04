@@ -19,20 +19,16 @@
 } */
 
 .back {
-
-  padding-top: 20vh;
-  height: 100vh;
-
+    padding-top: 20vh;
+    height: 100vh;
 }
 
 .form {
- 
-  background-color: #daa32c;
-  margin-top: 125px ;
-  width: 80%;
-  padding: 50px;
-
-  border-radius: 10px;
+    background-color: #daa32c;
+    margin-top: 125px ;
+    width: 80%;
+    padding: 50px;
+    border-radius: 10px;
 }
 
 

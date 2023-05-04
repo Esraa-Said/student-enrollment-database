@@ -1,27 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import Header from './Header';
-import Options from './Options';
 import './Groups.css';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import GetAllStudents from './GetAllStudents';
-import GetInfoGroupStudents from './GetInfoGroupStudents';
-import GetOneGroupStudents from './GetOneGroupStudents';
-import { groupid } from './Groups';
 import { group } from './Groups';
-
-
 
 export default function UpdateStudent() {
     var dast = {};
-    async function updatest(x, id) {
-        const { data } = await axios.patch(`${process.env.REACT_APP_BASE_URL}/student/${id}`, x)
-        console.log(data)
 
+    async function updatest(x, id) {
+        const { data } = await axios.patch(`${process.env.REACT_APP_BASE_URL}/student/${id}`, x);
+        console.log(data);
     }
 
     const [groupstudent, setonegroupstudent] = useState([]);
@@ -32,22 +20,19 @@ export default function UpdateStudent() {
             .get(`${process.env.REACT_APP_BASE_URL}/student/${id}`)
 
             .then((res) => {
-                setonegroupstudent(res.data)
+                setonegroupstudent(res.data);
             })
-            .catch((err) => console.log(err))
+            .catch((err) => console.log(err));
 
 
-    }, [id])
-    console.log(groupstudent[0])
-
-    //console.log(groupstudent[0].first_name)
+    }, [id]);
 
     function show() {
         return (
             <form onSubmit={submit}>
                 <div className="form-group row mb-5">
                     <label for="id" className="col-sm-3 col-form-label mr-2">
-                        Student Id
+                        Student ID
                     </label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent[0].student_id}></input>
@@ -92,7 +77,7 @@ export default function UpdateStudent() {
 
                 <div className="form-group row  mb-5">
                     <label for="GroupN" className="col-sm-3 col-form-label mr-2">
-                        Group Number
+                        Academic Year
                     </label>
                     <div className="col-sm-7">
                         <input className="ml-2 groupcheck" type="radio" id="g1" style={{ fontSize: "1.2vw" }} name="group" required></input>
@@ -122,11 +107,9 @@ export default function UpdateStudent() {
                     Add
                 </a>
             </form>
-        )
+        );
 
     }
-
-
 
     function Getidfunc() {
         let d = document.getElementById("search_id");
@@ -135,15 +118,11 @@ export default function UpdateStudent() {
         divSearch.style.display = "none";
         let divData = document.getElementById("getdata");
         divData.style.display = "block";
-
     }
-
 
     function submit() {
 
     }
-
-
 
     return (
         <div>
@@ -174,9 +153,6 @@ export default function UpdateStudent() {
             </div>
 
         </div>
-    )
-
-
-
+    );
 
 }
