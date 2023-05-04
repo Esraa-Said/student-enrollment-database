@@ -83,6 +83,7 @@ export default function ShowStudentInfoup() {
         ret.setAttribute("href", `/select/1/groups/${g}`);
     }
 
+    
     return (
         <div>
             <div className="bg-light w-100 p-5" id="getdata"
@@ -166,7 +167,6 @@ export default function ShowStudentInfoup() {
                         Add
                     </a>
                 </form>
-                {acadmeic()}
             </div>
 
         </div>

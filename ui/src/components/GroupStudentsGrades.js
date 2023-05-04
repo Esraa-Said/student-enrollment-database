@@ -35,6 +35,7 @@ export default function GroupStudentsGrades() {
                 <td>{student.student_id}</td>
                 <td>{student.first_name}</td>
                 <td>{student.last_name}</td>
+                
                 {student.grades.map((grade, index) => {
                     return (
                         <td>

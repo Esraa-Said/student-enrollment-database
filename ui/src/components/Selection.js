@@ -48,7 +48,17 @@ export default function Selection() {
     return (
 
         <div>
-            <Header />
+           <div className="container-sm m-3 p-3 bg-dark"
+                style={
+                    { borderRadius: "10px", fontFamily: "cursive", fontSize: "2vw", color: "#ffffff" }
+                }
+            >
+                <span >ESK for Student Enrollment
+                    
+                </span>
+
+
+            </div>
             <div className='container mt-5'>
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around ">
                     <div className="align-self-center  " data-aos="fade-down-right">
