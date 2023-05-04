@@ -91,7 +91,7 @@ export default function ShowStudentInfoup() {
                 <form >
                     <div className="form-group row mb-5">
                         <label for="id" className="col-sm-3 col-form-label mr-2">
-                            Student Id
+                            Student ID
                         </label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent[0].student_id}></input>
