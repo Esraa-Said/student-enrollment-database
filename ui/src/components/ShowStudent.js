@@ -20,7 +20,7 @@ export default function ShowStudent() {
     const [subject, setSubject] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [RequestError, setRequestError] = useState([])
-		let g = window.location.pathname.split("/").slice(-2)[0]
+	let g = window.location.pathname.split("/").slice(-2)[0]
 
 		useEffect(() => {
 			async function fetchData() {

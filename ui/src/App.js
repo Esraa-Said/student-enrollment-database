@@ -8,6 +8,7 @@ import Main from "./components/Main";
 import Groups from './components/Groups';
 import AddStudent from './components/AddStudent';
 import ShowStudent from './components/ShowStudent';
+import ShowStudentInfoup from './components/ShowStudentInfoup';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             
               <Route path="/select/:id/groups/:id" element={<Groups />} />
               <Route path="/select/:id/groups/:id/:id" element={<ShowStudent />} />
+              <Route path="/select/:id/groups/:id/update/:id" element={<ShowStudentInfoup />} />
 
               {/* <Route path="/loginpass" element={<Loginpass />} /> */}
 
