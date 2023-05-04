@@ -9,7 +9,7 @@ import { Await, json } from 'react-router-dom';
 import GetAllStudents from './GetAllStudents';
 import GetInfoGroupStudents from './GetInfoGroupStudents';
 import GetOneGroupStudents from './GetOneGroupStudents';
-import { group, groupid } from './Groups';
+import { id, groupid } from './Groups';
 import { Link } from 'react-router-dom';
 
 
@@ -18,13 +18,14 @@ export default function GetStudent() {
     function idfun() {
         let studentinput = document.getElementById("search_id");
         let link = document.getElementById("search");
-        link.setAttribute("href", group + '/' + parseInt(studentinput.value));
+        link.setAttribute("href", `/select/${id}/groups/${groupid}/showStudent/` + parseInt(studentinput.value));
     }
 
     return (
         <div>
-            <div className="bg-light p-5 w-100" id="search_div"
-                style={{ fontFamily: "cursive", fontSize: "1.2vw", position: "absolute" }}>
+            <Header/>
+            <div className="bg-light p-5 w-75 mt-5 container" id="search_div"
+                style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
                 <form >
                     <div className="form-group row mb-5">

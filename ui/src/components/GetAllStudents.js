@@ -7,7 +7,6 @@ import { getAllStudents, } from './Options';
 import FunctionsOp from './FunctionsOp';
 import { Await, json } from 'react-router-dom';
 
-
 export default function GetAllStudents() {
     const [data, setData] = useState([]);
 
@@ -40,6 +39,16 @@ export default function GetAllStudents() {
 
     return (
         <div>
+            <Header/>
+            <div id="getAll"
+                  className="get w-75 mt-5 container-fluid"
+                  style={{
+                     overflow: "auto",
+                     height: "78vh",
+                     fontFamily: "Arial",
+                     fontSize: "1vw",
+                     textAlign: "center",
+                  }}>
             <div className="table-responsive table-hover">
                 <table class="table">
                     <thead>
@@ -59,6 +68,7 @@ export default function GetAllStudents() {
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     );
 }

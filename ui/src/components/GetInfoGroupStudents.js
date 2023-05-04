@@ -40,8 +40,9 @@ export default function GetInfoGroupStudents() {
 
     return (
         <div>
+            <Header/>
             <div
-                className="get w-100 "
+                className="get w-75 container-fluid mt-5"
                 id="getinfo"
                 style={{
 
@@ -50,7 +51,6 @@ export default function GetInfoGroupStudents() {
                     fontFamily: "Arial",
                     fontSize: "1vw",
                     textAlign: "center",
-                    position: "absolute",
 
                 }}>
                 <div className="table-responsive table-hover">

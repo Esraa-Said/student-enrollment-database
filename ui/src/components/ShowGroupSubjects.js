@@ -42,17 +42,15 @@ export default function ShowGroupSubjects() {
 
     return (
         <div >
+            <Header/>
             <div
-                className="get w-30 bg-light"
+                className="get w-50 bg-light container-fluid mt-5"
                 id="getsubjects"
                 style={{
                     overflow: "auto",
-                    height: "78vh",
                     fontFamily: "Arial",
                     fontSize: "1vw",
                     textAlign: "center",
-                    position: "absolute",
-                    left: "30%"
                 }}>
                 <div className="table-responsive table-hover">
                     <table class="table">

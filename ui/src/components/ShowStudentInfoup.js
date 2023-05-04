@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { group } from './Groups';
 
 export default function ShowStudentInfoup() {
 
     let id = window.location.pathname.split("/").slice(-1)[0];
     const [groupstudent, setonegroupstudent] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let g = window.location.pathname.split("/").slice(-3)[0];
+    const [checkId, setCheckId] = useState(false);
+
+    const [checkId, setCheckId] = useState(false);
 
 
-    function acadmeic() {
-        let groups = document.getElementsByClassName("groupcheck");
-        groups[g - 1].defaultChecked = "true";
-    }
+  
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${id}`);
+                const res = await axios.get(
+                    `${process.env.REACT_APP_BASE_URL}/student/${id}`
+                );
                 setonegroupstudent(res.data);
                 setIsLoading(false);
             } catch (err) {
-                console.log(err.response);
+                setCheckId(true);
                 setIsLoading(false);
             }
         }
@@ -31,11 +31,14 @@ export default function ShowStudentInfoup() {
         console.log(groupstudent);
 
 
-    }, [id, g]);
+    }, []);
 
     if (isLoading) {
         return <div>Loading...</div>;
+    }
 
+    if (checkId) {
+        return <div>no id = {id}</div>;
     }
 
     async function updateest(x) {
@@ -43,6 +46,7 @@ export default function ShowStudentInfoup() {
         console.log(data);
     }
 
+    let validation = true
     function submit() {
         var dast = {};
         let d = document.getElementById("id0");
@@ -51,8 +55,8 @@ export default function ShowStudentInfoup() {
         let gn = document.getElementsByClassName("groupcheck");
         let em = document.getElementById("em");
         let pn = document.getElementById("pn");
-        
-        // validation insert 
+
+        // validation insert
         let x = 0;
         for (let i = 0; i < 4; i++) {
             if (gn[i].checked === true) {
@@ -68,12 +72,27 @@ export default function ShowStudentInfoup() {
         dast["email"] = em.value;
         dast["phone_number"] = pn.value;
 
+        //validation update
+        let pattern = "^[^0-9]*$";
+        if (fn.value.length < 3) console.log("first name is too short");
+        if (ln.value.length < 3) console.log("last name is too short");
+        if (fn.value.length >= 100) console.log("first name is too long");
+        if (ln.value.length >= 100) console.log("last name is too long");
+        if (fn.value.match(pattern) === null)
+            console.log("name should not has numbers");
+        if (ln.value.match(pattern)  === null)
+            console.log("name should not has numbers");
+
+        let phoneRegx = /^(010|012|015|011)\d{8}$/;
+        if (pn.value.match(phoneRegx) === null)
+            console.log("validate phone number");
+        // end validation
+
         updateest(dast);
         alert("updated");
-        let ret = document.getElementById("submitForm");
-        ret.setAttribute("href", `/select/1/groups/${g}`);
+      
     }
-
+    
     return (
         <div>
             <div className="bg-light w-100 p-5" id="getdata"
@@ -88,6 +107,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent[0].student_id}></input>
                         </div>
                     </div>
+
 
                     <div className="form-group row  mb-5">
                         <label for="firstN" className="col-sm-3 col-form-label mr-2">
@@ -153,7 +173,7 @@ export default function ShowStudentInfoup() {
                             </label>
                         </div>
                     </div>
-                    <a href={group} type="submit" class="btn btn-primary" id="submitForm" onClick={submit}>
+                    <a href='' type="submit" class="btn btn-primary" id="submitForm" onClick={submit}>
                         Add
                     </a>
                 </form>
