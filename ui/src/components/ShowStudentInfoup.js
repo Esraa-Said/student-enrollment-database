@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import GetAllStudents from './GetAllStudents';
-import GetInfoGroupStudents from './GetInfoGroupStudents';
-import GetOneGroupStudents from './GetOneGroupStudents';
-import { groupid } from './Groups';
 import { group } from './Groups';
 
 export default function ShowStudentInfoup() {
@@ -82,7 +73,6 @@ export default function ShowStudentInfoup() {
         let ret = document.getElementById("submitForm");
         ret.setAttribute("href", `/select/1/groups/${g}`);
     }
-
     
     return (
         <div>
@@ -92,7 +82,7 @@ export default function ShowStudentInfoup() {
                 <form >
                     <div className="form-group row mb-5">
                         <label for="id" className="col-sm-3 col-form-label mr-2">
-                            Student Id
+                            Student ID
                         </label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent[0].student_id}></input>
@@ -167,6 +157,7 @@ export default function ShowStudentInfoup() {
                         Add
                     </a>
                 </form>
+                {/* {acadmeic()} */}
             </div>
 
         </div>

@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import React from 'react';
 import "../bootstrap/css/bootstrap.css";
-import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
 
 
 {/* start get All students */ }

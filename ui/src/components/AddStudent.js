@@ -1,16 +1,6 @@
 import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import GetAllStudents from './GetAllStudents';
-import GetInfoGroupStudents from './GetInfoGroupStudents';
-import GetOneGroupStudents from './GetOneGroupStudents';
-import ShowGroupSubjects from './ShowGroupSubjects';
-import { groupid } from './Groups';
 import { group } from './Groups';
 
 
