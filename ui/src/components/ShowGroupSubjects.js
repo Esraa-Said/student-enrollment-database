@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
@@ -28,6 +27,8 @@ export default function ShowGroupSubjects() {
             <tr key={index}>
                 <td>{subject.subject_id}</td>
                 <td>{subject.subject_name}</td>
+                <td>{subject.teacher_id}</td>
+                <td>{subject.fist_name + " " + subject.last_name}</td>
             </tr>
         );
     });
@@ -52,6 +53,8 @@ export default function ShowGroupSubjects() {
                             <tr className="table-success">
                                 <th>Subject ID</th>
                                 <th>Subject Name</th>
+                                <th>Teacher ID</th>
+                                <th>Teacher Name</th>
                             </tr>
                         </thead>
                         <tbody>
