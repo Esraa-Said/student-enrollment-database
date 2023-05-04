@@ -19,36 +19,33 @@ export default function ShowStudent() {
     const [groupstudent, setonegroupstudent] = useState([]);
     const [subject, setSubject] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let g = window.location.pathname.split("/").slice(-2)[0]
+    const [RequestError, setRequestError] = useState([])
+		let g = window.location.pathname.split("/").slice(-2)[0]
 
+		useEffect(() => {
+			async function fetchData() {
+				try {
+					const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/group/${g}/students/${id}`)
+					setonegroupstudent(res.data)
+					setSubject(res.data["student_data"]["grades"])
+					setIsLoading(false)
+				} catch (err) {
+					console.log(err.response)
+					setRequestError(err.response)
+					// debugger
+					setIsLoading(false)
+				}
+			}
+			fetchData()
+		}, [id, g])
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
+		if (isLoading) {
+			return <div>Loading...</div>
+		}
 
-
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/group/${g}/students/${id}`)
-
-
-                setonegroupstudent(res.data)
-               setSubject(res.data["student_data"]["grades"])
-                // console.log(res.data)
-                setIsLoading(false);
-
-            }
-            catch (err) {
-                console.log(err)
-                setIsLoading(false);
-            }
-        }
-        fetchData();
-    }, [])
-
-
-    
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+		if (RequestError && RequestError.status === 400) {
+			return <div>{RequestError.data.err}</div>
+		}
 
     return (
 
