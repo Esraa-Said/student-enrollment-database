@@ -82,7 +82,7 @@ export default function UpdateGrades2() {
                     textAlign: "center",
                 }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student Grades</h2>
-                <form >
+                <form  >
                     <div className="form-group row mb-5">
                         <label for="id" className="col-sm-3 col-form-label mr-2">
                             Student ID
