@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import "./bootstrap/css/bootstrap.css";
 import Selection from "./components/Selection";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
@@ -18,6 +18,7 @@ import GroupStudentsGrades from './components/GroupStudentsGrades';
 import UpdateGrades1 from './components/UpdateGrades1'; 
 import UpdateGrades2 from './components/UpdateGrades2';
 
+
 function App() {
 
 
@@ -30,7 +31,8 @@ function App() {
 
                     <switch>
                         <Routes>
-                            <Route path="/main" element={<Main />} />
+                            <Route path="" element={<Main />} />
+                            <Route path="main" element={<Main />} />
                             <Route path="/select/:id" element={<Selection />} />
                             <Route path="/select/:id/groups/:id" element={<Groups />} />
                             <Route path="/select/:id/groups/:id/showStudent/:id" element={<ShowStudent />} />
