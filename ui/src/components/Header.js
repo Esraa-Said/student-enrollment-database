@@ -11,6 +11,8 @@ function Header() {
         setIsActive(!isActive);
     }
 
+
+
     if (id === '1') {
         for (let i = 0; i < elements.length; ++i) {
             elements[i].style.pointerEvents = 'none';
@@ -31,49 +33,49 @@ function Header() {
                         <i class="fa-solid fa-bars"></i></button>
                 </span>
             </div>
-            <div className={isActive ? 'active sidebar bg-dark p-5' : 'sidebar bg-dark '} >
+            <div className={isActive ? 'active sidebar bg-dark p-5' : 'sidebar bg-dark '} id="sideid" >
                 <div className='text-light'>
-                    <h2 style={{ marginBottom: "60px", fontFamily: "cursive" }}>Options</h2>
+                    <h2 style={{ marginBottom: "60px", fontFamily: "cursive",fontSize:"1.2vw" }}>Options</h2>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/showAllStudents`} className='btn btn-lg btn-secondary mb-5 ' onClick={() => { side(); }}  >Show All Groups' Students</a>
+                    <a href={`/select/${id}/groups/${groupid}/showAllStudents`} className='btn btn-lg btn-secondary mb-5 ' onClick={() => { side(); }} style={{fontSize:"1vw"}}  >Show All Groups' Students</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/oneGroupStudents`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Show Group Students</a>
+                    <a href={`/select/${id}/groups/${groupid}/oneGroupStudents`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }} style={{fontSize:"1vw"}}>Show Group Students</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/showStudentsInfo`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Show Group Students Info</a>
+                    <a href={`/select/${id}/groups/${groupid}/showStudentsInfo`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }} style={{fontSize:"1vw"}}>Show Group Students Info</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/showStudentsgrades`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Show Group Students Grades </a>
+                    <a href={`/select/${id}/groups/${groupid}/showStudentsgrades`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}style={{fontSize:"1vw"}}>Show Group Students Grades </a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/showGroupSubjects`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Show Group Subjects</a>
+                    <a href={`/select/${id}/groups/${groupid}/showGroupSubjects`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}style={{fontSize:"1vw"}}>Show Group Subjects</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/showStudent`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Show Student</a>
+                    <a href={`/select/${id}/groups/${groupid}/showStudent`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}style={{fontSize:"1vw"}}>Show Student</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/addstudent`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Add Student</a>
+                    <a href={`/select/${id}/groups/${groupid}/addstudent`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}style={{fontSize:"1vw"}}>Add Student</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/deletestudent`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Delete Student</a>
+                    <a href={`/select/${id}/groups/${groupid}/deletestudent`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}style={{fontSize:"1vw"}}>Delete Student</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/updateStudentInfo`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Update Student Info</a>
+                    <a href={`/select/${id}/groups/${groupid}/updateStudentInfo`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}style={{fontSize:"1vw"}}>Update Student Info</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/updateStudentGrades1`} className='disable btn btn-lg btn-secondary mb-5'>Update Grade</a>
+                    <a href={`/select/${id}/groups/${groupid}/updateStudentGrades1`} className='disable btn btn-lg btn-secondary mb-5'style={{fontSize:"1vw"}}>Update Grade</a>
                 </div>
 
             </div>
