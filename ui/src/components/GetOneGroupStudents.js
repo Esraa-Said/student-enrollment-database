@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
 import { groupid } from './Groups';
 
 
@@ -51,34 +47,35 @@ export default function GetOneGroupStudents() {
 
     return (
         <div>
-            <Header/>
-            <div style={{  overflow: "auto",
-                     height: "78vh",
-                     fontFamily: "Arial",
-                     fontSize: "1vw",
-                     textAlign: "center",
-                   }} className='container-fluid w-75 mt-5'>
-            <div className="table-responsive table-hover">
-                <table class="table">
-                    <thead >
-                        <tr className="table-success">
-                            <th>Student ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            {subject.map((v, i) => {
-                                return <th>{v.subject_name}</th>;
-                            })}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {showgroupstudents}
-                        {/* {JSON.stringify(data.data)} */}
-                    </tbody>
-                </table>
+            <Header />
+            <div style={{
+                overflow: "auto",
+                // height: "78vh",
+                fontFamily: "Arial",
+                fontSize: "1vw",
+                textAlign: "center",
+            }} className='container-fluid mt-5'>
+                <div className="table-responsive table-hover">
+                    <table class="table">
+                        <thead >
+                            <tr className="table-success">
+                                <th>Student ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                {subject.map((v, i) => {
+                                    return <th>{v.subject_name}</th>;
+                                })}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {showgroupstudents}
+                            {/* {JSON.stringify(data.data)} */}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
         </div>
     );
 }

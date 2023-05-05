@@ -45,14 +45,14 @@ export default function GroupStudentsGrades() {
         <div>
             <Header />
 
-            <div className='container-fluid w-75 mt-5' style={{
-                height: "78vh",
+            <div className='container-fluid  mt-5' style={{
+                // height: "78vh",
                 fontFamily: "Arial",
                 fontSize: "1vw",
                 textAlign: "center",
                 overflow:"auto"
             }}>
-                <div className="table-responsive table-hover table-bordered" >
+                <div className="table-responsive table-hover" >
                     <table class="table" >
                         <thead >
                             <tr className="table-success">

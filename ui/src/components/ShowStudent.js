@@ -2,15 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import GetAllStudents from './GetAllStudents';
-import GetInfoGroupStudents from './GetInfoGroupStudents';
-import GetOneGroupStudents from './GetOneGroupStudents';
 import { id, groupid } from './Groups';
-import { Link } from 'react-router-dom';
 
 export default function ShowStudent() {
 
@@ -18,7 +10,6 @@ export default function ShowStudent() {
     const [groupstudent, setonegroupstudent] = useState([]);
     const [subject, setSubject] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [RequestError, setRequestError] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -28,74 +19,76 @@ export default function ShowStudent() {
                 setSubject(res.data["student_data"]["grades"]);
                 setIsLoading(false);
             } catch (err) {
-                console.log(err.response);
-                setRequestError(err.response);
-                // debugger
                 setIsLoading(false);
             }
         }
         fetchData();
-    }, []);
+    });
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    if (RequestError && RequestError.status === 400) {
-        return <div>{RequestError.data.err}</div>;
-    }
-
     return (
         <div>
             <Header />
-            <div className="table-responsive table-hover">
 
+            <div
+                className="get w-50 bg-light container-fluid mt-5"
+                id="getsubjects"
+                style={{
+                    overflow: "auto",
+                    fontFamily: "Arial",
+                    fontSize: "1vw",
+                    textAlign: "center",
+                }}>
 
-                <table class="table w-50  "  >
-                    <tbody >
-                        <tr >
-                            <th className="table-success " >Student ID</th>
-                            <td>{groupstudent["student_data"]["student_id"]} </td>
-                        </tr>
+                <div className="table-responsive table-hover">
+                    <table class="table">
+                        <tbody >
+                            <tr >
+                                <td className="table-success " style={{width:'20vw'}}>Student ID</td>
+                                <td>{groupstudent["student_data"]["student_id"]} </td>
+                            </tr>
 
-                        <tr >
-                            <th className="table-success">First Name</th>
-                            <td>{groupstudent["student_data"]["first_name"]}</td>
-                        </tr>
+                            <tr >
+                                <td className="table-success">First Name</td>
+                                <td>{groupstudent["student_data"]["first_name"]}</td>
+                            </tr>
 
-                        <tr >
-                            <th className="table-success">Last Name</th>
-                            <td>{groupstudent["student_data"]["last_name"]}</td>
-                        </tr>
+                            <tr >
+                                <td className="table-success">Last Name</td>
+                                <td>{groupstudent["student_data"]["last_name"]}</td>
+                            </tr>
 
-                        <tr >
-                            <th className="table-success">Group ID</th>
-                            <td>{groupstudent["student_data"]["group_id"]}</td>
-                        </tr>
+                            <tr >
+                                <td className="table-success">Group ID</td>
+                                <td>{groupstudent["student_data"]["group_id"]}</td>
+                            </tr>
 
-                        <tr >
-                            <th className="table-success">Email</th>
-                            <td>{groupstudent["student_data"]["email"]}</td>
-                        </tr>
+                            <tr >
+                                <td className="table-success">Email</td>
+                                <td>{groupstudent["student_data"]["email"]}</td>
+                            </tr>
 
-                        <tr>
-                            <th className="table-success">Phone Number</th>
-                            <td>{groupstudent["student_data"]["phone_number"]}</td>
-                        </tr>
+                            <tr>
+                                <td className="table-success">Phone Number</td>
+                                <td>{groupstudent["student_data"]["phone_number"]}</td>
+                            </tr>
 
-                        {subject.map((v, i) => {
-                            return <tr><th className="table-success">{v.subject_name}</th>
-                                <td>
-                                    {v.grade}
-                                    <br></br>
-                                    {v.status}
-                                </td></tr>;
-                        })}
-                    </tbody>
+                            {subject.map((v, i) => {
+                                return <tr><td className="table-success">{v.subject_name}</td>
+                                    <td>
+                                        {v.grade}
+                                        <br></br>
+                                        {v.status}
+                                    </td></tr>;
+                            })}
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
             </div>
-
         </div>
     );
 }

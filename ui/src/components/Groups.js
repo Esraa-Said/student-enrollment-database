@@ -1,17 +1,7 @@
 import React from 'react';
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Options from './Options';
 import './Options.css';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import GetAllStudents from './GetAllStudents';
-import GetInfoGroupStudents from './GetInfoGroupStudents';
-import GetOneGroupStudents from './GetOneGroupStudents';
-import ShowGroupSubjects from './ShowGroupSubjects';
-import AddStudent from './AddStudent';
-import DeleteStudent from './DeleteStudent';
 import GetStudent from './GetStudent';
 import GroupStudentsGrades from './GroupStudentsGrades';
 import UpdateStudent from './UpdateStudentInfo';

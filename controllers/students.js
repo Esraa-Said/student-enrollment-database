@@ -28,8 +28,7 @@ export const getStudentById = async (req, res) => {
 };
 
 export const createStudent = async (req, res) => {
-    const { student_id, first_name, last_name, group_id, email, phone_number } =
-        req.body;
+    const { student_id, first_name, last_name, group_id, email, phone_number } = req.body;
     let val;
     try {
         val = await db.query(`INSERT INTO students VALUES (?,?,?,?,?,?)`, [
