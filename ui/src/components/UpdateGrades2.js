@@ -21,54 +21,184 @@ export default function UpdateGrades2() {
                 setSubject(res.data["student_data"]["grades"]);
                 setIsLoading(true);
             } catch (err) {
-                setIsLoading(false);
+                setIsLoading(true);
             }
         }
         fetchData();
         console.log(groupstudent)
 
-    }, []);
-    console.log(groupstudent.student_data.student_id)
+    }, [stid]);
 
-    function submit() {
-
+    async function Send(data)
+    {
+        await axios.patch(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${stid}`, data);
+        alert("updated")
     }
 
-    if (!groupstudent) {
+    function submit() {
+        let grades = document.getElementsByTagName("input")
+
+
+        var gradesStudent = {};
+        for (let i = 0; i < 12; i++) 
+            gradesStudent[subject[i].subject_name] = grades[i].value;
+
+
+        
+       // console.log(gradesStudent)
+       Send(gradesStudent);
+    }
+
+    if (!isLoading) {
         return <div>Loading...</div>;
     }
 
+    console.log(groupstudent.student_data.student_id)
 
     return (
-        // <div>
-        //     <Header />
-        //     <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
-        //         style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
-        //         <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student Grades</h2>
-        //         <form >
-        //             <div className="form-group row mb-5">
-        //                 <label for="id" className="col-sm-3 col-form-label mr-2">
-        //                     Student ID
-        //                 </label>
-        //                 <div class="col-sm-7">
-        //                     <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.student_id}></input>
-        //                 </div>
-        //             </div>
-
-
-        //             {subject.map((v, i) => {
-        //                 return <th>{v.subject_name}</th>;
-        //             })}
-
-        //             <a href='' type="submit" class="btn btn-primary" id="submitForm" onClick={submit}>
-        //                 Update
-        //             </a>
-        //         </form>
-        //     </div>
-
-        // </div>
         <div>
+            <Header />
+            <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
+                style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
+                <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student Grades</h2>
+                <form >
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Student ID
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.student_id}></input>
+                        </div>
+                    </div>
+
+                    <div className='table-responsive table-hover table-border ' style={{ marginTop: "100px" }} >
+                        <table className='table '>
+                            <thead>
+                                <tr className='bg-warning' style={{ fontSize: "1.2vw" }} >
+                                    <th x>
+                                        {subject[0].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[1].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[2].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[3].subject_name}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[0].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[1].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[2].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[3].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='table-responsive table-hover table-border ' >
+                        <table className='table '>
+                            <thead>
+                                <tr className='bg-warning' style={{ fontSize: "1.2vw" }} >
+                                    <th x>
+                                        {subject[4].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[5].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[6].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[7].subject_name}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[4].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[5].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[6].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[7].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='table-responsive table-hover table-border ' >
+                        <table className='table '>
+                            <thead>
+                                <tr className='bg-warning' style={{ fontSize: "1.2vw" }} >
+                                    <th x>
+                                        {subject[8].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[9].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[10].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[11].subject_name}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[8].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[9].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[10].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[11].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href='#' type="submit" class="btn  btn-danger" id="submitForm" style={{ fontSize: "1.3vw" }} onClick={submit}>
+                        Update
+                    </a>
+                </form>
+            </div>
+
         </div>
+
     )
 
 
