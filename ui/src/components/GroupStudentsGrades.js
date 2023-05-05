@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { groupid } from './Groups';
+import { groupid ,id} from './Groups';
 import Header from './Header';
 
 export default function GroupStudentsGrades() {
@@ -72,6 +72,10 @@ export default function GroupStudentsGrades() {
                     </table>
                 </div>
             </div>
+            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
+            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
+
+         </a>
         </div>
     );
 }

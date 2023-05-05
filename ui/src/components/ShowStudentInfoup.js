@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
+import {id} from './Groups'
 
 export default function ShowStudentInfoup() {
-    let id = window.location.pathname.split("/").slice(-1)[0];
+    let stid = window.location.pathname.split("/").slice(-1)[0];
     const [groupstudent, setonegroupstudent] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [checkId, setCheckId] = useState(false);
@@ -17,7 +18,7 @@ export default function ShowStudentInfoup() {
         async function fetchData() {
             try {
                 const res = await axios.get(
-                    `${process.env.REACT_APP_BASE_URL}/student/${id}`
+                    `${process.env.REACT_APP_BASE_URL}/student/${stid}`
                 );
                 setonegroupstudent(res.data);
                 setIsLoading(false);
@@ -33,7 +34,7 @@ export default function ShowStudentInfoup() {
     }
 
     async function updateest(x) {
-        await axios.patch(`${process.env.REACT_APP_BASE_URL}/student/${id}`, x);
+        await axios.patch(`${process.env.REACT_APP_BASE_URL}/student/${stid}`, x);
     }
 
     function submit(event) {
@@ -255,7 +256,10 @@ export default function ShowStudentInfoup() {
                 </form>
                 {/* {acadmeic()} */}
             </div>
+            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
+            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
 
+         </a>
         </div>
     );
 }

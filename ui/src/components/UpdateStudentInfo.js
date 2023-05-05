@@ -63,6 +63,10 @@ export default function UpdateStudentInfo() {
                 </form>
 
             </div>
+            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${l_id}`}>
+            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
+
+         </a>
         </div>
     );
 }
