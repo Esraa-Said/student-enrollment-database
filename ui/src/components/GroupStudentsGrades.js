@@ -8,6 +8,10 @@ export default function GroupStudentsGrades() {
     const [onegroupstudents, setonegroupstudents] = useState([]);
     const [subject, setSubject] = useState([]);
 
+    function style(n) {
+        if (n >= 50) return 'green'
+        else return 'red'
+    };
     function Get() {
         useEffect(() => {
             axios
@@ -33,7 +37,10 @@ export default function GroupStudentsGrades() {
                         <td>
                             {grade.grade}
                             <br></br>
-                            {grade.status}
+                            <span style={{ color: style(grade.grade) }}>
+                                {grade.status}
+
+                            </span>
                         </td>
                     );
                 })}
@@ -45,15 +52,15 @@ export default function GroupStudentsGrades() {
         <div>
             <Header />
 
-            <div className='container-fluid  mt-5' style={{
+            <div className='container-fluid  mt-5 ' style={{
                 // height: "78vh",
                 fontFamily: "Arial",
                 fontSize: "1vw",
                 textAlign: "center",
                 overflow: "auto"
             }}>
-                <div className="table-responsive table-hover" >
-                    <table class="table" >
+                <div className="table-responsive table-hover " >
+                    <table class="table " >
                         <thead >
                             <tr className="table-success">
                                 <th>Student ID </th>
@@ -73,7 +80,7 @@ export default function GroupStudentsGrades() {
                 </div>
             </div>
             <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
-                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{ color: 'grey' }}></i>
             </a>
         </div>
     );
