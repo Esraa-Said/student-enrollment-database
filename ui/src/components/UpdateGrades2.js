@@ -11,11 +11,9 @@ export default function UpdateGrades2() {
     const [isLoading, setIsLoading] = useState(false);
     const [subject, setSubject] = useState([]);
 
-
     useEffect(() => {
         async function fetchData() {
             try {
-
                 const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${stid}`);
                 setonegroupstudent(res.data);
                 setSubject(res.data["student_data"]["grades"]);
@@ -27,31 +25,62 @@ export default function UpdateGrades2() {
         fetchData();
     }, [stid]);
 
-    async function Send(data) {
-        await axios.patch(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${stid}`, data);
-        alert("updated");
-    }
+    async function submit(event) {
+        event.preventDefault();
 
-    function submit() {
         let grades = document.getElementsByTagName("input");
-
+        let element = document.querySelector('.up-msg');
+        let ok = true;
         var gradesStudent = {};
-        for (let i = 1; i <= subject.length; i++)
-            gradesStudent[subject[i - 1].subject_name] = grades[i].value;
+        let g;
 
-        console.log(gradesStudent);
-        Send(gradesStudent);
+        element.innerHTML = '';
+        element.style.color = "red";
+        for (let i = 0; i < grades.length; ++i) {
+            g = grades[i].value;
+            if (typeof g === 'string') {
+                if (Number.isNaN(parseInt(g))) {
+                    element.innerHTML = 'Grades should be numbers';
+                    ok = false;
+                }
+                else g = parseInt(g);
+            }
+            
+            if (ok && (g < 0 || g > 100)) {
+                element.innerHTML = 'Grades should be in range [0-100]';
+                ok = false;
+            }
+        }
+        
+        if(ok) {
+            for (let i = 1; i <= subject.length; i++) 
+                gradesStudent[subject[i - 1].subject_name] = grades[i].value;
+            
+            try {
+                await axios.patch(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${stid}`, gradesStudent);
+                element.style.color = "green";
+                element.innerHTML = 'Updated Successfully';
+            }
+            catch {
+                element.innerHTML = 'Updation failed';
+            }
+        }
     }
 
     if (!isLoading) {
         return <div>Loading...</div>;
     }
-    return (
 
+    return (
         <div>
             <Header />
             <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
-                style={{ fontFamily: "cursive", fontSize: "1.2vw", }}>
+                style={{
+                    overflow: "auto",
+                    fontFamily: "Arial",
+                    fontSize: "1vw",
+                    textAlign: "center",
+                }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student Grades</h2>
                 <form  >
                     <div className="form-group row mb-5">
@@ -63,10 +92,10 @@ export default function UpdateGrades2() {
                         </div>
                     </div>
 
-                    <div className='table-responsive table-hover table-border ' style={{ marginTop: "100px" }} >
+                    <div className='table-responsive table-hover table-border ' style={{ marginTop: "80px" }} >
                         <table className='table '>
                             <thead>
-                                <tr className='bg-warning' style={{ fontSize: "1.2vw" }} >
+                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
                                     <th x>
                                         {subject[0].subject_name}
                                     </th>
@@ -85,19 +114,19 @@ export default function UpdateGrades2() {
                                 <tr >
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[0].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[0].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[1].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[1].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[2].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[2].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[3].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[3].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                 </tr>
                             </tbody>
@@ -106,7 +135,7 @@ export default function UpdateGrades2() {
                     <div className='table-responsive table-hover table-border ' >
                         <table className='table '>
                             <thead>
-                                <tr className='bg-warning' style={{ fontSize: "1.2vw" }} >
+                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
                                     <th x>
                                         {subject[4].subject_name}
                                     </th>
@@ -125,19 +154,19 @@ export default function UpdateGrades2() {
                                 <tr >
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[4].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[4].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[5].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[5].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[6].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[6].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[7].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[7].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                 </tr>
                             </tbody>
@@ -146,7 +175,7 @@ export default function UpdateGrades2() {
                     <div className='table-responsive table-hover table-border ' >
                         <table className='table '>
                             <thead>
-                                <tr className='bg-warning' style={{ fontSize: "1.2vw" }} >
+                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
                                     <th x>
                                         {subject[8].subject_name}
                                     </th>
@@ -165,13 +194,13 @@ export default function UpdateGrades2() {
                                 <tr >
                                     <td>
                                         <input type='text' class="form-control"
-                                            defaultValue={subject[8].grade} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[8].grade} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     {subject.map((v, i) => {
                                         if (i > 8) {
                                             return <td>
                                                 <input type='text' class="form-control"
-                                                    defaultValue={subject[i].grade} style={{ fontSize: "1.2vw" }} />
+                                                    defaultValue={subject[i].grade} style={{ fontSize: "0.95vw" }} />
                                             </td>;
                                         }
                                     })}
@@ -179,13 +208,20 @@ export default function UpdateGrades2() {
                             </tbody>
                         </table>
                     </div>
-                    <a href='#' type="submit" class="btn  btn-danger" id="submitForm" style={{ fontSize: "1.3vw", }} onClick={submit}>
+                    <br></br>
+                    <div
+                        className="form-group row  mb-5"
+                        class="up-msg"
+                        style={{ color: "red", fontSize: "14px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace' }}
+                    ></div>
+                    <br></br>
+                    <a href='#' type="submit" class="btn  btn-danger" id="submitForm" onClick={submit}>
                         Update
                     </a>
                 </form>
             </div>
             <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
-                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{ color: 'grey' }}></i>
             </a>
         </div>
 
