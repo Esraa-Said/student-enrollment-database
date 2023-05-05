@@ -31,70 +31,11 @@ export default function Groups() {
    return (
       <div>
          <Header />
+         <a style={{position:"fixed",top:"95%",left:"3%",cursor:"pointer"}} href="">
+         <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
 
-         <div className="d-flex  justify-content-center  align-content-around  ">
-            .
-      
-
-
-            <div className=" ml-3 mt-5 mr-3  " style={{ width: "76vw", height: "75vh", position: "relative" }}>
-
-
-
-
-
-
-
-
-              
-               {/* end one group students info */}
-
-
-               {/* start show one student in specific group */}
-
-               <div
-                  className="get w-100 bg-light"
-                  id="getstudent"
-                  style={{  overflow: "auto",
-                  height: "78vh",
-                  fontFamily: "Arial",
-                  fontSize: "1vw",
-                  textAlign: "center",
-                  display: "none",
-                  position: "absolute" }}>
-                  <GetStudent />
+         </a>
                </div>
-               {/* end show one student in specific group */}
-
-
-
-               {/* start students grades */}
-
-               <div id="stdgrades"
-                  className="get w-100"
-
-                  style={{
-                     overflow: "auto",
-                     height: "78vh",
-                     fontFamily: "Arial",
-                     fontSize: "1vw",
-                     textAlign: "center",
-                     display: "none",
-                     position: "absolute"
-                  }}
-               >
-                  <GroupStudentsGrades />
-               </div>
-
-               {/* end students grades */}
-
-               <div id="updatestudent" style={{ display: "none" }}>
-                  <UpdateStudent />
-               </div>
-
-            </div>
-         </div>
-      </div>
    )
 }
 

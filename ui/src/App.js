@@ -15,6 +15,8 @@ import ShowGroupSubjects from './components/ShowGroupSubjects';
 import GetStudent from './components/GetStudent';
 import GetInfoGroupStudents from './components/GetInfoGroupStudents';
 import GroupStudentsGrades from './components/GroupStudentsGrades';
+import UpdateGrades1 from './components/UpdateGrades1'; 
+import UpdateGrades2 from './components/UpdateGrades2';
 
 function App() {
 
@@ -42,6 +44,9 @@ function App() {
                             <Route path='/select/:id/groups/:id/showStudent' element = {<GetStudent/>}/>
                             <Route path='/select/:id/groups/:id/showStudentsInfo' element = {<GetInfoGroupStudents/>}/>
                             <Route path='/select/:id/groups/:id/showStudentsgrades' element = {<GroupStudentsGrades/>}/>
+                            <Route path='/select/:id/groups/:id/updateStudentGrades1' element = {<UpdateGrades1/>}/>
+                            <Route path='/select/:id/groups/:id/updateStudentGrades1/updateStudentGrades2/:id' element = {<UpdateGrades2/>}/>
+
                             {/* <Route path="/loginpass" element={<Loginpass />} /> */}
                         </Routes>
                     </switch>

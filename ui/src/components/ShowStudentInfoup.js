@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
+import Header from './Header';
 
 export default function ShowStudentInfoup() {
 
@@ -9,7 +10,6 @@ export default function ShowStudentInfoup() {
     const [isLoading, setIsLoading] = useState(true);
     const [checkId, setCheckId] = useState(false);
 
-    const [checkId, setCheckId] = useState(false);
 
 
   
@@ -95,6 +95,7 @@ export default function ShowStudentInfoup() {
     
     return (
         <div>
+            <Header/>
             <div className="bg-light w-100 p-5" id="getdata"
                 style={{ fontFamily: "cursive", fontSize: "1.2vw", position: "absolute" }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student Information</h2>

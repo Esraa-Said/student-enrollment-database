@@ -43,7 +43,7 @@ function Header() {
                     <a href={`/select/${id}/groups/${groupid}/updateStudentInfo`} className='btn btn-lg btn-secondary mb-5' onClick={() => {  side(); }}>Update Student Info</a>
                 </div>
                 <div >
-                    <button className='btn btn-lg btn-secondary mb-5'>Update Grade</button>
+                    <a href={`/select/${id}/groups/${groupid}/updateStudentGrades1`} className='btn btn-lg btn-secondary mb-5'>Update Grade</a>
                 </div>
                 <div >
                     <a href={`/select/${id}/groups/${groupid}/oneGroupStudents`}  className='btn btn-lg btn-secondary mb-5' onClick={() => {  side(); }}>Show Group Students</a>
