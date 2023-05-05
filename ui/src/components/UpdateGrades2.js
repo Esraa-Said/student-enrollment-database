@@ -25,8 +25,6 @@ export default function UpdateGrades2() {
             }
         }
         fetchData();
-        console.log(groupstudent)
-
     }, [stid]);
 
     async function Send(data)
@@ -38,24 +36,43 @@ export default function UpdateGrades2() {
     function submit() {
         let grades = document.getElementsByTagName("input")
 
-
         var gradesStudent = {};
-        for (let i = 1; i < 13; i++) 
+        for (let i = 1; i <= subject.length; i++) 
             gradesStudent[subject[i-1].subject_name] = grades[i].value;
-
-
-        
-       console.log(gradesStudent)
-       Send(gradesStudent);
+    
+        console.log(gradesStudent)
+        Send(gradesStudent);
     }
 
     if (!isLoading) {
         return <div>Loading...</div>;
     }
-
-    console.log(groupstudent.student_data.student_id)
-
+    let x = undefined,y= undefined;
+    if(groupid!=4){
+        x.innerHTML = `<th>
+                                        {subject[9].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[10].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[11].subject_name}
+                                    </th>`
+        y.innerHTML = `<td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[9].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[10].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[11].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>`; 
+    }
     return (
+
         <div>
             <Header />
             <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
@@ -158,15 +175,7 @@ export default function UpdateGrades2() {
                                     <th x>
                                         {subject[8].subject_name}
                                     </th>
-                                    <th>
-                                        {subject[9].subject_name}
-                                    </th>
-                                    <th>
-                                        {subject[10].subject_name}
-                                    </th>
-                                    <th>
-                                        {subject[11].subject_name}
-                                    </th>
+                                    {x}
                                 </tr>
                             </thead>
                             <tbody>
@@ -175,18 +184,7 @@ export default function UpdateGrades2() {
                                         <input type='text' class="form-control"
                                             defaultValue={subject[8].grade} style={{ fontSize: "1.2vw" }} />
                                     </td>
-                                    <td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[9].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>
-                                    <td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[10].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>
-                                    <td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[11].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>
+                                    {y}
                                 </tr>
                             </tbody>
                         </table>
