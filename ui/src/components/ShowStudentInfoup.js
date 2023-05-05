@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Header from './Header';
 
 export default function ShowStudentInfoup() {
     let id = window.location.pathname.split("/").slice(-1)[0];

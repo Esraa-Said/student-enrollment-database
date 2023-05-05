@@ -73,7 +73,7 @@ function Header() {
                 </div>
 
                 <div >
-                    <button className='disable btn btn-lg btn-secondary mb-5'>Update Grade</button>
+                    <a href={`/select/${id}/groups/${groupid}/updateStudentGrades1`} className='disable btn btn-lg btn-secondary mb-5'>Update Grade</a>
                 </div>
 
             </div>
