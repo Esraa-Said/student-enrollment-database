@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 import "../bootstrap/css/bootstrap.css";
 import './Options.css';
 import { id, groupid } from './Groups';
@@ -7,20 +7,23 @@ function Header() {
     const [isActive, setIsActive] = useState(false);
     let elements = document.querySelectorAll('div .disable');
 
+    let menu = useRef()
     function side() {
         setIsActive(!isActive);
     }
 
-    window.addEventListener("click", function (event) {
-        const specificDiv = document.getElementById("sideid");
-        const isClickedOutside = !specificDiv.contains(event.target);
+    useEffect(() => {
+        let handler = (e)=>{
+            if(!menu.current.contains(e.target))
+            setIsActive(false)
+        };
+        document.addEventListener("mousedown", handler);
 
-        if (isClickedOutside) {
-            side()
+        return ()=>{
+            document.removeEventListener("mousedown", handler)
         }
-
-    }
-    )
+      });
+      
 
     if (id === '1') {
         for (let i = 0; i < elements.length; ++i) {
@@ -41,7 +44,7 @@ function Header() {
                     <button type="button" class="btn btn-secondary toggle-sidebar  " onClick={side}>
                         <i class="fa-solid fa-bars"></i></button>
                 </span>
-                <div className={isActive ? 'active sidebar bg-dark p-5' : 'sidebar bg-dark '} >
+                <div className={isActive ? 'active sidebar bg-dark p-5' : 'sidebar bg-dark '} ref={menu} >
                     <div className='text-light'>
                         <h2 style={{ marginBottom: "60px", fontFamily: "cursive", fontSize: "1.2vw" }}>Options</h2>
                     </div>
