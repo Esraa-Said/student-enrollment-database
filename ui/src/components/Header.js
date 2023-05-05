@@ -5,12 +5,19 @@ import { id, groupid } from './Groups';
 
 function Header() {
     const [isActive, setIsActive] = useState(false);
+    let elements = document.querySelectorAll('div .disable');
 
     function side() {
         setIsActive(!isActive);
     }
 
-
+    if (id === '1') {
+        for (let i = 0; i < elements.length; ++i) {
+            elements[i].style.pointerEvents = 'none';
+            elements[i].style.cursor = 'default';
+            elements[i].style.opacity = 0.7;
+        }
+    }
 
     return (
         <div>
@@ -23,8 +30,6 @@ function Header() {
                     <button type="button" class="btn btn-secondary toggle-sidebar  " onClick={side}>
                         <i class="fa-solid fa-bars"></i></button>
                 </span>
-
-
             </div>
             <div className={isActive ? 'active sidebar bg-dark p-5' : 'sidebar bg-dark '} >
                 <div className='text-light'>
@@ -56,22 +61,23 @@ function Header() {
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/addstudent`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Add Student</a>
+                    <a href={`/select/${id}/groups/${groupid}/addstudent`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Add Student</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/deletestudent`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Delete Student</a>
+                    <a href={`/select/${id}/groups/${groupid}/deletestudent`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Delete Student</a>
                 </div>
 
                 <div >
-                    <a href={`/select/${id}/groups/${groupid}/updateStudentInfo`} className='btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Update Student Info</a>
+                    <a href={`/select/${id}/groups/${groupid}/updateStudentInfo`} className='disable btn btn-lg btn-secondary mb-5' onClick={() => { side(); }}>Update Student Info</a>
                 </div>
 
                 <div >
-                    <button className='btn btn-lg btn-secondary mb-5'>Update Grade</button>
+                    <button className='disable btn btn-lg btn-secondary mb-5'>Update Grade</button>
                 </div>
 
-            </div></div>
+            </div>
+        </div>
     );
 }
 
