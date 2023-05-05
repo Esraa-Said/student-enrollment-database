@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { groupid, id as l_id} from './Groups';
+import { groupid, id as l_id } from './Groups';
 import Header from './Header';
 
 export default function UpdateStudentInfo() {
@@ -63,10 +63,9 @@ export default function UpdateStudentInfo() {
                 </form>
 
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${l_id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${l_id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div>
     );
 }

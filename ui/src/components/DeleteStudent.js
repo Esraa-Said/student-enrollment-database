@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { group,groupid,id } from './Groups';
+import { group } from './Groups';
 import Header from './Header';
 
 export default function DeleteStudent() {
@@ -9,7 +9,7 @@ export default function DeleteStudent() {
 
     const deletest = async (event) => {
         event.preventDefault();
-        
+
         const element = document.querySelector(".status");
         let input = document.getElementById("del_id").value;
         let ok = true;
@@ -76,7 +76,7 @@ export default function DeleteStudent() {
                             ></input>
                             <div
                                 class="status"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily:'monospace'}}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace' }}
                             ></div>
                         </div>
                     </div>
@@ -91,10 +91,9 @@ export default function DeleteStudent() {
                     </a>
                 </form>
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div>
     );
 }

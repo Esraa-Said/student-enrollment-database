@@ -47,37 +47,37 @@ export default function ShowStudent() {
                     <table class="table">
                         <tbody >
                             <tr >
-                                <td className="table-success " style={{width:'20vw'}}>Student ID</td>
+                                <th className="table-success " style={{ width: '20vw' }}>Student ID</th>
                                 <td>{groupstudent["student_data"]["student_id"]} </td>
                             </tr>
 
                             <tr >
-                                <td className="table-success">First Name</td>
+                                <th className="table-success">First Name</th>
                                 <td>{groupstudent["student_data"]["first_name"]}</td>
                             </tr>
 
                             <tr >
-                                <td className="table-success">Last Name</td>
+                                <th className="table-success">Last Name</th>
                                 <td>{groupstudent["student_data"]["last_name"]}</td>
                             </tr>
 
                             <tr >
-                                <td className="table-success">Group ID</td>
+                                <th className="table-success">Group ID</th>
                                 <td>{groupstudent["student_data"]["group_id"]}</td>
                             </tr>
 
                             <tr >
-                                <td className="table-success">Email</td>
+                                <th className="table-success">Email</th>
                                 <td>{groupstudent["student_data"]["email"]}</td>
                             </tr>
 
                             <tr>
-                                <td className="table-success">Phone Number</td>
+                                <th className="table-success">Phone Number</th>
                                 <td>{groupstudent["student_data"]["phone_number"]}</td>
                             </tr>
 
                             {subject.map((v, i) => {
-                                return <tr><td className="table-success">{v.subject_name}</td>
+                                return <tr><th className="table-success">{v.subject_name}</th>
                                     <td>
                                         {v.grade}
                                         <br></br>
@@ -89,10 +89,9 @@ export default function ShowStudent() {
                     </table>
                 </div>
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div>
     );
 }

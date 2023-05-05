@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { groupid,group,id } from './Groups';
+import { group, id } from './Groups';
 import Header from './Header';
 
 export default function AddStudent() {
@@ -11,7 +11,7 @@ export default function AddStudent() {
         await axios.post(`${process.env.REACT_APP_BASE_URL}/students`, x);
     }
 
-    const submit = (event) => {
+    const submit = async (event) => {
         event.preventDefault();
 
         let id = document.getElementById("id").value;
@@ -45,7 +45,17 @@ export default function AddStudent() {
             }
             else id = parseInt(id);
         }
-        
+        if (ok) {
+            try {
+                await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${id}`);
+                element.innerHTML = `There is a student with this ID`;
+                ok = false;
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
         element = document.querySelector('.fn-msg');
         element.innerHTML = '';
         if (typeof fn === 'number') {
@@ -66,7 +76,7 @@ export default function AddStudent() {
                 ok = false;
             }
         }
-        
+
         element = document.querySelector('.ln-msg');
         element.innerHTML = '';
         if (typeof ln === 'number') {
@@ -94,14 +104,21 @@ export default function AddStudent() {
             element.innerHTML = `Invalid E-mail`;
             ok = false;
         }
-        
+
         element = document.querySelector('.pn-msg');
         element.innerHTML = '';
         if (pn.match(phoneRegx) === null) {
             element.innerHTML = `Invalid phone number`;
             ok = false;
         }
-        
+
+        element = document.querySelector('.gn-msg');
+        element.innerHTML = '';
+        if (x === 0) {
+            element.innerHTML = `required`;
+            ok = false;
+        }
+
         element = document.querySelector('.add-msg');
         element.innerHTML = '';
         if (ok) {
@@ -143,7 +160,7 @@ export default function AddStudent() {
                             <input type="text" class="form-control" placeholder="student's id" id="id" style={{ fontSize: "1.2vw" }} required></input>
                             <div
                                 class="id-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -156,7 +173,7 @@ export default function AddStudent() {
                             <input type="text" class="form-control" id="fn" placeholder="student's first name" style={{ fontSize: "1.2vw" }} required></input>
                             <div
                                 class="fn-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -169,7 +186,7 @@ export default function AddStudent() {
                             <input type="text" class="form-control" id="ln" style={{ fontSize: "1.2vw" }} placeholder="student's last name" required></input>
                             <div
                                 class="ln-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -182,7 +199,7 @@ export default function AddStudent() {
                             <input type="text" class="form-control" id="em" style={{ fontSize: "1.2vw" }} placeholder="student's email" required></input>
                             <div
                                 class="em-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -195,7 +212,7 @@ export default function AddStudent() {
                             <input type="text" class="form-control" id="pn" style={{ fontSize: "1.2vw" }} placeholder="student's phone number" required></input>
                             <div
                                 class="pn-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -205,7 +222,7 @@ export default function AddStudent() {
                             Academic Year
                         </label>
                         <div className="col-sm-7">
-                            <input className="ml-2 groupcheck" type="radio" id="g1" style={{ fontSize: "1.2vw" }} name="group" required></input>
+                            <input className="ml-2 groupcheck" type="radio" id="g1" style={{ fontSize: "1.2vw" }} name="group"></input>
                             <label class="mr-2 ml-2" for="g1">
                                 1
                             </label>
@@ -224,7 +241,13 @@ export default function AddStudent() {
                             <label class="mr-2 ml-2" for="g4">
                                 4
                             </label>
+
+                            <div
+                                class="gn-msg"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
+                            ></div>
                         </div>
+
                     </div>
                     <div
                         className="form-group row  mb-5"
@@ -237,10 +260,9 @@ export default function AddStudent() {
                     </a>
                 </form>
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div>
     );
 }

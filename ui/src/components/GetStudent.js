@@ -31,10 +31,10 @@ export default function GetStudent() {
                     `${process.env.REACT_APP_BASE_URL}/student/${d}`
                 );
                 let group_id = result.data[0].group_id;
-                if (group_id == groupid)
+                if (group_id === +groupid)
                     window.location.href = `/select/${id}/groups/${groupid}/showStudent/${d}`;
                 else {
-                    element.innerHTML = `No Student with ID = ${d} in Acadimic year = ${groupid}`;
+                    element.innerHTML = `No Student with ID = ${d} in Academic year = ${groupid}`;
                     element.style.color = "red";
                 }
             } catch (err) {
@@ -46,7 +46,7 @@ export default function GetStudent() {
 
     return (
         <div>
-            <Header/>
+            <Header />
             <div id="getid" className="bg-light p-5 w-75 container-fluid mt-5"
                 style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
@@ -71,10 +71,9 @@ export default function GetStudent() {
                 </form>
 
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div >
     );
 }
