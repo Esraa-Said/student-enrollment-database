@@ -6,23 +6,21 @@ import Header from './Header';
 
 export default function AddStudent() {
     var dast = {};
-    
+
     async function createst(x) {
-        const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/students`, x);
-        console.log(data);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/students`, x);
     }
 
     const submit = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
 
-        let id = document.getElementById("id");
-        let fn = document.getElementById("fn");
-        let ln = document.getElementById("ln");
+        let id = document.getElementById("id").value;
+        let fn = document.getElementById("fn").value;
+        let ln = document.getElementById("ln").value;
         let gn = document.getElementsByClassName("groupcheck");
-        let em = document.getElementById("em");
-        let pn = document.getElementById("pn");
-        
-        // validation insert 
+        let em = document.getElementById("em").value;
+        let pn = document.getElementById("pn").value;
+
         let x = 0;
         for (let i = 0; i < 4; i++) {
             if (gn[i].checked === true) {
@@ -31,31 +29,110 @@ export default function AddStudent() {
             }
         }
 
-        dast["first_name"] = fn.value;
-        dast["student_id"] = id.value;
-        dast["last_name"] = ln.value;
-        dast["group_id"] = x;
-        dast["email"] = em.value;
-        dast["phone_number"] = pn.value;
+        // validation
+        let phoneRegx = /^(010|012|015|011)\d{8}$/;
+        let emailRegx = /\w+@\w+/;
+        let pattern = "^[^0-9]*$";
+        let ok = true;
+        let element;
 
+        element = document.querySelector('.id-msg');
+        element.innerHTML = '';
+        if (typeof id === 'string') {
+            if (Number.isNaN(parseInt(id))) {
+                element.innerHTML = `Student ID is not valid`;
+                ok = false;
+            }
+            else id = parseInt(id);
+        }
+        
+        element = document.querySelector('.fn-msg');
+        element.innerHTML = '';
+        if (typeof fn === 'number') {
+            element.innerHTML = `Name is not valid`;
+            ok = false;
+        }
+        else {
+            if (fn.match(pattern) === null) {
+                element.innerHTML = `Name should not has numbers`;
+                ok = false;
+            }
+            else if (fn.length < 3) {
+                element.innerHTML = `Name is too short`;
+                ok = false;
+            }
+            else if (fn.length >= 100) {
+                element.innerHTML = `Name is too long`;
+                ok = false;
+            }
+        }
+        
+        element = document.querySelector('.ln-msg');
+        element.innerHTML = '';
+        if (typeof ln === 'number') {
+            element.innerHTML = `Name is not valid`;
+            ok = false;
+        }
+        else {
+            if (ln.match(pattern) === null) {
+                element.innerHTML = `Name should not has numbers`;
+                ok = false;
+            }
+            else if (ln.length < 3) {
+                element.innerHTML = `Name is too short`;
+                ok = false;
+            }
+            else if (ln.length >= 100) {
+                element.innerHTML = `Name is too long`;
+                ok = false;
+            }
+        }
 
-        createst(dast);
-        alert("added");
+        element = document.querySelector('.em-msg');
+        element.innerHTML = '';
+        if (em.match(emailRegx) === null) {
+            element.innerHTML = `Invalid E-mail`;
+            ok = false;
+        }
+        
+        element = document.querySelector('.pn-msg');
+        element.innerHTML = '';
+        if (pn.match(phoneRegx) === null) {
+            element.innerHTML = `Invalid phone number`;
+            ok = false;
+        }
+        
+        element = document.querySelector('.add-msg');
+        element.innerHTML = '';
+        if (ok) {
+            dast["first_name"] = fn;
+            dast["student_id"] = id;
+            dast["last_name"] = ln;
+            dast["group_id"] = x;
+            dast["email"] = em;
+            dast["phone_number"] = pn;
+            createst(dast);
+            element.style.color = "green";
+            element.innerHTML = "Student is added successfully";
+        }
+        else {
+            element.style.color = "red";
+            element.innerHTML = "Please enter valid information";
+        }
     };
 
     return (
         <div>
-            <Header/>
+            <Header />
 
             <div className="bg-light w-75 container-fluid p-5 mt-5" id="addSt"
-                 style={{
-                     overflow: "auto",
-                     height: "78vh",
-                     fontFamily: "Arial",
-                     fontSize: "1vw",
-                     textAlign: "center",
-                    
-                  }}>
+                style={{
+                    overflow: "auto",
+                    // height: "78vh",
+                    fontFamily: "Arial",
+                    fontSize: "1vw",
+                    textAlign: "center",
+                }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student Information</h2>
                 <form onSubmit={submit}>
                     <div className="form-group row mb-5">
@@ -64,6 +141,10 @@ export default function AddStudent() {
                         </label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" placeholder="student's id" id="id" style={{ fontSize: "1.2vw" }} required></input>
+                            <div
+                                class="id-msg"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                            ></div>
                         </div>
                     </div>
 
@@ -73,6 +154,10 @@ export default function AddStudent() {
                         </label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="fn" placeholder="student's first name" style={{ fontSize: "1.2vw" }} required></input>
+                            <div
+                                class="fn-msg"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                            ></div>
                         </div>
                     </div>
 
@@ -82,6 +167,10 @@ export default function AddStudent() {
                         </label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="ln" style={{ fontSize: "1.2vw" }} placeholder="student's last name" required></input>
+                            <div
+                                class="ln-msg"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                            ></div>
                         </div>
                     </div>
 
@@ -90,7 +179,11 @@ export default function AddStudent() {
                             Email
                         </label>
                         <div class="col-sm-7">
-                            <input type="email" class="form-control" id="em" style={{ fontSize: "1.2vw" }} placeholder="student's email" required></input>
+                            <input type="text" class="form-control" id="em" style={{ fontSize: "1.2vw" }} placeholder="student's email" required></input>
+                            <div
+                                class="em-msg"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                            ></div>
                         </div>
                     </div>
 
@@ -100,6 +193,10 @@ export default function AddStudent() {
                         </label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="pn" style={{ fontSize: "1.2vw" }} placeholder="student's phone number" required></input>
+                            <div
+                                class="pn-msg"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                            ></div>
                         </div>
                     </div>
 
@@ -129,7 +226,12 @@ export default function AddStudent() {
                             </label>
                         </div>
                     </div>
-
+                    <div
+                        className="form-group row  mb-5"
+                        class="add-msg"
+                        style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace' }}
+                    ></div>
+                    <br></br>
                     <a href={group} type="submit" class="btn btn-primary" onClick={submit}>
                         Add
                     </a>

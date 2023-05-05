@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
 
 export default function GetAllStudents() {
     const [data, setData] = useState([]);
@@ -39,36 +35,36 @@ export default function GetAllStudents() {
 
     return (
         <div>
-            <Header/>
+            <Header />
             <div id="getAll"
-                  className="get w-75 mt-5 container-fluid"
-                  style={{
-                     overflow: "auto",
-                     height: "78vh",
-                     fontFamily: "Arial",
-                     fontSize: "1vw",
-                     textAlign: "center",
-                  }}>
-            <div className="table-responsive table-hover">
-                <table class="table">
-                    <thead>
-                        <tr className="table-success">
-                            <th>Student ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Group ID</th>
-                            <th>Group Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {show}
-                        {/* {JSON.stringify(data.data)} */}
-                    </tbody>
-                </table>
+                className="get w-75 mt-5 container-fluid"
+                style={{
+                    overflow: "auto",
+                    // height: "78vh",
+                    fontFamily: "Arial",
+                    fontSize: "1vw",
+                    textAlign: "center",
+                }}>
+                <div className="table-responsive table-hover">
+                    <table class="table">
+                        <thead>
+                            <tr className="table-success">
+                                <th>Student ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Group ID</th>
+                                <th>Group Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {show}
+                            {/* {JSON.stringify(data.data)} */}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
         </div>
     );
 }

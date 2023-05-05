@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import { group } from './Groups';
@@ -9,6 +9,7 @@ export default function DeleteStudent() {
 
     const deletest = async (event) => {
         event.preventDefault();
+        
         const element = document.querySelector(".status");
         let input = document.getElementById("del_id").value;
         let ok = true;
@@ -16,12 +17,14 @@ export default function DeleteStudent() {
         if (typeof input === "string") {
             if (Number.isNaN(parseInt(input))) ok = false;
             else id = parseInt(input);
-        } else id = input;
+        }
+        else id = input;
 
         if (!ok) {
             element.innerHTML = "Student ID is not valid";
             element.style.color = "red";
-        } else {
+        }
+        else {
             try {
                 await axios.delete(
                     `${process.env.REACT_APP_BASE_URL}/student/${id}`
@@ -71,11 +74,11 @@ export default function DeleteStudent() {
                                 style={{ fontSize: "1.2vw" }}
                                 required
                             ></input>
+                            <div
+                                class="status"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily:'monospace'}}
+                            ></div>
                         </div>
-                        <div
-                            class="col-sm-9 status"
-                            style={{ color: "red", fontSize: "small" }}
-                        ></div>
                     </div>
                     <a
                         href={group}

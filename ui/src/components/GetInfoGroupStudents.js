@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import { groupid } from './Groups'
+import { groupid } from './Groups';
 
 
 export default function GetInfoGroupStudents() {
@@ -40,14 +36,14 @@ export default function GetInfoGroupStudents() {
 
     return (
         <div>
-            <Header/>
+            <Header />
             <div
                 className="get w-75 container-fluid mt-5"
                 id="getinfo"
                 style={{
 
                     overflowY: "auto",
-                    height: "75vh",
+                    // height: "75vh",
                     fontFamily: "Arial",
                     fontSize: "1vw",
                     textAlign: "center",
