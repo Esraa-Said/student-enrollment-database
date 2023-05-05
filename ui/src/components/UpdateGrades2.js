@@ -47,30 +47,6 @@ export default function UpdateGrades2() {
     if (!isLoading) {
         return <div>Loading...</div>;
     }
-    let x = undefined,y= undefined;
-    if(groupid!=4){
-        x.innerHTML = `<th>
-                                        {subject[9].subject_name}
-                                    </th>
-                                    <th>
-                                        {subject[10].subject_name}
-                                    </th>
-                                    <th>
-                                        {subject[11].subject_name}
-                                    </th>`
-        y.innerHTML = `<td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[9].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>
-                                    <td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[10].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>
-                                    <td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[11].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>`; 
-    }
     return (
 
         <div>
@@ -175,7 +151,15 @@ export default function UpdateGrades2() {
                                     <th x>
                                         {subject[8].subject_name}
                                     </th>
-                                    {x}
+                                    {subject.map((v,i)=>{
+                                        if(i>8){
+                                            return (
+                                                <th x>
+                                                    {subject[i].subject_name}
+                                                </th>
+                                            );
+                                        }
+                                    })}
                                 </tr>
                             </thead>
                             <tbody>
@@ -184,7 +168,14 @@ export default function UpdateGrades2() {
                                         <input type='text' class="form-control"
                                             defaultValue={subject[8].grade} style={{ fontSize: "1.2vw" }} />
                                     </td>
-                                    {y}
+                                    {subject.map((v,i)=>{
+                                        if(i>8){
+                                            return <td>
+                                        <input type='text' class="form-control"
+                                            defaultValue={subject[i].grade} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                        }
+                                    })}
                                 </tr>
                             </tbody>
                         </table>
