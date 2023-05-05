@@ -40,12 +40,12 @@ export default function UpdateGrades2() {
 
 
         var gradesStudent = {};
-        for (let i = 0; i < 12; i++) 
-            gradesStudent[subject[i].subject_name] = grades[i].value;
+        for (let i = 1; i < 13; i++) 
+            gradesStudent[subject[i-1].subject_name] = grades[i].value;
 
 
         
-       // console.log(gradesStudent)
+       console.log(gradesStudent)
        Send(gradesStudent);
     }
 
