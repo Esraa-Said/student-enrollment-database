@@ -30,7 +30,7 @@ function App() {
 
                     <switch>
                         <Routes>
-                            <Route path="" element={<Main />} />
+                            <Route path="/main" element={<Main />} />
                             <Route path="/select/:id" element={<Selection />} />
                             <Route path="/select/:id/groups/:id" element={<Groups />} />
                             <Route path="/select/:id/groups/:id/showStudent/:id" element={<ShowStudent />} />

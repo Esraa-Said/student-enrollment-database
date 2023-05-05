@@ -12,7 +12,7 @@ export default function Selection() {
     id = lo[lo.length - 1];
 
     const clickHandler1 = event => {
-        
+
         groupId = '1';
         let g = document.getElementById("group1")
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
@@ -20,7 +20,7 @@ export default function Selection() {
 
     const clickHandler2 = event => {
 
-      
+
         groupId = '2';
         let g = document.getElementById("group2")
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
@@ -29,7 +29,7 @@ export default function Selection() {
 
     const clickHandler3 = event => {
 
-       
+
         groupId = '3';
         let g = document.getElementById("group3")
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
@@ -38,7 +38,7 @@ export default function Selection() {
 
     const clickHandler4 = event => {
 
-       
+
         groupId = '4';
         let g = document.getElementById("group4")
         g.setAttribute("href", "/select/" + id + "/groups/" + groupId);
@@ -48,13 +48,13 @@ export default function Selection() {
     return (
 
         <div>
-           <div className="container-sm m-3 p-3 bg-dark"
+            <div className="container-sm m-3 p-3 bg-dark"
                 style={
                     { borderRadius: "10px", fontFamily: "cursive", fontSize: "2vw", color: "#ffffff" }
                 }
             >
                 <span >ESK for Student Enrollment
-                    
+
                 </span>
 
 
@@ -63,16 +63,16 @@ export default function Selection() {
                 <div className="d-flex flex-wrap justify-content-around align-items-center align-content-around ">
                     <div className="align-self-center  " data-aos="fade-down-right">
                         {/*  group1  */}
-                        <a className="btn btn-primary  btn-lg"  role="button" href='#' id="group1" onClick={
+                        <a className="btn btn-primary  btn-lg" role="button" href='#' id="group1" onClick={
                             clickHandler1
 
                         }
                             style={
                                 {
-                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "400px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "2vw"
                                 }
                             }>
-                            Group1
+                            1st<br></br> Communication
                         </a>
                     </div>
 
@@ -84,11 +84,10 @@ export default function Selection() {
                         }
                             style={
                                 {
-                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "400px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "2vw"
                                 }
                             }>
-                            Group2
-                        </a>
+                            2nd <br></br>Communication                        </a>
                     </div>
                 </div>
 
@@ -101,11 +100,11 @@ export default function Selection() {
                         }
                             style={
                                 {
-                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "400px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "2vw"
                                 }
                             }>
-                            Group3
-                        </a>
+                            3rd Computer<br></br> Science                   
+                                 </a>
                     </div>
 
                     <div className="  align-self-center " data-aos="fade-up-left">
@@ -116,15 +115,19 @@ export default function Selection() {
                         }
                             style={
                                 {
-                                    height: "15vw", width: "300px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "3vw"
+                                    height: "15vw", width: "400px", marginBottom: "35px", fontFamily: "cursive", paddingTop: "3vw", fontSize: "2vw"
                                 }
                             }>
-                            Group4
+                            4th Computer<br></br> Science
                         </a>
                     </div>
                 </div>
-                
+
             </div>
+            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href="/main">
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
+
+            </a>
         </div>
     );
 

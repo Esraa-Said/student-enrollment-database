@@ -23,12 +23,13 @@ export default function ShowStudent() {
             }
         }
         fetchData();
-    });
+    }, [stid]);
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
+    console.log(subject)
     return (
         <div>
             <Header />
@@ -115,11 +116,11 @@ export default function ShowStudent() {
                                             defaultValue={subject[1].grade + "      " + subject[1].status} style={{ fontSize: "1.2vw" }} />
                                     </td>
                                     <td>
-                                        <input type='text' class="form-control bg-light"readOnly
+                                        <input type='text' class="form-control bg-light" readOnly
                                             defaultValue={subject[2].grade + "      " + subject[2].status} style={{ fontSize: "1.2vw" }} />
                                     </td>
                                     <td>
-                                        <input type='text' class="form-control bg-light"readOnly
+                                        <input type='text' class="form-control bg-light" readOnly
                                             defaultValue={subject[3].grade + "      " + subject[3].status} style={{ fontSize: "1.2vw" }} />
                                     </td>
                                 </tr>
@@ -147,7 +148,7 @@ export default function ShowStudent() {
                             <tbody>
                                 <tr >
                                     <td>
-                                        <input type='text' class="form-control bg-light"readOnly
+                                        <input type='text' class="form-control bg-light" readOnly
                                             defaultValue={subject[4].grade + "      " + subject[4].status} style={{ fontSize: "1.2vw" }} />
                                     </td>
                                     <td>
@@ -187,16 +188,15 @@ export default function ShowStudent() {
                             <tbody>
                                 <tr >
                                     <td>
-                                        <input type='text' class="form-control bg-light"readOnly
+                                        <input type='text' class="form-control bg-light" readOnly
                                             defaultValue={subject[8].grade + "      " + subject[8].status} style={{ fontSize: "1.2vw" }} />
                                     </td>
+
                                     {subject.map((v, i) => {
                                         if (i > 8) {
                                             return <td>
-                                                <input class="form-control bg-light"type='text'
-                                                    style={{ fontSize: "1.2vw" }} readOnly defaulValue={ subject[i].grade + "      " + subject[i].status } />
-
-
+                                                <input type='text' class="form-control bg-light" readOnly
+                                                    defaultValue={subject[i].grade + "      " + subject[i].status} style={{ fontSize: "1.2vw" }} />
                                             </td>
                                         }
                                     })}
