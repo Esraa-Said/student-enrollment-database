@@ -232,7 +232,7 @@ export default function AddStudent() {
                         style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace' }}
                     ></div>
                     <br></br>
-                    <a href={group} type="submit" class="btn btn-primary" onClick={submit}>
+                    <a href={group} type="submit" class="btn btn-danger" onClick={submit}>
                         Add
                     </a>
                 </form>

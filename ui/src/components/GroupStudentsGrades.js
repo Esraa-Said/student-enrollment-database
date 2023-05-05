@@ -52,7 +52,7 @@ export default function GroupStudentsGrades() {
                 textAlign: "center",
                 overflow:"auto"
             }}>
-                <div className="table-responsive table-hover table-bordered" >
+                <div className="table-responsive table-hover" >
                     <table class="table" >
                         <thead >
                             <tr className="table-success">

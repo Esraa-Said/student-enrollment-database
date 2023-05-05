@@ -1,30 +1,45 @@
-
 import React from 'react';
+import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import Options from './Options';
-import { getAllStudents, } from './Options';
-import FunctionsOp from './FunctionsOp';
-import { Await, json } from 'react-router-dom';
-import GetAllStudents from './GetAllStudents';
-import GetInfoGroupStudents from './GetInfoGroupStudents';
-import GetOneGroupStudents from './GetOneGroupStudents';
 import { id, groupid } from './Groups';
-import { Link } from 'react-router-dom';
 
 
 export default function GetStudent() {
 
-    function idfun() {
-        let studentinput = document.getElementById("search_id");
-        let link = document.getElementById("search");
-        link.setAttribute("href", `/select/${id}/groups/${groupid}/showStudent/` + parseInt(studentinput.value));
+    async function idfun(event) {
+        event.preventDefault();
+
+        const element = document.querySelector(".status");
+        let studentinput = document.getElementById("input_id").value;
+        let ok = true;
+        let d;
+
+        if (typeof studentinput === "string") {
+            if (Number.isNaN(parseInt(studentinput))) ok = false;
+            else d = parseInt(studentinput);
+        }
+        else d = studentinput;
+
+        if (!ok) {
+            element.innerHTML = "Student ID is not valid";
+            element.style.color = "red";
+        }
+        else {
+            try {
+                await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${d}`);
+                window.location.href = `/select/${id}/groups/${groupid}/showStudent/${d}`;
+            } catch (err) {
+                element.innerHTML = `No Student with ID = ${d}`;
+                element.style.color = "red";
+            }
+        }
     }
 
     return (
         <div>
             <Header/>
-            <div className="bg-light p-5 w-75 mt-5 container" id="search_div"
+            <div id="getid" className="bg-light p-5 w-75 container-fluid mt-5"
                 style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Enter Student ID</h2>
                 <form >
@@ -33,13 +48,20 @@ export default function GetStudent() {
                             Student ID
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" placeholder="student's id" id="search_id" style={{ fontSize: "1.2vw" }} required></input>
+                            <input type="text" class="form-control" placeholder="student's id"
+                                id="input_id" style={{ fontSize: "1.2vw" }} required>
+                            </input>
+                            <div
+                                class="status"
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace' }}
+                            ></div>
                         </div>
                     </div>
-                    <a href='#' type="submit" class="btn btn-danger" onClick={idfun} id="search">
+                    <a href='#' type="submit" class="btn btn-danger" onClick={idfun} id="search_link" >
                         Search
                     </a>
                 </form>
+
             </div>
         </div >
     );

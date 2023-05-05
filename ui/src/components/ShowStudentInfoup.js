@@ -242,7 +242,7 @@ export default function ShowStudentInfoup() {
                     <a
                         href=''
                         type="submit"
-                        class="btn btn-primary"
+                        class="btn btn-danger"
                         id="submitForm"
                         onClick={submit}>
                         Update
