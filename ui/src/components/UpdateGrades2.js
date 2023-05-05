@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
-import { groupid ,id} from './Groups';
+import { groupid, id } from './Groups';
 import Header from './Header';
 
 
@@ -27,20 +27,19 @@ export default function UpdateGrades2() {
         fetchData();
     }, [stid]);
 
-    async function Send(data)
-    {
+    async function Send(data) {
         await axios.patch(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${stid}`, data);
-        alert("updated")
+        alert("updated");
     }
 
     function submit() {
-        let grades = document.getElementsByTagName("input")
+        let grades = document.getElementsByTagName("input");
 
         var gradesStudent = {};
-        for (let i = 1; i <= subject.length; i++) 
-            gradesStudent[subject[i-1].subject_name] = grades[i].value;
-    
-        console.log(gradesStudent)
+        for (let i = 1; i <= subject.length; i++)
+            gradesStudent[subject[i - 1].subject_name] = grades[i].value;
+
+        console.log(gradesStudent);
         Send(gradesStudent);
     }
 
@@ -151,8 +150,8 @@ export default function UpdateGrades2() {
                                     <th x>
                                         {subject[8].subject_name}
                                     </th>
-                                    {subject.map((v,i)=>{
-                                        if(i>8){
+                                    {subject.map((v, i) => {
+                                        if (i > 8) {
                                             return (
                                                 <th x>
                                                     {subject[i].subject_name}
@@ -168,12 +167,12 @@ export default function UpdateGrades2() {
                                         <input type='text' class="form-control"
                                             defaultValue={subject[8].grade} style={{ fontSize: "1.2vw" }} />
                                     </td>
-                                    {subject.map((v,i)=>{
-                                        if(i>8){
+                                    {subject.map((v, i) => {
+                                        if (i > 8) {
                                             return <td>
-                                        <input type='text' class="form-control"
-                                            defaultValue={subject[i].grade} style={{ fontSize: "1.2vw" }} />
-                                    </td>
+                                                <input type='text' class="form-control"
+                                                    defaultValue={subject[i].grade} style={{ fontSize: "1.2vw" }} />
+                                            </td>;
                                         }
                                     })}
                                 </tr>
@@ -185,13 +184,12 @@ export default function UpdateGrades2() {
                     </a>
                 </form>
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div>
 
-    )
+    );
 
 
 }

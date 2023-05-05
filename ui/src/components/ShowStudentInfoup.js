@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import "../bootstrap/css/bootstrap.css";
 import Header from './Header';
-import {id} from './Groups'
+import { id } from './Groups';
 
 export default function ShowStudentInfoup() {
     let stid = window.location.pathname.split("/").slice(-1)[0];
     const [groupstudent, setonegroupstudent] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [checkId, setCheckId] = useState(false);
-
-
-
-  
 
     useEffect(() => {
         async function fetchData() {
@@ -83,7 +78,7 @@ export default function ShowStudentInfoup() {
                 ok = false;
             }
         }
-        
+
         element = document.querySelector('.ln-msg');
         element.innerHTML = '';
         if (typeof ln === 'number') {
@@ -104,21 +99,21 @@ export default function ShowStudentInfoup() {
                 ok = false;
             }
         }
-        
+
         element = document.querySelector('.em-msg');
         element.innerHTML = '';
         if (em.match(emailRegx) === null) {
             element.innerHTML = `Invalid E-mail`;
             ok = false;
         }
-        
+
         element = document.querySelector('.pn-msg');
         element.innerHTML = '';
         if (pn.match(phoneRegx) === null) {
             element.innerHTML = `Invalid phone number`;
             ok = false;
         }
-        
+
         element = document.querySelector('.up-msg');
         element.innerHTML = '';
         if (ok) {
@@ -167,7 +162,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" id="fn" placeholder="student's first name" style={{ fontSize: "1.2vw" }} defaultValue={groupstudent[0].first_name}></input>
                             <div
                                 class="fn-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -180,7 +175,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" id="ln" style={{ fontSize: "1.2vw" }} placeholder="student's last name" defaultValue={groupstudent[0].last_name}></input>
                             <div
                                 class="ln-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -193,7 +188,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" id="em" style={{ fontSize: "1.2vw" }} placeholder="student's email" defaultValue={groupstudent[0].email}></input>
                             <div
                                 class="em-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -206,7 +201,7 @@ export default function ShowStudentInfoup() {
                             <input type="text" class="form-control" id="pn" style={{ fontSize: "1.2vw" }} placeholder="student's phone number" defaultValue={groupstudent[0].phone_number}></input>
                             <div
                                 class="pn-msg"
-                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign:'left' }}
+                                style={{ color: "red", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', textAlign: 'left' }}
                             ></div>
                         </div>
                     </div>
@@ -256,10 +251,9 @@ export default function ShowStudentInfoup() {
                 </form>
                 {/* {acadmeic()} */}
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
-
-         </a>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{color: 'grey'}}></i>
+            </a>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../bootstrap/css/bootstrap.css";
 import './Options.css';
 import { id, groupid } from './Groups';
@@ -6,24 +6,24 @@ import { id, groupid } from './Groups';
 function Header() {
     const [isActive, setIsActive] = useState(false);
     let elements = document.querySelectorAll('div .disable');
-
-    let menu = useRef()
+    let menu = useRef();
+    
     function side() {
         setIsActive(!isActive);
     }
 
     useEffect(() => {
-        let handler = (e)=>{
-            if(!menu.current.contains(e.target))
-            setIsActive(false)
+        let handler = (e) => {
+            if (!menu.current.contains(e.target))
+                setIsActive(false);
         };
         document.addEventListener("mousedown", handler);
 
-        return ()=>{
-            document.removeEventListener("mousedown", handler)
-        }
-      });
-      
+        return () => {
+            document.removeEventListener("mousedown", handler);
+        };
+    });
+
 
     if (id === '1') {
         for (let i = 0; i < elements.length; ++i) {
