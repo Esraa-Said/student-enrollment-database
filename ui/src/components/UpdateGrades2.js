@@ -52,9 +52,9 @@ export default function UpdateGrades2() {
         <div>
             <Header />
             <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
-                style={{ fontFamily: "cursive", fontSize: "1.2vw" }}>
+                style={{ fontFamily: "cursive", fontSize: "1.2vw", }}>
                 <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student Grades</h2>
-                <form >
+                <form  >
                     <div className="form-group row mb-5">
                         <label for="id" className="col-sm-3 col-form-label mr-2">
                             Student ID
@@ -180,7 +180,7 @@ export default function UpdateGrades2() {
                             </tbody>
                         </table>
                     </div>
-                    <a href='#' type="submit" class="btn  btn-danger" id="submitForm" style={{ fontSize: "1.3vw" }} onClick={submit}>
+                    <a href='#' type="submit" class="btn  btn-danger" id="submitForm" style={{ fontSize: "1.3vw", }} onClick={submit}>
                         Update
                     </a>
                 </form>

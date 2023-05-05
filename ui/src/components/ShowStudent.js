@@ -33,66 +33,184 @@ export default function ShowStudent() {
         <div>
             <Header />
 
-            <div
-                className="get w-50 bg-light container-fluid mt-5"
-                id="getsubjects"
-                style={{
-                    overflow: "auto",
-                    fontFamily: "Arial",
-                    fontSize: "1vw",
-                    textAlign: "center",
-                }}>
+            <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
+                style={{ fontFamily: "cursive", fontSize: "1.2vw", }}>
+                <h2 style={{ fontSize: "2vw", fontFamily: "cursive", marginBottom: "50px" }}>Student information with Grades</h2>
+                <form  >
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Student ID
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly placeholder="student's id" id="id0" style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.student_id}></input>
+                        </div>
+                    </div>
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            First Name
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.first_name}></input>
+                        </div>
+                    </div>
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Last Name
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.last_name}></input>
+                        </div>
+                    </div>
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Academic year
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.group_id}></input>
+                        </div>
+                    </div>
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Email
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.email}></input>
+                        </div>
+                    </div>
+                    <div className="form-group row mb-5">
+                        <label for="id" className="col-sm-3 col-form-label mr-2">
+                            Phone number
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.phone_number}></input>
+                        </div>
+                    </div>
 
-                <div className="table-responsive table-hover">
-                    <table class="table">
-                        <tbody >
-                            <tr >
-                                <td className="table-success " style={{width:'20vw'}}>Student ID</td>
-                                <td>{groupstudent["student_data"]["student_id"]} </td>
-                            </tr>
-
-                            <tr >
-                                <td className="table-success">First Name</td>
-                                <td>{groupstudent["student_data"]["first_name"]}</td>
-                            </tr>
-
-                            <tr >
-                                <td className="table-success">Last Name</td>
-                                <td>{groupstudent["student_data"]["last_name"]}</td>
-                            </tr>
-
-                            <tr >
-                                <td className="table-success">Group ID</td>
-                                <td>{groupstudent["student_data"]["group_id"]}</td>
-                            </tr>
-
-                            <tr >
-                                <td className="table-success">Email</td>
-                                <td>{groupstudent["student_data"]["email"]}</td>
-                            </tr>
-
-                            <tr>
-                                <td className="table-success">Phone Number</td>
-                                <td>{groupstudent["student_data"]["phone_number"]}</td>
-                            </tr>
-
-                            {subject.map((v, i) => {
-                                return <tr><td className="table-success">{v.subject_name}</td>
+                    <div className='table-responsive table-hover table-border ' style={{ marginTop: "100px" }} >
+                        <table className='table '>
+                            <thead>
+                                <tr className='bg-success text-light' style={{ fontSize: "1.2vw" }} >
+                                    <th >
+                                        {subject[0].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[1].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[2].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[3].subject_name}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
                                     <td>
-                                        {v.grade}
-                                        <br></br>
-                                        {v.status}
-                                    </td></tr>;
-                            })}
-                        </tbody>
+                                        <input type='text' class="form-control bg-light" readOnly
+                                            defaultValue={subject[0].grade + "      " + subject[0].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control bg-light" readOnly
+                                            defaultValue={subject[1].grade + "      " + subject[1].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control bg-light"readOnly
+                                            defaultValue={subject[2].grade + "      " + subject[2].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control bg-light"readOnly
+                                            defaultValue={subject[3].grade + "      " + subject[3].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='table-responsive table-hover table-border ' >
+                        <table className='table '>
+                            <thead>
+                                <tr className='bg-success text-light' style={{ fontSize: "1.2vw" }} >
+                                    <th >
+                                        {subject[4].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[5].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[6].subject_name}
+                                    </th>
+                                    <th>
+                                        {subject[7].subject_name}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>
+                                        <input type='text' class="form-control bg-light"readOnly
+                                            defaultValue={subject[4].grade + "      " + subject[4].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control bg-light" readOnly
+                                            defaultValue={subject[5].grade + "      " + subject[5].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control bg-light" readOnly
+                                            defaultValue={subject[6].grade + "      " + subject[6].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    <td>
+                                        <input type='text' class="form-control bg-light" readOnly
+                                            defaultValue={subject[7].grade + "      " + subject[7].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='table-responsive table-hover table-border ' >
+                        <table className='table '>
+                            <thead>
+                                <tr className='bg-success text-light' style={{ fontSize: "1.2vw" }} >
+                                    <th >
+                                        {subject[8].subject_name}
+                                    </th>
+                                    {subject.map((v, i) => {
+                                        if (i > 8) {
+                                            return (
+                                                <th >
+                                                    {subject[i].subject_name}
+                                                </th>
+                                            );
+                                        }
+                                    })}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>
+                                        <input type='text' class="form-control bg-light"readOnly
+                                            defaultValue={subject[8].grade + "      " + subject[8].status} style={{ fontSize: "1.2vw" }} />
+                                    </td>
+                                    {subject.map((v, i) => {
+                                        if (i > 8) {
+                                            return <td>
+                                                <input class="form-control bg-light"type='text'
+                                                    style={{ fontSize: "1.2vw" }} readOnly defaulValue={ subject[i].grade + "      " + subject[i].status } />
 
-                    </table>
-                </div>
+
+                                            </td>
+                                        }
+                                    })}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </form>
             </div>
             <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
 
-         </a>
+            </a>
         </div>
     );
 }
