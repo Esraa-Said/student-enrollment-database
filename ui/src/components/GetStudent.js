@@ -27,8 +27,16 @@ export default function GetStudent() {
         }
         else {
             try {
-                await axios.get(`${process.env.REACT_APP_BASE_URL}/student/${d}`);
-                window.location.href = `/select/${id}/groups/${groupid}/showStudent/${d}`;
+                let result = await axios.get(
+                    `${process.env.REACT_APP_BASE_URL}/student/${d}`
+                );
+                let group_id = result.data[0].group_id;
+                if (group_id == groupid)
+                    window.location.href = `/select/${id}/groups/${groupid}/showStudent/${d}`;
+                else {
+                    element.innerHTML = `No Student with ID = ${d} in Acadimic year = ${groupid}`;
+                    element.style.color = "red";
+                }
             } catch (err) {
                 element.innerHTML = `No Student with ID = ${d}`;
                 element.style.color = "red";
