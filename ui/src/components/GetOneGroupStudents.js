@@ -10,6 +10,11 @@ export default function GetOneGroupStudents() {
     const [onegroupstudents, setonegroupstudents] = useState([]);
     const [subject, setSubject] = useState([]);
 
+    function style(n) {
+        if (n >= 50) return 'green'
+        else return 'red'
+    };
+
     function Get() {
         useEffect(() => {
             axios
@@ -33,10 +38,12 @@ export default function GetOneGroupStudents() {
                 <td>{student.phone_number}</td>
                 {student.grades.map((grade, index) => {
                     return (
-                        <td>
+                        <td >
                             {grade.grade}
                             <br></br>
-                            {grade.status}
+                            <span style={{ color: style(grade.grade) }}>
+                                {grade.status}
+                            </span>
                         </td>
                     );
                 })}

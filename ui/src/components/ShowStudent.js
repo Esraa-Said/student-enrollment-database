@@ -29,7 +29,7 @@ export default function ShowStudent() {
         return <div>Loading...</div>;
     }
 
-    console.log(subject)
+    console.log(subject);
     return (
         <div>
             <Header />
@@ -51,7 +51,7 @@ export default function ShowStudent() {
                             First Name
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.first_name}></input>
+                            <input type="text" class="form-control" readonly style={{ fontSize: "0.95vw" }} value={groupstudent.student_data.first_name}></input>
                         </div>
                     </div>
                     <div className="form-group row mb-5">
@@ -59,7 +59,7 @@ export default function ShowStudent() {
                             Last Name
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.last_name}></input>
+                            <input type="text" class="form-control" readonly style={{ fontSize: "0.95vw" }} value={groupstudent.student_data.last_name}></input>
                         </div>
                     </div>
                     <div className="form-group row mb-5">
@@ -67,7 +67,7 @@ export default function ShowStudent() {
                             Academic year
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.group_id}></input>
+                            <input type="text" class="form-control" readonly style={{ fontSize: "0.95vw" }} value={groupstudent.student_data.group_id}></input>
                         </div>
                     </div>
                     <div className="form-group row mb-5">
@@ -75,7 +75,7 @@ export default function ShowStudent() {
                             Email
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.email}></input>
+                            <input type="text" class="form-control" readonly style={{ fontSize: "0.95vw" }} value={groupstudent.student_data.email}></input>
                         </div>
                     </div>
                     <div className="form-group row mb-5">
@@ -83,14 +83,14 @@ export default function ShowStudent() {
                             Phone number
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" readonly style={{ fontSize: "1.2vw" }} value={groupstudent.student_data.phone_number}></input>
+                            <input type="text" class="form-control" readonly style={{ fontSize: "0.95vw" }} value={groupstudent.student_data.phone_number}></input>
                         </div>
                     </div>
 
                     <div className='table-responsive table-hover table-border ' style={{ marginTop: "100px" }} >
-                        <table className='table '>
+                        <table className='table ' style={{ fontFamily: "Arial" }}>
                             <thead>
-                                <tr className='bg-success text-light' style={{ fontSize: "1.2vw" }} >
+                                <tr className="table-success" style={{ fontSize: "0.95vw" }} >
                                     <th >
                                         {subject[0].subject_name}
                                     </th>
@@ -109,28 +109,28 @@ export default function ShowStudent() {
                                 <tr >
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[0].grade + "      " + subject[0].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[0].grade + "      " + subject[0].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[1].grade + "      " + subject[1].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[1].grade + "      " + subject[1].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[2].grade + "      " + subject[2].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[2].grade + "      " + subject[2].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[3].grade + "      " + subject[3].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[3].grade + "      " + subject[3].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div className='table-responsive table-hover table-border ' >
-                        <table className='table '>
+                        <table className='table ' style={{ fontFamily: "Arial" }}>
                             <thead>
-                                <tr className='bg-success text-light' style={{ fontSize: "1.2vw" }} >
+                                <tr className="table-success" style={{ fontSize: "0.95vw" }} >
                                     <th >
                                         {subject[4].subject_name}
                                     </th>
@@ -149,28 +149,28 @@ export default function ShowStudent() {
                                 <tr >
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[4].grade + "      " + subject[4].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[4].grade + "      " + subject[4].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[5].grade + "      " + subject[5].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[5].grade + "      " + subject[5].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[6].grade + "      " + subject[6].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[6].grade + "      " + subject[6].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[7].grade + "      " + subject[7].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[7].grade + "      " + subject[7].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div className='table-responsive table-hover table-border ' >
-                        <table className='table '>
+                        <table className='table ' style={{ fontFamily: "Arial" }}>
                             <thead>
-                                <tr className='bg-success text-light' style={{ fontSize: "1.2vw" }} >
+                                <tr className="table-success" style={{ fontSize: "0.95vw" }} >
                                     <th >
                                         {subject[8].subject_name}
                                     </th>
@@ -189,15 +189,15 @@ export default function ShowStudent() {
                                 <tr >
                                     <td>
                                         <input type='text' class="form-control bg-light" readOnly
-                                            defaultValue={subject[8].grade + "      " + subject[8].status} style={{ fontSize: "1.2vw" }} />
+                                            defaultValue={subject[8].grade + "      " + subject[8].status} style={{ fontSize: "0.95vw" }} />
                                     </td>
 
                                     {subject.map((v, i) => {
                                         if (i > 8) {
                                             return <td>
                                                 <input type='text' class="form-control bg-light" readOnly
-                                                    defaultValue={subject[i].grade + "      " + subject[i].status} style={{ fontSize: "1.2vw" }} />
-                                            </td>
+                                                    defaultValue={subject[i].grade + "      " + subject[i].status} style={{ fontSize: "0.95vw" }} />
+                                            </td>;
                                         }
                                     })}
                                 </tr>
@@ -207,8 +207,8 @@ export default function ShowStudent() {
 
                 </form>
             </div>
-            <a style={{ position: "fixed", top: "95%", left: "3%", cursor: "pointer" }} href={`/select/${id}`}>
-                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl"></i>
+            <a style={{ position: "fixed", top: "95%", left: "1%", cursor: "pointer" }} href={`/select/${id}`}>
+                <i class="fa-solid fa-right-from-bracket fa-flip-horizontal fa-2xl" style={{ color: 'grey' }}></i>
 
             </a>
         </div>

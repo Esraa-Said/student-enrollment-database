@@ -9,7 +9,9 @@ function Main() {
     const getpass = (event) => {
         let passid = document.getElementById("passid");
         let welcome = document.getElementById("welcome");
+        let label = document.getElementById("label");
         welcome.style.display = "none";
+        label.style.display = "none";
         passid.style.display = "block";
 
     };
@@ -49,7 +51,7 @@ function Main() {
     };
 
     return (
-        <div className="back  bg-dark" style={{
+        <div className="back bg-dark" style={{
             height: "100vh",
             width: "100vw"
         }} >
@@ -67,7 +69,7 @@ function Main() {
                     </div>
 
                     <div className="row justify-content-center">
-                        <a className="btn btn-info btn-lg" role="button" data-toggle="tooltip" data-placement="left" title="modify delete add"
+                        <a className="btn btn-danger btn-lg text-light" role="button" data-toggle="tooltip" data-placement="left" title="modify delete add"
                             style={
                                 {
                                     marginBottom: "35px", fontFamily: "cursive", marginTop: "5vw", fontSize: "2vw"
@@ -78,7 +80,7 @@ function Main() {
                             Admin
                         </a>
 
-                        <a className="btn btn-warning btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="show" id="user"
+                        <a className="btn btn-info btn-lg text-light" role="button" data-toggle="tooltip" data-placement="right" title="show" id="user"
                             style={
                                 {
                                     marginBottom: "35px", fontFamily: "cursive", marginTop: "5vw", fontSize: "2vw", marginLeft: "5vw"
@@ -106,23 +108,25 @@ function Main() {
                 overflow: "auto",
                 paddingTop: "60px",
             }}>
-                <div className="form container d-flex flex-wrap justify-content-around  align-content-around " >
+                <div className="form container d-flex flex-wrap justify-content-around align-content-around bg-danger" style={{ fontFamily: "cursive" }}>
                     <div className="align-self-center" >
                         <img src={login} style={{ width: "20vw" }} />
                     </div>
-                    <div className="text ">
-                        <h2 style={{ marginTop: "20px", fontFamily: "cursive", color: "#000000" }}>
-                            Enter Password</h2>
-
-                        <label style={{ marginTop: "30px", fontSize: "1.2vw", color: "#ff0000", display: "none" }} id="label">wrong password</label>
-                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" style={{ marginTop: "10px" }} ></input>
-
-                        <a className="btn btn-lg btn-secondary" style={{ marginBottom: "40px", marginTop: "80px", marginRight: "30px" }} role="button" onClick={close} >
+                    <div className="text" style={{ textAlign: 'center' }}>
+                        <form >
+                            <div className="form-group row mb-5">
+                                <label style={{ marginTop: "20px", color: "#ffffff", fontSize: '2vw' }}>Enter Password</label>
+                                <input type="password" class="form-control" id="pwd" name="password" placeholder="password" style={{ fontFamily: "Arial", fontSize: '1vw' }} ></input>
+                            </div>
+                        </form>
+                        <div style={{ color: "white", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', display: 'none' }} id="label">wrong password</div>
+                        <a className="btn btn-lg btn-secondary text-light" style={{ marginBottom: "20px", marginTop: "20px", marginRight: "30px" }} role="button" onClick={close} >
                             Close
                         </a>
-                        <a className="btn btn-lg btn-dark" href="#" id="enterbtn" style={{ marginBottom: "40px", marginTop: "80px" }} role="button" onClick={enter} >
+                        <a className="btn btn-lg btn-secondary" href="#" id="enterbtn" style={{ marginBottom: "20px", marginTop: "20px" }} role="button" onClick={enter} >
                             Enter
                         </a>
+
                     </div>
                 </div>
             </div>
