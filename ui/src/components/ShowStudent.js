@@ -88,7 +88,7 @@ export default function ShowStudent() {
                     </div>
 
                     <div className='table-responsive table-hover table-border ' style={{ marginTop: "100px" }} >
-                        <table className='table '>
+                        <table className='table ' style={{ fontFamily: "Arial" }}>
                             <thead>
                                 <tr className="table-success" style={{ fontSize: "0.95vw" }} >
                                     <th >
@@ -128,7 +128,7 @@ export default function ShowStudent() {
                         </table>
                     </div>
                     <div className='table-responsive table-hover table-border ' >
-                        <table className='table '>
+                        <table className='table ' style={{ fontFamily: "Arial" }}>
                             <thead>
                                 <tr className="table-success" style={{ fontSize: "0.95vw" }} >
                                     <th >
@@ -168,7 +168,7 @@ export default function ShowStudent() {
                         </table>
                     </div>
                     <div className='table-responsive table-hover table-border ' >
-                        <table className='table '>
+                        <table className='table ' style={{ fontFamily: "Arial" }}>
                             <thead>
                                 <tr className="table-success" style={{ fontSize: "0.95vw" }} >
                                     <th >

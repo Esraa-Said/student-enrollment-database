@@ -108,24 +108,25 @@ function Main() {
                 overflow: "auto",
                 paddingTop: "60px",
             }}>
-                <div className="form container d-flex flex-wrap justify-content-around align-content-around bg-danger" style={{fontFamily: "cursive"}}>
+                <div className="form container d-flex flex-wrap justify-content-around align-content-around bg-danger" style={{ fontFamily: "cursive" }}>
                     <div className="align-self-center" >
                         <img src={login} style={{ width: "20vw" }} />
                     </div>
-                    <div className="text" style={{textAlign: 'center'}}>
-                        <h2 style={{ marginTop: "20px", color: "#ffffff", fontSize: '3vw' }}>
-                            Enter Password</h2>
-
-                        <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" style={{ marginTop: "10px" }} ></input>
-
-                        <a className="btn btn-lg btn-secondary text-light" style={{ marginBottom: "20px", marginTop: "80px", marginRight: "30px" }} role="button" onClick={close} >
+                    <div className="text" style={{ textAlign: 'center' }}>
+                        <form >
+                            <div className="form-group row mb-5">
+                                <label style={{ marginTop: "20px", color: "#ffffff", fontSize: '2vw' }}>Enter Password</label>
+                                <input type="password" class="form-control" id="pwd" name="password" placeholder="password" style={{ fontFamily: "Arial", fontSize: '1vw' }} ></input>
+                            </div>
+                        </form>
+                        <div style={{ color: "white", fontSize: "13px", marginTop: "5px", marginLeft: "4px", fontFamily: 'monospace', display: 'none' }} id="label">wrong password</div>
+                        <a className="btn btn-lg btn-secondary text-light" style={{ marginBottom: "20px", marginTop: "20px", marginRight: "30px" }} role="button" onClick={close} >
                             Close
                         </a>
-                        <a className="btn btn-lg btn-secondary" href="#" id="enterbtn" style={{ marginBottom: "20px", marginTop: "80px" }} role="button" onClick={enter} >
+                        <a className="btn btn-lg btn-secondary" href="#" id="enterbtn" style={{ marginBottom: "20px", marginTop: "20px" }} role="button" onClick={enter} >
                             Enter
                         </a>
 
-                        <label style={{ fontSize: "1.2vw", color: "white", display: "none", fontFamily:'monospace' }} id="label">wrong password</label>
                     </div>
                 </div>
             </div>
