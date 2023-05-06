@@ -49,15 +49,22 @@ you can try using link : [https://esk-students-enrollment.netlify.app]
 
 ### User options 
  1- Show all students info 
+ 
  2- Show info of students in a specific year
+ 
  3- Show students grades in a specific year
+ 
  4- Show subjects and teachers for subjects
+ 
  5- show student with its grades using id
  
  ### Admin extra options 
  1- Add student
+ 
  2- Delete student 
+ 
  3- Update student info 
+ 
  4- Update student grades
  
  ## App validations 
