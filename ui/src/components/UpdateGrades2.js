@@ -77,7 +77,7 @@ export default function UpdateGrades2() {
             <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
                 style={{
                     overflow: "auto",
-                    fontFamily: "Arial",
+                    fontFamily: "cursive",
                     fontSize: "1vw",
                     textAlign: "center",
                 }}>
@@ -95,7 +95,7 @@ export default function UpdateGrades2() {
                     <div className='table-responsive table-hover table-border ' style={{ marginTop: "80px" }} >
                         <table className='table '>
                             <thead>
-                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
+                                <tr className="table-success" style={{ fontSize: "0.95vw", textAlign:'left'  }} >
                                     <th x>
                                         {subject[0].subject_name}
                                     </th>
@@ -135,7 +135,7 @@ export default function UpdateGrades2() {
                     <div className='table-responsive table-hover table-border ' >
                         <table className='table '>
                             <thead>
-                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
+                                <tr className="table-success" style={{ fontSize: "0.95vw", textAlign:'left' }} >
                                     <th x>
                                         {subject[4].subject_name}
                                     </th>
@@ -175,7 +175,7 @@ export default function UpdateGrades2() {
                     <div className='table-responsive table-hover table-border ' >
                         <table className='table '>
                             <thead>
-                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
+                                <tr className="table-success" style={{ fontSize: "0.95vw", textAlign:'left'  }} >
                                     <th x>
                                         {subject[8].subject_name}
                                     </th>
