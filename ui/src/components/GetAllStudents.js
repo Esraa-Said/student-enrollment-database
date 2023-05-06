@@ -52,7 +52,7 @@ export default function GetAllStudents() {
                                 <th>Student ID</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Academic Year</th>
+                                <th>Group ID</th>
                                 <th>Group Name</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>

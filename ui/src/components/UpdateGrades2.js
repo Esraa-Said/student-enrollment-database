@@ -45,17 +45,17 @@ export default function UpdateGrades2() {
                 }
                 else g = parseInt(g);
             }
-
+            
             if (ok && (g < 0 || g > 100)) {
                 element.innerHTML = 'Grades should be in range [0-100]';
                 ok = false;
             }
         }
-
-        if (ok) {
-            for (let i = 1; i <= subject.length; i++)
+        
+        if(ok) {
+            for (let i = 1; i <= subject.length; i++) 
                 gradesStudent[subject[i - 1].subject_name] = grades[i].value;
-
+            
             try {
                 await axios.patch(`${process.env.REACT_APP_BASE_URL}/group/${groupid}/students/${stid}`, gradesStudent);
                 element.style.color = "green";
@@ -77,7 +77,7 @@ export default function UpdateGrades2() {
             <div className="bg-light w-75 p-5 container-fluid mt-5 " id="getdata"
                 style={{
                     overflow: "auto",
-                    fontFamily: "cursive",
+                    fontFamily: "Arial",
                     fontSize: "1vw",
                     textAlign: "center",
                 }}>
@@ -93,9 +93,9 @@ export default function UpdateGrades2() {
                     </div>
 
                     <div className='table-responsive table-hover table-border ' style={{ marginTop: "80px" }} >
-                        <table className='table ' style={{ fontFamily: "Arial" }}>
+                        <table className='table '>
                             <thead>
-                                <tr className="table-success" style={{ fontSize: "0.95vw", textAlign: 'left' }} >
+                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
                                     <th x>
                                         {subject[0].subject_name}
                                     </th>
@@ -133,9 +133,9 @@ export default function UpdateGrades2() {
                         </table>
                     </div>
                     <div className='table-responsive table-hover table-border ' >
-                        <table className='table ' style={{ fontFamily: "Arial" }}>
+                        <table className='table '>
                             <thead>
-                                <tr className="table-success" style={{ fontSize: "0.95vw", textAlign: 'left' }} >
+                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
                                     <th x>
                                         {subject[4].subject_name}
                                     </th>
@@ -173,9 +173,9 @@ export default function UpdateGrades2() {
                         </table>
                     </div>
                     <div className='table-responsive table-hover table-border ' >
-                        <table className='table ' style={{ fontFamily: "Arial" }}>
+                        <table className='table '>
                             <thead>
-                                <tr className="table-success" style={{ fontSize: "0.95vw", textAlign: 'left' }} >
+                                <tr className='bg-warning' style={{ fontSize: "0.95vw" }} >
                                     <th x>
                                         {subject[8].subject_name}
                                     </th>

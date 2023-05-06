@@ -1,0 +1,58 @@
+[33m60dcf26[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m HEAD@{0}: pull: Merge made by the 'recursive' strategy.
+[33m64e6b3d[m HEAD@{1}: commit: f
+[33m935a6b9[m HEAD@{2}: commit: updates
+[33mf9bcc2b[m HEAD@{3}: commit: updates
+[33ma30e365[m HEAD@{4}: pull: Merge made by the 'recursive' strategy.
+[33m2028f3a[m HEAD@{5}: commit: updates
+[33mc2abd91[m HEAD@{6}: commit (merge): updates
+[33m4ca67bd[m HEAD@{7}: commit: updates
+[33m36ec03b[m HEAD@{8}: commit: solve
+[33m0899be3[m HEAD@{9}: pull: Merge made by the 'recursive' strategy.
+[33m988a0d6[m HEAD@{10}: commit: hide options
+[33m0ded572[m HEAD@{11}: commit: up
+[33mb6de71e[m HEAD@{12}: commit: return to selection page
+[33m220e19a[m HEAD@{13}: commit: update
+[33m99279a7[m HEAD@{14}: commit: update grade
+[33m2673c7b[m HEAD@{15}: commit: up
+[33m8e2fe34[m HEAD@{16}: commit (merge): merge
+[33m525189c[m HEAD@{17}: commit: up
+[33mde4fd1b[m HEAD@{18}: commit (merge): up
+[33mf09b06e[m HEAD@{19}: commit: update
+[33m0ddc977[m HEAD@{20}: commit (merge): up
+[33ma100b62[m HEAD@{21}: commit: files
+[33m5e6d049[m HEAD@{22}: commit (merge): up
+[33m6df1df6[m HEAD@{23}: commit: ch
+[33m317167f[m HEAD@{24}: pull: Fast-forward
+[33m0b98d59[m HEAD@{25}: commit (merge): up
+[33mbf1dcdb[m HEAD@{26}: commit: up
+[33m8abc76b[m HEAD@{27}: commit: update student info
+[33md4799bd[m HEAD@{28}: pull: Fast-forward
+[33m9c095b4[m HEAD@{29}: commit: update
+[33m92ef819[m HEAD@{30}: commit: up
+[33mff5180c[m HEAD@{31}: pull: Fast-forward
+[33m2edda4f[m HEAD@{32}: commit: up
+[33ma702624[m HEAD@{33}: commit: some* sorry
+[33m4030bbd[m HEAD@{34}: pull: Merge made by the 'recursive' strategy.
+[33m305ac3d[m HEAD@{35}: commit: solve sum problems, test..
+[33m0221fa1[m HEAD@{36}: commit: up
+[33m8cc6544[m HEAD@{37}: commit: up
+[33me14ed22[m HEAD@{38}: commit: up
+[33mea8a975[m HEAD@{39}: pull: Fast-forward
+[33m92ce62d[m HEAD@{40}: commit: up
+[33m66154c6[m HEAD@{41}: commit: sleep
+[33m0fc7eaa[m HEAD@{42}: commit (merge): update
+[33m372c4c8[m HEAD@{43}: commit: test test test
+[33mf539a81[m HEAD@{44}: reset: moving to f539a81
+[33mf539a81[m HEAD@{45}: commit: update
+[33mb88ce50[m HEAD@{46}: commit (merge): update
+[33m07432be[m HEAD@{47}: commit: add
+[33mf63332b[m HEAD@{48}: pull: Fast-forward
+[33m16919bb[m HEAD@{49}: commit: update
+[33mb95ddd5[m HEAD@{50}: commit: add files
+[33m07e5e47[m HEAD@{51}: pull: Fast-forward
+[33m4808eaf[m HEAD@{52}: commit: update
+[33m48fbc14[m HEAD@{53}: commit: update
+[33m0ea27c7[m HEAD@{54}: commit: update
+[33m64bf7fe[m HEAD@{55}: commit: update
+[33m600cbf0[m HEAD@{56}: commit: update
+[33mf457890[m HEAD@{57}: clone: from https://github.com/Esraa-Said/student-enrollment-database.git

@@ -7,7 +7,7 @@ function Header() {
     const [isActive, setIsActive] = useState(false);
     let elements = document.querySelectorAll('div .disable');
     let menu = useRef();
-
+    
     function side() {
         setIsActive(!isActive);
     }
@@ -37,10 +37,10 @@ function Header() {
         <div>
             <div className="container-sm m-3 p-3 bg-dark" id="sideid"
                 style={
-                    { borderRadius: "10px", fontFamily: "Arial", fontSize: "2vw", color: "#ffffff" }
+                    { borderRadius: "10px", fontFamily: "cursive", fontSize: "2vw", color: "#ffffff" }
                 }
             >
-                <span style={{ fontFamily: "cursive" }} >ESK for Student Enrollment
+                <span >ESK for Student Enrollment
                     <button type="button" class="btn btn-secondary toggle-sidebar  " onClick={side}>
                         <i class="fa-solid fa-bars"></i></button>
                 </span>
