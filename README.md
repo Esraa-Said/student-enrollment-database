@@ -44,6 +44,9 @@ Your app is ready to be deployed!
 
 # Student Enrollment App
 you can try using link : [https://esk-students-enrollment.netlify.app]
+Password for admin: feng 
+
+
 
 ## Options in the app: 
 
