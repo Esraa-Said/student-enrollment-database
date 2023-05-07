@@ -36,7 +36,7 @@ export default function UpdateGrades2() {
 
         element.innerHTML = '';
         element.style.color = "red";
-        for (let i = 0; i < grades.length; ++i) {
+        for (let i = 1; i < grades.length; ++i) {
             g = grades[i].value;
             if (typeof g === 'string') {
                 if (Number.isNaN(parseInt(g))) {
