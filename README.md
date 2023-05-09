@@ -91,15 +91,18 @@ Password for admin: feng
    2- create .env file 
     
    3- set env variables which are [PORT] , [DATABASE_URL] and  [ORIGIN_URL].
+   
     PORT : port value you choose for example 5000
+    
     DATABASE_URL : connection string of online database
+    
     ORIGIN_URL: the url of the frontend server the avoid CORS problem.
     
    4- go to ui folder `cd ui`.
     
    5- create another .env file
     
-   6- set variable `REACT_APP_BASE_URL = `http://localhost:[PORT]/api` . change PORT with the value you choose for example 5000
+   6- set variable `REACT_APP_BASE_URL = http://localhost:[PORT]/api` . change PORT with the value you choose for example 5000
     
    7- back to root of the folder `cd ..`
     
